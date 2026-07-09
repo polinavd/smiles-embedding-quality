@@ -1,0 +1,23 @@
+[project]
+name = "smiles-embedding-quality"
+version = "0.1.0"
+description = "Unsupervised embedding quality estimation for single-cell data"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "scipy",
+    "scikit-learn",
+    "scanpy",
+    "anndata",
+    "scvi-tools",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["embq"]
