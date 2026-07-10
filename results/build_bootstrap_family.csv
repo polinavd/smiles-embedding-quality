@@ -1,0 +1,9 @@
+metric,kind,rho,ci_lo,ci_hi,excludes_zero
+anisotropy,geometric,0.336,-0.534,0.791,False
+effective_rank,geometric,0.077,-0.416,0.635,False
+intrinsic_dim_twonn,geometric,0.068,-0.516,0.665,False
+uniformity,geometric,0.209,-0.483,0.595,False
+alignment,geometric,-0.187,-0.742,0.58,False
+knn_consistency,geometric,0.02,-0.408,0.556,False
+silhouette_lab,oracle,0.305,-0.481,0.742,False
+linear_probe,oracle,0.407,-0.414,0.84,False
