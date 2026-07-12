@@ -121,13 +121,19 @@ class Result:
     unsupervised: dict[str, float]
 
 
-def run(counts: np.ndarray, labels: np.ndarray) -> list[Result]:
+def run(counts: np.ndarray, labels: np.ndarray, save_dir: str | None = None) -> list[Result]:
+    if save_dir:
+        import os
+        os.makedirs(save_dir, exist_ok=True)
+
     results = []
     for name, fn in ENCODERS.items():
         emb = fn(counts)
         down = downstream_scores(emb, labels)
         uns = compute_all(emb, X_perturbed=perturb(emb))
         results.append(Result(name, down, uns))
+        if save_dir:
+            np.save(f"{save_dir}/{name}.npy", emb)
         print(f"[{name}] ARI={down['ARI']:.3f} "
               f"kNN={down['kNN_acc']:.3f} | "
               + " ".join(f"{k}={v:.2f}" for k, v in uns.items()))
@@ -158,6 +164,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--h5ad", help="path to AnnData .h5ad with raw counts")
     ap.add_argument("--label", default="cell_type", help="obs column with cell types")
+    ap.add_argument("--save-embeddings", metavar="DIR",
+                     help="if set, save each encoder's embedding matrix as DIR/<name>.npy")
     args = ap.parse_args()
 
     if args.h5ad:
@@ -170,7 +178,7 @@ def main():
                                         separation=2.0, noise=1.0)
         counts = np.abs(counts)  # fake 'counts'
 
-    results = run(counts, labels)
+    results = run(counts, labels, save_dir=args.save_embeddings)
 
     ari_vals = [r.downstream["ARI"] for r in results]
     if len(set(np.round(ari_vals, 6))) == 1:
