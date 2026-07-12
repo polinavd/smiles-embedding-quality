@@ -81,7 +81,7 @@ ENCODERS: dict[str, Callable[..., np.ndarray]] = {
     "random": encode_random,
     "pca_10": lambda c: encode_pca(c, n_comps=10),
     "pca_50": lambda c: encode_pca(c, n_comps=50),
-    # "scvi_30": lambda c: encode_scvi(c, n_latent=30),   # enable on GPU
+    "scvi_30": lambda c: encode_scvi(c, n_latent=30),
 }
 
 
