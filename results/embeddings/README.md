@@ -9,3 +9,7 @@ labels, matching `first_pass_report.md`). Each `.npy` is `n_cells x n_comps`.
 - **pca_50.npy** — (2638, 50) PCA embedding (ARI 0.749).
 - **scvi_30.npy** — (2638, 30) scVI latent space, trained 200 epochs on GPU
   (RTX 5070 Laptop, CUDA) via `scvi-tools` (ARI 0.587).
+- **labels.npy** — (2638,) int8 ground-truth cell-type codes, row-aligned with the
+  embeddings above; used to compute ARI/NMI/kNN accuracy in `downstream_scores()`.
+- **labels_mapping.json** — code -> cell-type name (`0: "CD4 T cells"`, ... `7:
+  "Megakaryocytes"`), decodes `labels.npy`.
