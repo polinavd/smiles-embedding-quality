@@ -17,16 +17,18 @@ Recipe (all five steps, same code path as every other domain):
   4. CI       -> embq.harness.bootstrap_ci      (percentile, n_resamples>=1000)
   5. control  -> embq.harness.random_projection_embeddings (rho ~ 0 expected)
 
-Checkpoints: 10 SSL ResNet-50 backbones, ALL 2048-d, so effective rank is
+Checkpoints: 17 SSL ResNet-50 backbones, ALL 2048-d, so effective rank is
 directly comparable and this targets the strong WITHIN-family correlation the
 paper reports. Every backbone weight is loaded into a clean torchvision
 ResNet-50 (fc = Identity); the load is asserted to leave no backbone weight
-missing. Eval set: a fixed seeded subset of the CIFAR-100 test split.
+missing. Eval set: a fixed seeded subset of a dataset's test split; --dataset
+selects CIFAR-10 or CIFAR-100 (each writes its own labelled deliverables).
 
 Isolation: nothing here touches the scRNA block2_* path.
 
-Usage (GPU strongly preferred):
-    python -m repro.rankme_vision --data-root data --n-eval 8000 --seed 0
+Usage (GPU strongly preferred; fetch images first via repro/fetch_cifar.sh):
+    python -m repro.rankme_vision --dataset cifar100 --n-eval 8000 --seed 0
+    python -m repro.rankme_vision --dataset cifar10  --n-eval 8000 --seed 0
 """
 
 from __future__ import annotations
@@ -218,49 +220,61 @@ class _ImageListDataset(torch.utils.data.Dataset):
         return self.transform(img), label
 
 
-def _cifar100_fine_samples(test_dir: str):
-    """Walk fast.ai's test/<superclass>/<fineclass>/*.png -> (path, fine_label).
+# Dataset registry: fast.ai imageclas mirror (PNG image folders). Used instead
+# of the canonical cs.toronto.edu host, which is throttled to ~45 KB/s; the
+# images are pixel-identical. `nested` marks CIFAR-100's superclass/fineclass
+# layout vs CIFAR-10's flat class layout. See repro/fetch_cifar.sh.
+DATASETS = {
+    "cifar10": {"dir": "cifar10", "nested": False, "label": "CIFAR-10"},
+    "cifar100": {"dir": "cifar100", "nested": True, "label": "CIFAR-100"},
+}
 
-    fast.ai nests CIFAR-100 under its 20 coarse superclasses, so the 100 fine
-    classes are the leaf directories. Labels are assigned by sorted fine-class
-    name for a deterministic 0..99 mapping.
+
+def _leaf_samples(test_dir: str, nested: bool):
+    """Walk an image-folder test split -> [(path, label)], class_to_idx.
+
+    nested=False (CIFAR-10):  test/<class>/*.png
+    nested=True  (CIFAR-100): test/<superclass>/<fineclass>/*.png, where the
+    100 fine classes are the leaf dirs. Labels are assigned by sorted leaf-class
+    name for a deterministic mapping.
     """
-    fine_classes = set()
-    for sup in os.listdir(test_dir):
-        sup_dir = os.path.join(test_dir, sup)
-        if os.path.isdir(sup_dir):
-            fine_classes.update(os.listdir(sup_dir))
-    class_to_idx = {c: i for i, c in enumerate(sorted(fine_classes))}
-
-    samples = []
-    for sup in sorted(os.listdir(test_dir)):
-        sup_dir = os.path.join(test_dir, sup)
-        if not os.path.isdir(sup_dir):
-            continue
-        for fine in sorted(os.listdir(sup_dir)):
-            fine_dir = os.path.join(sup_dir, fine)
-            if not os.path.isdir(fine_dir):
+    if nested:
+        leaf_dirs = []  # (leaf_class_name, dir_path)
+        for sup in sorted(os.listdir(test_dir)):
+            sup_dir = os.path.join(test_dir, sup)
+            if not os.path.isdir(sup_dir):
                 continue
-            for fn in sorted(os.listdir(fine_dir)):
-                samples.append((os.path.join(fine_dir, fn), class_to_idx[fine]))
+            for leaf in sorted(os.listdir(sup_dir)):
+                leaf_dir = os.path.join(sup_dir, leaf)
+                if os.path.isdir(leaf_dir):
+                    leaf_dirs.append((leaf, leaf_dir))
+    else:
+        leaf_dirs = [(c, os.path.join(test_dir, c))
+                     for c in sorted(os.listdir(test_dir))
+                     if os.path.isdir(os.path.join(test_dir, c))]
+
+    class_to_idx = {c: i for i, c in enumerate(sorted({c for c, _ in leaf_dirs}))}
+    samples = []
+    for leaf, leaf_dir in leaf_dirs:
+        for fn in sorted(os.listdir(leaf_dir)):
+            samples.append((os.path.join(leaf_dir, fn), class_to_idx[leaf]))
     return samples, class_to_idx
 
 
-def load_eval_set(data_root: str, n_eval: int, seed: int):
-    """Fixed seeded subset of the CIFAR-100 test split (100 fine classes).
+def load_eval_set(data_root: str, n_eval: int, seed: int, dataset: str = "cifar100"):
+    """Fixed seeded subset of a dataset's test split (images + labels).
 
-    Reads CIFAR-100 test images from the fast.ai imageclas mirror
-    (data/cifar100/test/<superclass>/<fineclass>/*.png). This mirror is used
-    only because the canonical cs.toronto.edu host is throttled to ~45 KB/s;
-    the images are pixel-identical CIFAR-100. See repro/fetch_cifar100.sh.
+    Reads test images from the fast.ai imageclas mirror
+    (data/<dataset>/test/...). See repro/fetch_cifar.sh.
     """
-    test_dir = os.path.join(data_root, "cifar100", "test")
+    spec = DATASETS[dataset]
+    test_dir = os.path.join(data_root, spec["dir"], "test")
     if not os.path.isdir(test_dir):
         raise FileNotFoundError(
-            f"{test_dir} not found. Download + extract the CIFAR-100 images "
-            "first (see repro/fetch_cifar100.sh)."
+            f"{test_dir} not found. Fetch the {spec['label']} images first: "
+            f"bash repro/fetch_cifar.sh {dataset}"
         )
-    samples, class_to_idx = _cifar100_fine_samples(test_dir)
+    samples, class_to_idx = _leaf_samples(test_dir, spec["nested"])
     n_total = len(samples)
     n_eval = min(n_eval, n_total)
     rng = np.random.default_rng(seed)
@@ -315,12 +329,14 @@ class Row:
 
 def run(data_root: str = "data", n_eval: int = 8000, seed: int = 0,
         device: str | None = None, n_boot: int = 1000,
-        output_dir: str = "results") -> dict:
+        output_dir: str = "results", dataset: str = "cifar100") -> dict:
     device = device or ("cuda" if torch.cuda.is_available() else "cpu")
     os.makedirs(output_dir, exist_ok=True)
+    ds_label = DATASETS[dataset]["label"]
+    basename = f"rankme_vision_{dataset}"
 
-    subset, labels, idx = load_eval_set(data_root, n_eval, seed)
-    print(f"[eval] CIFAR-100 test subset: n={len(labels)} "
+    subset, labels, idx = load_eval_set(data_root, n_eval, seed, dataset)
+    print(f"[eval] {ds_label} test subset: n={len(labels)} "
           f"classes={len(np.unique(labels))} device={device} seed={seed}")
 
     # --- steps 1+2 per checkpoint: effective rank + linear-probe accuracy ---
@@ -407,10 +423,12 @@ def run(data_root: str = "data", n_eval: int = 8000, seed: int = 0,
         "seed": seed,
         "device": device,
         "n_boot": n_boot,
+        "dataset": dataset,
+        "dataset_label": ds_label,
     }
-    _write_csv(rows, output_dir)
-    _write_scatter(er_vals, acc_vals, rows, boot_sp, output_dir)
-    _write_markdown(summary, output_dir)
+    _write_csv(rows, output_dir, basename)
+    _write_scatter(er_vals, acc_vals, rows, boot_sp, output_dir, basename, ds_label)
+    _write_markdown(summary, output_dir, basename)
     print(f"\n[done] Spearman rho={boot_sp['rho']:+.3f} "
           f"CI=[{boot_sp['ci_lo']:+.3f}, {boot_sp['ci_hi']:+.3f}] "
           f"| control rho={ctrl_boot['rho']:+.3f} "
@@ -422,9 +440,9 @@ def run(data_root: str = "data", n_eval: int = 8000, seed: int = 0,
 # Deliverables: CSV, scatter, markdown
 # --------------------------------------------------------------------------
 
-def _write_csv(rows: list[Row], output_dir: str):
+def _write_csv(rows: list[Row], output_dir: str, basename: str):
     import csv
-    path = os.path.join(output_dir, "rankme_vision.csv")
+    path = os.path.join(output_dir, f"{basename}.csv")
     with open(path, "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["checkpoint", "method", "eff_rank", "probe_acc"])
@@ -433,7 +451,7 @@ def _write_csv(rows: list[Row], output_dir: str):
     print(f"[write] {path}")
 
 
-def _write_scatter(er, acc, rows, boot, output_dir):
+def _write_scatter(er, acc, rows, boot, output_dir, basename, ds_label):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -451,24 +469,25 @@ def _write_scatter(er, acc, rows, boot, output_dir):
                           markeredgecolor="k", label=m) for m in methods]
     ax.legend(handles=handles, fontsize=8, title="SSL method")
     ax.set_xlabel("effective rank (frozen features)")
-    ax.set_ylabel("linear-probe accuracy (CIFAR-100)")
-    ax.set_title(f"RankMe on JE-SSL ResNet-50 (n={len(rows)})\n"
+    ax.set_ylabel(f"linear-probe accuracy ({ds_label})")
+    ax.set_title(f"RankMe on JE-SSL ResNet-50 — {ds_label} (n={len(rows)})\n"
                  f"Spearman rho={boot['rho']:+.3f} "
                  f"[{boot['ci_lo']:+.3f}, {boot['ci_hi']:+.3f}]")
     fig.tight_layout()
-    path = os.path.join(output_dir, "rankme_vision_scatter.png")
+    path = os.path.join(output_dir, f"{basename}_scatter.png")
     fig.savefig(path, dpi=150)
     plt.close(fig)
     print(f"[write] {path}")
 
 
-def _write_markdown(s: dict, output_dir: str):
+def _write_markdown(s: dict, output_dir: str, basename: str):
     rows = s["rows"]
     corr, bsp, bkt = s["corr"], s["boot_spearman"], s["boot_kendall"]
     cc, cb = s["control_corr"], s["control_boot"]
+    ds = s.get("dataset_label", "CIFAR-100")
 
     lines = []
-    lines.append("# RankMe reproduction on JE-SSL vision embeddings\n")
+    lines.append(f"# RankMe reproduction on JE-SSL vision embeddings ({ds})\n")
     lines.append(
         "Reproduces Garrido et al., ICML 2023: the **effective rank** of frozen "
         "JE-SSL ResNet-50 features should correlate **positively** with "
@@ -491,7 +510,7 @@ def _write_markdown(s: dict, output_dir: str):
         f"Spearman p={corr['spearman_p']:.3f}, Kendall p={corr['kendall_p']:.3f}.\n")
     lines.append(
         f"**Read this honestly:** at n={corr['n']} across *different* SSL "
-        "methods the overall correlation is only weakly positive on CIFAR-100 "
+        f"methods the overall correlation is only weakly positive on {ds} "
         "transfer, where frozen-feature probe accuracies are compressed into a "
         "narrow band. Whether its CI clears zero is reported above; the cleaner, "
         "mechanistically interpretable signal is the within-family ladder "
@@ -542,7 +561,7 @@ def _write_markdown(s: dict, output_dir: str):
     lines.append("## Negative control (random-projection embeddings)\n")
     lines.append(
         f"Matched dimension (2048) and count ({corr['n']}); base input = "
-        "flattened native-resolution (32x32) CIFAR-100 pixels, projected through "
+        f"flattened native-resolution (32x32) {ds} pixels, projected through "
         "independent Gaussian random matrices, run through the SAME metric + "
         "readout.\n")
     er_sp = s["control_er_spread"]
@@ -569,7 +588,7 @@ def _write_markdown(s: dict, output_dir: str):
     lines.append("")
 
     lines.append("## Provenance\n")
-    lines.append(f"- **Eval set:** CIFAR-100 test split, fixed seeded subset, "
+    lines.append(f"- **Eval set:** {ds} test split, fixed seeded subset, "
                  f"n_eval = {s['n_eval']} (seed {s['seed']}).")
     lines.append("- **Preprocessing:** Resize(224) -> ToTensor -> "
                  f"Normalize(mean={IMAGENET_MEAN}, std={IMAGENET_STD}) "
@@ -608,7 +627,7 @@ def _write_markdown(s: dict, output_dir: str):
         "clustering) depends on cluster geometry that a linear-spread metric does "
         "not see at all. Same harness both ends; the difference is mechanistic.\n")
 
-    path = os.path.join(output_dir, "rankme_vision.md")
+    path = os.path.join(output_dir, f"{basename}.md")
     with open(path, "w") as f:
         f.write("\n".join(lines))
     print(f"[write] {path}")
@@ -617,6 +636,7 @@ def _write_markdown(s: dict, output_dir: str):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--data-root", default="data")
+    ap.add_argument("--dataset", default="cifar100", choices=sorted(DATASETS))
     ap.add_argument("--n-eval", type=int, default=8000)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--device", default=None)
@@ -624,7 +644,8 @@ def main():
     ap.add_argument("--output-dir", default="results")
     args = ap.parse_args()
     run(data_root=args.data_root, n_eval=args.n_eval, seed=args.seed,
-        device=args.device, n_boot=args.n_boot, output_dir=args.output_dir)
+        device=args.device, n_boot=args.n_boot, output_dir=args.output_dir,
+        dataset=args.dataset)
 
 
 if __name__ == "__main__":

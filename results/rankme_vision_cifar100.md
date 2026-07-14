@@ -1,4 +1,4 @@
-# RankMe reproduction on JE-SSL vision embeddings
+# RankMe reproduction on JE-SSL vision embeddings (CIFAR-100)
 
 Reproduces Garrido et al., ICML 2023: the **effective rank** of frozen JE-SSL ResNet-50 features should correlate **positively** with **linear-probe accuracy** across pretrained checkpoints. This is the project's "works" control point, computed through the identical `embq-harness` recipe used for the scRNA arm.
 
