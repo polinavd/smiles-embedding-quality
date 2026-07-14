@@ -1,0 +1,11 @@
+checkpoint,method,eff_rank,probe_acc
+dino_rn50,DINO,283.889557,0.623250
+vicreg_rn50,VICReg,377.076935,0.633750
+barlowtwins_rn50,BarlowTwins,380.650330,0.620250
+swav_100ep,SwAV,168.019287,0.620500
+swav_200ep,SwAV,203.087860,0.637750
+swav_400ep,SwAV,230.743042,0.655000
+swav_800ep,SwAV,212.298462,0.654500
+mocov2_200ep,MoCo-v2,140.045853,0.595250
+mocov2_800ep,MoCo-v2,152.322876,0.613000
+simsiam_100ep,SimSiam,235.251053,0.596750
