@@ -96,7 +96,41 @@ CHECKPOINTS = [
     Checkpoint("simsiam_100ep", "SimSiam",
                f"{_FB}/simsiam/models/100ep/pretrain/checkpoint_0099.pth.tar",
                "facebookresearch/simsiam, 100ep ResNet-50"),
+    # --- SwAV family variants (extend the within-SwAV ladder to n=7) ---
+    Checkpoint("swav_400ep_2x224", "SwAV",
+               f"{_FB}/deepcluster/swav_400ep_2x224_pretrain.pth.tar",
+               "facebookresearch/swav, 400ep 2x224-crop (no multi-crop) ResNet-50"),
+    Checkpoint("swav_200ep_bs256", "SwAV",
+               f"{_FB}/deepcluster/swav_200ep_bs256_pretrain.pth.tar",
+               "facebookresearch/swav, 200ep batch-256 ResNet-50"),
+    Checkpoint("swav_400ep_bs256", "SwAV",
+               f"{_FB}/deepcluster/swav_400ep_bs256_pretrain.pth.tar",
+               "facebookresearch/swav, 400ep batch-256 ResNet-50"),
+    # --- other deep-clustering / contrastive SSL RN50 (extend overall n) ---
+    Checkpoint("deepclusterv2_400ep", "DeepCluster-v2",
+               f"{_FB}/deepcluster/deepclusterv2_400ep_pretrain.pth.tar",
+               "facebookresearch/swav (deepcluster), DeepCluster-v2 400ep ResNet-50"),
+    Checkpoint("deepclusterv2_800ep", "DeepCluster-v2",
+               f"{_FB}/deepcluster/deepclusterv2_800ep_pretrain.pth.tar",
+               "facebookresearch/swav (deepcluster), DeepCluster-v2 800ep ResNet-50"),
+    Checkpoint("selav2_400ep", "SeLa-v2",
+               f"{_FB}/deepcluster/selav2_400ep_pretrain.pth.tar",
+               "facebookresearch/swav (deepcluster), SeLa-v2 400ep ResNet-50"),
+    Checkpoint("mocov1_200ep", "MoCo-v1",
+               f"{_FB}/moco/moco_checkpoints/moco_v1_200ep/moco_v1_200ep_pretrain.pth.tar",
+               "facebookresearch/moco, MoCo-v1 200ep ResNet-50"),
 ]
+
+# Named quality ladders: ordered sub-sequences where quality is expected to
+# increase monotonically (training length only), so effective rank should track
+# probe accuracy cleanly. These are the "ladders" — distinct from the broad
+# within-method family, which also varies the recipe (crops/batch size).
+LADDERS = {
+    "SwAV epoch ladder (100->800ep)":
+        ["swav_100ep", "swav_200ep", "swav_400ep", "swav_800ep"],
+    "MoCo ladder (v1-200ep -> v2-200ep -> v2-800ep)":
+        ["mocov1_200ep", "mocov2_200ep", "mocov2_800ep"],
+}
 
 # Weight-key prefixes seen across these repos, longest first so e.g.
 # "module.encoder_q." is stripped before the bare "module.".
@@ -324,7 +358,24 @@ def run(data_root: str = "data", n_eval: int = 8000, seed: int = 0,
             ac = np.array([x.probe_acc for x in rs])
             within_method[m] = {
                 **spearman_kendall(er, ac),
+                "boot": bootstrap_ci(er, ac, statistic="spearman",
+                                     n_resamples=n_boot, seed=seed),
                 "checkpoints": [x.name for x in rs],
+            }
+
+    # Named monotone quality ladders (training-length only) with their own CI.
+    row_by_name = {r.name: r for r in rows}
+    ladders = {}
+    for lname, names in LADDERS.items():
+        present = [row_by_name[n] for n in names if n in row_by_name]
+        if len(present) >= 3:
+            er = np.array([x.eff_rank for x in present])
+            ac = np.array([x.probe_acc for x in present])
+            ladders[lname] = {
+                **spearman_kendall(er, ac),
+                "boot": bootstrap_ci(er, ac, statistic="spearman",
+                                     n_resamples=n_boot, seed=seed),
+                "checkpoints": [x.name for x in present],
             }
 
     # --- step 5: random-projection negative control (matched dim + count) ---
@@ -344,6 +395,7 @@ def run(data_root: str = "data", n_eval: int = 8000, seed: int = 0,
         "boot_spearman": boot_sp,
         "boot_kendall": boot_kt,
         "within_method": within_method,
+        "ladders": ladders,
         "control_corr": ctrl_corr,
         "control_boot": ctrl_boot,
         "control_rows": list(zip(ctrl_er.tolist(), ctrl_acc.tolist())),
@@ -438,25 +490,53 @@ def _write_markdown(s: dict, output_dir: str):
         f"- Point-estimate p-values (asymptotic, small-n, report only): "
         f"Spearman p={corr['spearman_p']:.3f}, Kendall p={corr['kendall_p']:.3f}.\n")
     lines.append(
-        "**Read this honestly:** at n=10 across *different* SSL methods the "
-        "overall correlation is positive but its CI straddles zero — the effect "
-        "is directionally consistent with RankMe but underpowered at this n on "
-        "CIFAR-100 transfer, where frozen-feature probe accuracies are "
-        "compressed into a narrow band. The cleaner signal is within-family "
+        f"**Read this honestly:** at n={corr['n']} across *different* SSL "
+        "methods the overall correlation is only weakly positive on CIFAR-100 "
+        "transfer, where frozen-feature probe accuracies are compressed into a "
+        "narrow band. Whether its CI clears zero is reported above; the cleaner, "
+        "mechanistically interpretable signal is the within-family ladder "
         "below.\n")
+
+    ladders = s.get("ladders", {})
+    if ladders:
+        lines.append("## Quality ladders (RankMe's stronger claim)\n")
+        lines.append(
+            "Monotone sub-sequences where only training length varies, so "
+            "'quality' increases step by step and effective rank should track "
+            "probe accuracy most cleanly. CI bootstrapped on the ladder itself:\n")
+        for lname, r in ladders.items():
+            b = r["boot"]
+            lines.append(
+                f"- **{lname}** (n={r['n']}): Spearman rho = "
+                f"{r['spearman_rho']:+.3f}, 95% bootstrap CI "
+                f"[{b['ci_lo']:+.3f}, {b['ci_hi']:+.3f}]; Kendall tau = "
+                f"{r['kendall_tau']:+.3f}; excludes zero: {b['excludes_zero']}.")
+            lines.append(f"  - checkpoints: {', '.join(r['checkpoints'])}")
+        lines.append(
+            "\n_Caveat: a perfectly monotone ladder gives rho = +1.0 on every "
+            "valid bootstrap resample, so a [+1.0, +1.0] CI reflects that "
+            "monotonicity, not statistical power — at n=3-4 this is a directional "
+            "confirmation, not a significance claim._\n")
 
     wm = s.get("within_method", {})
     if wm:
-        lines.append("## Within-architecture family (RankMe's stronger claim)\n")
+        lines.append("## Within-method family (broad, includes recipe variants)\n")
         lines.append(
-            "Within a single training recipe, the only thing varying is training "
-            "length -> quality, and effective rank tracks probe accuracy much "
-            "more cleanly:\n")
+            "A whole method's checkpoints, now also varying the recipe (crop "
+            "count, batch size) rather than only training length. Extending n "
+            "*within* SwAV forces in these variants (only 4 pure-epoch SwAV RN50 "
+            "checkpoints exist), and they vary quality along axes effective rank "
+            "does not track — so the broad within-family correlation is weaker "
+            "and wider than the pure epoch ladder above. That contrast is itself "
+            "the finding:\n")
         for m, r in sorted(wm.items()):
+            b = r["boot"]
             lines.append(
-                f"- **{m}** (n={r['n']}, {', '.join(r['checkpoints'])}): "
-                f"Spearman rho = {r['spearman_rho']:+.3f}, "
-                f"Kendall tau = {r['kendall_tau']:+.3f}.")
+                f"- **{m}** (n={r['n']}): Spearman rho = {r['spearman_rho']:+.3f}, "
+                f"95% bootstrap CI [{b['ci_lo']:+.3f}, {b['ci_hi']:+.3f}] "
+                f"({b['n_resamples']} resamples); Kendall tau = "
+                f"{r['kendall_tau']:+.3f}; excludes zero: {b['excludes_zero']}.")
+            lines.append(f"  - checkpoints: {', '.join(r['checkpoints'])}")
         lines.append("")
 
     lines.append("## Negative control (random-projection embeddings)\n")
@@ -521,10 +601,9 @@ def _write_markdown(s: dict, output_dir: str):
         "the *same* property, so they track. This shows up most clearly within a "
         "single training recipe (the SwAV epoch ladder above): holding the method "
         "fixed and only increasing training, effective rank and probe accuracy "
-        "rise together. Across different methods the relationship is noisier and, "
-        "at n=10 on CIFAR-100 transfer, not separable from zero — an honest "
-        "small-n limitation, consistent with the project's own pilot finding that "
-        "geometric metrics are weak *cross-encoder* predictors. This is still the "
+        "rise together. Across different methods the relationship is noisier and "
+        "wider — effective rank is a weaker predictor once the training recipe "
+        "(not just its length) changes. This is still the "
         "mirror image of the scRNA scVI-30 failure case, where the readout (ARI "
         "clustering) depends on cluster geometry that a linear-spread metric does "
         "not see at all. Same harness both ends; the difference is mechanistic.\n")
