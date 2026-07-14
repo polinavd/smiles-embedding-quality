@@ -49,6 +49,7 @@ from embq.harness import (
     spearman_kendall,
     bootstrap_ci,
     permutation_test,
+    holm_bonferroni,
     random_projection_embeddings,
 )
 
@@ -408,6 +409,7 @@ def run(data_root: str = "data", n_eval: int = 8000, seed: int = 0,
     ctrl_corr = spearman_kendall(ctrl_er, ctrl_acc)
     ctrl_boot = bootstrap_ci(ctrl_er, ctrl_acc, statistic="spearman",
                              n_resamples=n_boot, seed=seed)
+    ctrl_perm = permutation_test(ctrl_er, ctrl_acc, statistic="spearman", seed=seed)
 
     summary = {
         "rows": rows,
@@ -419,6 +421,7 @@ def run(data_root: str = "data", n_eval: int = 8000, seed: int = 0,
         "ladders": ladders,
         "control_corr": ctrl_corr,
         "control_boot": ctrl_boot,
+        "control_perm": ctrl_perm,
         "control_rows": list(zip(ctrl_er.tolist(), ctrl_acc.tolist())),
         "control_er_spread": (float(ctrl_er.min()), float(ctrl_er.max()),
                               float(ctrl_er.std())),
@@ -653,19 +656,141 @@ def _write_markdown(s: dict, output_dir: str, basename: str):
     print(f"[write] {path}")
 
 
+# --------------------------------------------------------------------------
+# Family-wise multiple-comparisons correction (across BOTH datasets)
+# --------------------------------------------------------------------------
+
+def _collect_tests(s: dict) -> list[dict]:
+    """The 5 permutation-tested correlations from one dataset's summary.
+
+    (label, n, rho, two-sided permutation p) for overall + each ladder + each
+    within-method family + the negative control.
+    """
+    ds = s["dataset_label"]
+    dset = s["dataset"]
+    out = [{
+        "label": f"{ds} · overall (all methods)", "dataset": dset,
+        "n": s["corr"]["n"], "rho": s["boot_spearman"]["rho"],
+        "p": s["perm_spearman"]["p_two_sided"], "kind": "overall",
+    }]
+    for lname, r in s.get("ladders", {}).items():
+        out.append({"label": f"{ds} · {lname}", "dataset": dset, "n": r["n"],
+                    "rho": r["spearman_rho"], "p": r["perm"]["p_two_sided"],
+                    "kind": "ladder"})
+    for m, r in sorted(s.get("within_method", {}).items()):
+        out.append({"label": f"{ds} · {m} family", "dataset": dset, "n": r["n"],
+                    "rho": r["spearman_rho"], "p": r["perm"]["p_two_sided"],
+                    "kind": "family", "method": m})
+    out.append({
+        "label": f"{ds} · negative control", "dataset": dset, "n": s["corr"]["n"],
+        "rho": s["control_boot"]["rho"], "p": s["control_perm"]["p_two_sided"],
+        "kind": "control",
+    })
+    return out
+
+
+def _family_correction_md(tests: list[dict], holm: dict, alpha: float) -> str:
+    """Markdown section: the family-wise table + explicit honest caveat.
+
+    Identical in both dataset reports because the correction spans the whole
+    family of tests run in this task (both datasets)."""
+    m = holm["m"]
+    lines = [f"## Family-wise multiple-comparisons correction (all {m} tests, both datasets)\n"]
+    lines.append(
+        f"This task computed {m} correlations (overall, ladders, within-method "
+        "families, and negative controls across CIFAR-100 and CIFAR-10). Reading "
+        "any single uncorrected p-value invites cherry-picking, so we correct the "
+        f"whole family with **Holm-Bonferroni at alpha={alpha}** (plain-Bonferroni "
+        f"threshold alpha/{m} = {holm['bonferroni_threshold']:.4f}). The raw "
+        "uncorrected two-sided permutation p-values are kept in the sections "
+        "above; the Holm-adjusted values and the survive/keep decision are below.\n")
+    lines.append("| test | n | Spearman rho | uncorrected two-sided perm p | Holm-adjusted p | survives (alpha=0.05)? |")
+    lines.append("|---|---:|---:|---:|---:|:--:|")
+    for t, adj, rej in zip(tests, holm["adjusted"], holm["reject"]):
+        lines.append(
+            f"| {t['label']} | {t['n']} | {t['rho']:+.3f} | {t['p']:.3f} "
+            f"| {adj:.3f} | {'YES' if rej else 'no'} |")
+    lines.append("")
+    # Holm-adjusted p for the strongest raw result (CIFAR-10 SwAV family).
+    # Match on structured fields, not label substrings ("CIFAR-10" is a
+    # substring of "CIFAR-100").
+    c10_swav_adj = next(
+        (adj for t, adj in zip(tests, holm["adjusted"])
+         if t.get("dataset") == "cifar10" and t.get("method") == "SwAV"),
+        float("nan"))
+    if not holm["any_reject"]:
+        lines.append(
+            "**No test survives the family-wise correction.** In particular, the "
+            "strongest raw result — **CIFAR-10 SwAV family (n=7, rho=+0.857, "
+            "uncorrected two-sided p=0.024)** — does **not** survive: its "
+            f"Holm-adjusted p is {c10_swav_adj:.3f} "
+            f"and the plain-Bonferroni bar is {holm['bonferroni_threshold']:.4f}. "
+            "It should therefore be read as a **hypothesis worth confirming on a "
+            "held-out set of checkpoints** (new SSL ResNet-50s not used here), not "
+            "as a confirmed effect. The pure ladders (rho=+1.0) were already only "
+            "directional at n=3-4; after correction nothing in this family clears "
+            "significance. The honest headline remains the *pattern* — effective "
+            "rank tracks probe accuracy within a fixed training recipe and decays "
+            "across recipes/architectures — supported directionally by every arm "
+            "but not established at family-wise significance with n this small.")
+    else:
+        survivors = [t["label"] for t, r in zip(tests, holm["reject"]) if r]
+        lines.append("**Survives family-wise correction:** " + ", ".join(survivors) + ".")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def run_family(datasets=("cifar100", "cifar10"), data_root="data", n_eval=8000,
+               seed=0, device=None, n_boot=1000, output_dir="results"):
+    """Run every dataset, then apply ONE family-wise correction across all their
+    permutation p-values and append the shared correction section to each report.
+    This is the canonical full analysis (main() default)."""
+    summaries = {}
+    for ds in datasets:
+        print(f"\n########## dataset: {ds} ##########")
+        summaries[ds] = run(data_root=data_root, n_eval=n_eval, seed=seed,
+                            device=device, n_boot=n_boot, output_dir=output_dir,
+                            dataset=ds)
+
+    tests = []
+    for ds in datasets:
+        tests.extend(_collect_tests(summaries[ds]))
+    holm = holm_bonferroni([t["p"] for t in tests], alpha=0.05)
+    section = _family_correction_md(tests, holm, alpha=0.05)
+
+    for ds in datasets:
+        path = os.path.join(output_dir, f"rankme_vision_{ds}.md")
+        with open(path, "a") as f:
+            f.write("\n" + section)
+        print(f"[append] family-wise correction -> {path}")
+
+    print(f"\n[family] Holm-Bonferroni across {holm['m']} tests: "
+          f"any survive alpha=0.05? {holm['any_reject']}")
+    return summaries, tests, holm
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--data-root", default="data")
-    ap.add_argument("--dataset", default="cifar100", choices=sorted(DATASETS))
+    ap.add_argument("--dataset", default="all",
+                    choices=sorted(DATASETS) + ["all"],
+                    help="'all' (default) runs both datasets + the family-wise "
+                         "correction; a single dataset skips the cross-dataset "
+                         "correction.")
     ap.add_argument("--n-eval", type=int, default=8000)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--device", default=None)
     ap.add_argument("--n-boot", type=int, default=1000)
     ap.add_argument("--output-dir", default="results")
     args = ap.parse_args()
-    run(data_root=args.data_root, n_eval=args.n_eval, seed=args.seed,
-        device=args.device, n_boot=args.n_boot, output_dir=args.output_dir,
-        dataset=args.dataset)
+    if args.dataset == "all":
+        run_family(data_root=args.data_root, n_eval=args.n_eval, seed=args.seed,
+                   device=args.device, n_boot=args.n_boot,
+                   output_dir=args.output_dir)
+    else:
+        run(data_root=args.data_root, n_eval=args.n_eval, seed=args.seed,
+            device=args.device, n_boot=args.n_boot, output_dir=args.output_dir,
+            dataset=args.dataset)
 
 
 if __name__ == "__main__":

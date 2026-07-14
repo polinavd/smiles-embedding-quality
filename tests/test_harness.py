@@ -8,6 +8,7 @@ from embq.harness import (
     bootstrap_ci,
     random_projection_embeddings,
     permutation_test,
+    holm_bonferroni,
 )
 from embq.readouts import linear_probe_accuracy, clustering_readout
 
@@ -106,6 +107,27 @@ def test_permutation_test_monte_carlo_large_n():
     out = permutation_test(x, y, n_permutations=2000, seed=0)
     assert out["method"] == "monte_carlo"
     assert out["p_greater"] < 0.01  # strong positive relationship
+
+
+def test_holm_bonferroni_step_down():
+    # Worked example: p = [0.01, 0.04, 0.03, 0.005], m=4, alpha=0.05.
+    # Holm rejects the two smallest (0.005, 0.01); 0.03/0.04 fail.
+    out = holm_bonferroni([0.01, 0.04, 0.03, 0.005], alpha=0.05)
+    assert out["m"] == 4
+    assert out["bonferroni_threshold"] == pytest.approx(0.0125)
+    assert out["reject"] == [True, False, False, True]
+    assert out["adjusted"][3] == pytest.approx(0.02)   # 4 * 0.005
+    assert out["adjusted"][0] == pytest.approx(0.03)   # 3 * 0.01
+    assert out["any_reject"] is True
+
+
+def test_holm_bonferroni_nothing_survives():
+    # The RankMe family: smallest p=0.024 across m=10 -> nothing survives,
+    # because 0.024 > alpha/m = 0.005 and Holm's first step fails.
+    ps = [0.024, 0.107, 0.653, 0.713, 0.083, 0.333, 0.333, 1.0, 0.45, 0.6]
+    out = holm_bonferroni(ps, alpha=0.05)
+    assert out["any_reject"] is False
+    assert min(out["adjusted"]) == pytest.approx(0.24)  # 10 * 0.024
 
 
 def test_clustering_readout_recovers_blobs():
