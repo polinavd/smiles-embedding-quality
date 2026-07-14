@@ -89,3 +89,22 @@ Matched dimension (2048) and count (17); base input = flattened native-resolutio
 ## Mechanistic interpretation
 
 Effective rank measures how many directions of the feature covariance carry real variance — the *linear spread* of the embedding. The linear probe is a linear classifier on those same frozen features, so its accuracy depends on exactly that linear spread: a collapsed, low-effective-rank representation cannot linearly separate the classes, while a checkpoint that spreads variance over more directions gives the probe more separable structure to exploit. Metric and readout depend on the *same* property, so they track. This shows up most clearly within a single training recipe (the SwAV epoch ladder above): holding the method fixed and only increasing training, effective rank and probe accuracy rise together. Across different methods the relationship is noisier and wider — effective rank is a weaker predictor once the training recipe (not just its length) changes. This is still the mirror image of the scRNA scVI-30 failure case, where the readout (ARI clustering) depends on cluster geometry that a linear-spread metric does not see at all. Same harness both ends; the difference is mechanistic.
+
+## Family-wise multiple-comparisons correction (all 10 tests, both datasets)
+
+This task computed 10 correlations (overall, ladders, within-method families, and negative controls across CIFAR-100 and CIFAR-10). Reading any single uncorrected p-value invites cherry-picking, so we correct the whole family with **Holm-Bonferroni at alpha=0.05** (plain-Bonferroni threshold alpha/10 = 0.0050). The raw uncorrected two-sided permutation p-values are kept in the sections above; the Holm-adjusted values and the survive/keep decision are below.
+
+| test | n | Spearman rho | uncorrected two-sided perm p | Holm-adjusted p | survives (alpha=0.05)? |
+|---|---:|---:|---:|---:|:--:|
+| CIFAR-100 · overall (all methods) | 17 | +0.404 | 0.107 | 0.857 | no |
+| CIFAR-100 · SwAV epoch ladder (100->800ep) | 4 | +1.000 | 0.083 | 0.750 | no |
+| CIFAR-100 · MoCo ladder (v1-200ep -> v2-200ep -> v2-800ep) | 3 | +1.000 | 0.333 | 1.000 | no |
+| CIFAR-100 · SwAV family | 7 | +0.179 | 0.713 | 1.000 | no |
+| CIFAR-100 · negative control | 17 | +0.237 | 0.356 | 1.000 | no |
+| CIFAR-10 · overall (all methods) | 17 | +0.118 | 0.653 | 1.000 | no |
+| CIFAR-10 · SwAV epoch ladder (100->800ep) | 4 | +0.800 | 0.333 | 1.000 | no |
+| CIFAR-10 · MoCo ladder (v1-200ep -> v2-200ep -> v2-800ep) | 3 | +0.500 | 1.000 | 1.000 | no |
+| CIFAR-10 · SwAV family | 7 | +0.857 | 0.024 | 0.238 | no |
+| CIFAR-10 · negative control | 17 | +0.204 | 0.430 | 1.000 | no |
+
+**No test survives the family-wise correction.** In particular, the strongest raw result — **CIFAR-10 SwAV family (n=7, rho=+0.857, uncorrected two-sided p=0.024)** — does **not** survive: its Holm-adjusted p is 0.238 and the plain-Bonferroni bar is 0.0050. It should therefore be read as a **hypothesis worth confirming on a held-out set of checkpoints** (new SSL ResNet-50s not used here), not as a confirmed effect. The pure ladders (rho=+1.0) were already only directional at n=3-4; after correction nothing in this family clears significance. The honest headline remains the *pattern* — effective rank tracks probe accuracy within a fixed training recipe and decays across recipes/architectures — supported directionally by every arm but not established at family-wise significance with n this small.
