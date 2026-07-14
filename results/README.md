@@ -10,6 +10,7 @@ checks, and positive controls). Each file below has a one-line caption.
 - **positive_control.png** — positive-control run: known-good embeddings recover expected downstream performance.
 - **metric_vs_ari.png** — scatter of each unsupervised quality metric against downstream ARI (clustering agreement).
 - **crossmodality_signs.png** — sign consistency of metric-vs-ARI correlations across modalities (e.g. PBMC vs. text).
+- **rankme_vision_scatter.png** — RankMe reproduction: effective rank vs. linear-probe accuracy for 10 JE-SSL ResNet-50 checkpoints on CIFAR-100, colored by SSL method.
 
 ## Tables
 
@@ -24,3 +25,5 @@ checks, and positive controls). Each file below has a one-line caption.
 - **crossmodality_correlations.csv** — metric-vs-ARI correlations computed separately per modality (e.g. PBMC).
 - **text_arm_results.csv** — per-seed results for the text-modality arm of the experiment.
 - **text_arm_averaged.csv** — text-modality arm results averaged over seeds.
+- **rankme_vision.csv** — per-checkpoint effective rank and linear-probe accuracy for the RankMe vision reproduction (one row per JE-SSL ResNet-50 checkpoint).
+- **rankme_vision.md** — RankMe reproduction summary: Spearman ρ / Kendall τ, bootstrap CI, within-SwAV correlation, negative-control result, checkpoint provenance, seeds/preprocessing, and mechanistic interpretation.
