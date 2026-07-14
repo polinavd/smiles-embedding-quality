@@ -41,6 +41,22 @@ def test_effective_rank_lowrank_smaller(isotropic):
     assert effective_rank(low_rank) < 6  # ~3 true dims
 
 
+def test_effective_rank_vision_shape_backward_compatible():
+    # Vision-shaped embeddings (large dim, e.g. ResNet-50 2048-d) must work
+    # unchanged: effective_rank already takes any (n_samples, dim) matrix.
+    # Covers both n < dim and n > dim, and the low-rank ordering still holds.
+    for n in (500, 4000):  # n < 2048 and n > 2048
+        full = rng.standard_normal((n, 2048))
+        basis = rng.standard_normal((20, 2048))
+        low_rank = rng.standard_normal((n, 20)) @ basis
+        er_full = effective_rank(full)
+        er_low = effective_rank(low_rank)
+        assert np.isfinite(er_full) and np.isfinite(er_low)
+        assert er_full <= min(n, 2048)          # bounded by min(n_samples, dim)
+        assert er_low < er_full                  # low-rank uses fewer directions
+        assert er_low < 40                        # ~20 true dims
+
+
 def test_intrinsic_dim_recovers_subspace():
     basis = rng.standard_normal((5, D))
     data = rng.standard_normal((N, 5)) @ basis

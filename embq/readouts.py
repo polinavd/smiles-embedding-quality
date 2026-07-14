@@ -31,9 +31,13 @@ def linear_probe_accuracy(features, labels, seed=0, test_size=0.5,
     features = np.asarray(features, dtype=float)
     labels = np.asarray(labels)
 
+    # Stratify when every class has >= 2 members; otherwise fall back to a
+    # plain split (stratification is undefined for singleton classes).
+    _, counts = np.unique(labels, return_counts=True)
+    stratify = labels if counts.min() >= 2 else None
     X_tr, X_te, y_tr, y_te = train_test_split(
         features, labels, test_size=test_size, random_state=seed,
-        stratify=labels,
+        stratify=stratify,
     )
     scaler = StandardScaler().fit(X_tr)
     clf = LogisticRegression(C=C, max_iter=max_iter, solver="lbfgs",
