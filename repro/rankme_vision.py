@@ -48,6 +48,7 @@ from embq.readouts import linear_probe_accuracy
 from embq.harness import (
     spearman_kendall,
     bootstrap_ci,
+    permutation_test,
     random_projection_embeddings,
 )
 
@@ -359,6 +360,7 @@ def run(data_root: str = "data", n_eval: int = 8000, seed: int = 0,
                            n_resamples=n_boot, seed=seed)
     boot_kt = bootstrap_ci(er_vals, acc_vals, statistic="kendall",
                            n_resamples=n_boot, seed=seed)
+    perm_sp = permutation_test(er_vals, acc_vals, statistic="spearman", seed=seed)
 
     # Within-architecture-family correlation. RankMe reports a stronger effect
     # within a single training recipe (e.g. the SwAV epoch ladder), where the
@@ -376,6 +378,7 @@ def run(data_root: str = "data", n_eval: int = 8000, seed: int = 0,
                 **spearman_kendall(er, ac),
                 "boot": bootstrap_ci(er, ac, statistic="spearman",
                                      n_resamples=n_boot, seed=seed),
+                "perm": permutation_test(er, ac, statistic="spearman", seed=seed),
                 "checkpoints": [x.name for x in rs],
             }
 
@@ -391,6 +394,7 @@ def run(data_root: str = "data", n_eval: int = 8000, seed: int = 0,
                 **spearman_kendall(er, ac),
                 "boot": bootstrap_ci(er, ac, statistic="spearman",
                                      n_resamples=n_boot, seed=seed),
+                "perm": permutation_test(er, ac, statistic="spearman", seed=seed),
                 "checkpoints": [x.name for x in present],
             }
 
@@ -410,6 +414,7 @@ def run(data_root: str = "data", n_eval: int = 8000, seed: int = 0,
         "corr": corr,
         "boot_spearman": boot_sp,
         "boot_kendall": boot_kt,
+        "perm_spearman": perm_sp,
         "within_method": within_method,
         "ladders": ladders,
         "control_corr": ctrl_corr,
@@ -483,6 +488,7 @@ def _write_scatter(er, acc, rows, boot, output_dir, basename, ds_label):
 def _write_markdown(s: dict, output_dir: str, basename: str):
     rows = s["rows"]
     corr, bsp, bkt = s["corr"], s["boot_spearman"], s["boot_kendall"]
+    psp = s["perm_spearman"]
     cc, cb = s["control_corr"], s["control_boot"]
     ds = s.get("dataset_label", "CIFAR-100")
 
@@ -507,7 +513,11 @@ def _write_markdown(s: dict, output_dir: str, basename: str):
         f"[{bkt['ci_lo']:+.3f}, {bkt['ci_hi']:+.3f}].")
     lines.append(
         f"- Point-estimate p-values (asymptotic, small-n, report only): "
-        f"Spearman p={corr['spearman_p']:.3f}, Kendall p={corr['kendall_p']:.3f}.\n")
+        f"Spearman p={corr['spearman_p']:.3f}, Kendall p={corr['kendall_p']:.3f}.")
+    lines.append(
+        f"- Permutation test ({psp['method']}, {psp['n_permutations']} "
+        f"relabellings), Spearman: one-sided p={psp['p_greater']:.3f}, "
+        f"two-sided p={psp['p_two_sided']:.3f} — a bootstrap-independent check.\n")
     lines.append(
         f"**Read this honestly:** at n={corr['n']} across *different* SSL "
         f"methods the overall correlation is only weakly positive on {ds} "
@@ -524,18 +534,24 @@ def _write_markdown(s: dict, output_dir: str, basename: str):
             "'quality' increases step by step and effective rank should track "
             "probe accuracy most cleanly. CI bootstrapped on the ladder itself:\n")
         for lname, r in ladders.items():
-            b = r["boot"]
+            b, p = r["boot"], r["perm"]
             lines.append(
                 f"- **{lname}** (n={r['n']}): Spearman rho = "
                 f"{r['spearman_rho']:+.3f}, 95% bootstrap CI "
                 f"[{b['ci_lo']:+.3f}, {b['ci_hi']:+.3f}]; Kendall tau = "
-                f"{r['kendall_tau']:+.3f}; excludes zero: {b['excludes_zero']}.")
+                f"{r['kendall_tau']:+.3f}. **Exact permutation p "
+                f"({p['n_permutations']} relabellings): one-sided "
+                f"{p['p_greater']:.3f}, two-sided {p['p_two_sided']:.3f}.**")
             lines.append(f"  - checkpoints: {', '.join(r['checkpoints'])}")
         lines.append(
-            "\n_Caveat: a perfectly monotone ladder gives rho = +1.0 on every "
-            "valid bootstrap resample, so a [+1.0, +1.0] CI reflects that "
-            "monotonicity, not statistical power — at n=3-4 this is a directional "
-            "confirmation, not a significance claim._\n")
+            "\n_Trust the permutation p over the bootstrap CI here. A perfectly "
+            "monotone ladder gives rho = +1.0 on every valid bootstrap resample, "
+            "so its [+1.0, +1.0] CI 'excludes zero' by construction — but the "
+            "exact permutation test shows the true significance: at n=4 the best "
+            "possible two-sided p is 2/24 = 0.083 and at n=3 it is 2/6 = 0.333, "
+            "so these ladders are directional confirmations, NOT significant "
+            "results. Only a larger group can clear p < 0.05 (see the CIFAR-10 "
+            "SwAV family below)._\n")
 
     wm = s.get("within_method", {})
     if wm:
@@ -549,12 +565,14 @@ def _write_markdown(s: dict, output_dir: str, basename: str):
             "and wider than the pure epoch ladder above. That contrast is itself "
             "the finding:\n")
         for m, r in sorted(wm.items()):
-            b = r["boot"]
+            b, p = r["boot"], r["perm"]
             lines.append(
                 f"- **{m}** (n={r['n']}): Spearman rho = {r['spearman_rho']:+.3f}, "
                 f"95% bootstrap CI [{b['ci_lo']:+.3f}, {b['ci_hi']:+.3f}] "
                 f"({b['n_resamples']} resamples); Kendall tau = "
-                f"{r['kendall_tau']:+.3f}; excludes zero: {b['excludes_zero']}.")
+                f"{r['kendall_tau']:+.3f}. **Exact permutation p "
+                f"({p['n_permutations']} relabellings): one-sided "
+                f"{p['p_greater']:.3f}, two-sided {p['p_two_sided']:.3f}.**")
             lines.append(f"  - checkpoints: {', '.join(r['checkpoints'])}")
         lines.append("")
 
@@ -599,7 +617,9 @@ def _write_markdown(s: dict, output_dir: str, basename: str):
     lines.append("- **Readout:** `embq.readouts.linear_probe_accuracy` "
                  f"(logistic regression, lbfgs, 50/50 stratified split, seed {s['seed']}).")
     lines.append(f"- **Correlation / CI / control:** `embq.harness` "
-                 f"(seed {s['seed']}, {bsp['n_resamples']} bootstrap resamples).")
+                 f"(seed {s['seed']}, {bsp['n_resamples']} bootstrap resamples; "
+                 "exact permutation test enumerates all n! relabellings for "
+                 "n<=8, else Monte-Carlo).")
     lines.append(f"- **Device:** {s['device']}.")
     lines.append("- **Checkpoints (exact weights source):**")
     by_name = {c.name: c for c in CHECKPOINTS}

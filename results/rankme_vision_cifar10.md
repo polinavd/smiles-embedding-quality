@@ -8,6 +8,7 @@ Reproduces Garrido et al., ICML 2023: the **effective rank** of frozen JE-SSL Re
 - **Spearman rho = +0.118**, 95% bootstrap CI [-0.450, +0.661] (1000 resamples, seed 0); excludes zero: False.
 - **Kendall tau = +0.132**, 95% bootstrap CI [-0.323, +0.566].
 - Point-estimate p-values (asymptotic, small-n, report only): Spearman p=0.653, Kendall p=0.490.
+- Permutation test (monte_carlo, 10000 relabellings), Spearman: one-sided p=0.329, two-sided p=0.653 — a bootstrap-independent check.
 
 **Read this honestly:** at n=17 across *different* SSL methods the overall correlation is only weakly positive on CIFAR-10 transfer, where frozen-feature probe accuracies are compressed into a narrow band. Whether its CI clears zero is reported above; the cleaner, mechanistically interpretable signal is the within-family ladder below.
 
@@ -15,18 +16,18 @@ Reproduces Garrido et al., ICML 2023: the **effective rank** of frozen JE-SSL Re
 
 Monotone sub-sequences where only training length varies, so 'quality' increases step by step and effective rank should track probe accuracy most cleanly. CI bootstrapped on the ladder itself:
 
-- **SwAV epoch ladder (100->800ep)** (n=4): Spearman rho = +0.800, 95% bootstrap CI [-1.000, +1.000]; Kendall tau = +0.667; excludes zero: False.
+- **SwAV epoch ladder (100->800ep)** (n=4): Spearman rho = +0.800, 95% bootstrap CI [-1.000, +1.000]; Kendall tau = +0.667. **Exact permutation p (24 relabellings): one-sided 0.167, two-sided 0.333.**
   - checkpoints: swav_100ep, swav_200ep, swav_400ep, swav_800ep
-- **MoCo ladder (v1-200ep -> v2-200ep -> v2-800ep)** (n=3): Spearman rho = +0.500, 95% bootstrap CI [-1.000, +1.000]; Kendall tau = +0.333; excludes zero: False.
+- **MoCo ladder (v1-200ep -> v2-200ep -> v2-800ep)** (n=3): Spearman rho = +0.500, 95% bootstrap CI [-1.000, +1.000]; Kendall tau = +0.333. **Exact permutation p (6 relabellings): one-sided 0.500, two-sided 1.000.**
   - checkpoints: mocov1_200ep, mocov2_200ep, mocov2_800ep
 
-_Caveat: a perfectly monotone ladder gives rho = +1.0 on every valid bootstrap resample, so a [+1.0, +1.0] CI reflects that monotonicity, not statistical power — at n=3-4 this is a directional confirmation, not a significance claim._
+_Trust the permutation p over the bootstrap CI here. A perfectly monotone ladder gives rho = +1.0 on every valid bootstrap resample, so its [+1.0, +1.0] CI 'excludes zero' by construction — but the exact permutation test shows the true significance: at n=4 the best possible two-sided p is 2/24 = 0.083 and at n=3 it is 2/6 = 0.333, so these ladders are directional confirmations, NOT significant results. Only a larger group can clear p < 0.05 (see the CIFAR-10 SwAV family below)._
 
 ## Within-method family (broad, includes recipe variants)
 
 A whole method's checkpoints, now also varying the recipe (crop count, batch size) rather than only training length. Extending n *within* SwAV forces in these variants (only 4 pure-epoch SwAV RN50 checkpoints exist), and they vary quality along axes effective rank does not track — so the broad within-family correlation is weaker and wider than the pure epoch ladder above. That contrast is itself the finding:
 
-- **SwAV** (n=7): Spearman rho = +0.857, 95% bootstrap CI [+0.385, +1.000] (1000 resamples); Kendall tau = +0.714; excludes zero: True.
+- **SwAV** (n=7): Spearman rho = +0.857, 95% bootstrap CI [+0.385, +1.000] (1000 resamples); Kendall tau = +0.714. **Exact permutation p (5040 relabellings): one-sided 0.012, two-sided 0.024.**
   - checkpoints: swav_100ep, swav_200ep, swav_400ep, swav_800ep, swav_400ep_2x224, swav_200ep_bs256, swav_400ep_bs256
 
 ## Negative control (random-projection embeddings)
@@ -64,7 +65,7 @@ Matched dimension (2048) and count (17); base input = flattened native-resolutio
 - **Preprocessing:** Resize(224) -> ToTensor -> Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)) (ImageNet stats; checkpoints are ImageNet-pretrained).
 - **Features:** torchvision ResNet-50 with fc=Identity; 2048-d penultimate features; every backbone weight asserted loaded (no missing keys).
 - **Readout:** `embq.readouts.linear_probe_accuracy` (logistic regression, lbfgs, 50/50 stratified split, seed 0).
-- **Correlation / CI / control:** `embq.harness` (seed 0, 1000 bootstrap resamples).
+- **Correlation / CI / control:** `embq.harness` (seed 0, 1000 bootstrap resamples; exact permutation test enumerates all n! relabellings for n<=8, else Monte-Carlo).
 - **Device:** cuda.
 - **Checkpoints (exact weights source):**
   - `dino_rn50` — facebookresearch/dino, ResNet-50 backbone — https://dl.fbaipublicfiles.com/dino/dino_resnet50_pretrain/dino_resnet50_pretrain.pth

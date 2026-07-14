@@ -7,6 +7,7 @@ from embq.harness import (
     spearman_kendall,
     bootstrap_ci,
     random_projection_embeddings,
+    permutation_test,
 )
 from embq.readouts import linear_probe_accuracy, clustering_readout
 
@@ -75,6 +76,36 @@ def test_linear_probe_separable_vs_random():
     rand_feats = rng.standard_normal((600, 20))
     chance = linear_probe_accuracy(rand_feats, y, seed=0)
     assert chance < 0.6
+
+
+def test_permutation_test_exact_small_n():
+    # n=6 -> exact enumeration of 720 permutations, no sampling.
+    x = np.arange(6.0)
+    y = x.copy()  # perfectly monotone -> only identity ordering hits rho=1
+    out = permutation_test(x, y, seed=0)
+    assert out["method"] == "exact"
+    assert out["n_permutations"] == 720
+    assert out["observed"] == pytest.approx(1.0)
+    # exactly one of 720 permutations reaches rho=+1 (one-sided p = 1/720)
+    assert out["p_greater"] == pytest.approx(1 / 720)
+    # two orderings reach |rho|=1 (monotone up and down) -> 2/720
+    assert out["p_two_sided"] == pytest.approx(2 / 720)
+
+
+def test_permutation_test_null_is_not_significant():
+    x = rng.standard_normal(7)
+    y = rng.standard_normal(7)  # independent -> p should be far from 0
+    out = permutation_test(x, y, seed=1)
+    assert out["method"] == "exact"  # 7! = 5040 <= 8!
+    assert out["p_two_sided"] > 0.1
+
+
+def test_permutation_test_monte_carlo_large_n():
+    x = np.arange(12.0)
+    y = x + rng.standard_normal(12) * 0.1
+    out = permutation_test(x, y, n_permutations=2000, seed=0)
+    assert out["method"] == "monte_carlo"
+    assert out["p_greater"] < 0.01  # strong positive relationship
 
 
 def test_clustering_readout_recovers_blobs():

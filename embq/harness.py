@@ -14,6 +14,9 @@ same metric + readout path.
 
 from __future__ import annotations
 
+import math
+from itertools import permutations
+
 import numpy as np
 from scipy.stats import spearmanr, kendalltau
 
@@ -94,6 +97,58 @@ def bootstrap_ci(x, y, statistic="spearman", n_resamples=1000, ci=0.95, seed=0):
         "n": int(n),
         "n_resamples": int(boots.size),
         "ci": float(ci),
+    }
+
+
+def permutation_test(x, y, statistic="spearman", n_permutations=10000, seed=0,
+                     exact_max_n=8):
+    """Permutation-test p-value for a rank correlation — a bootstrap-independent
+    significance check that behaves well at small n.
+
+    Shuffles the pairing between x and y, recomputes the correlation, and asks
+    how often a random relabelling matches or beats the observed value. Unlike
+    the bootstrap CI (which resamples with replacement and, at n~=7, draws from
+    only a few hundred distinct multisets), this holds the marginals fixed and
+    is EXACT when n! is small: for n <= `exact_max_n` all n! permutations are
+    enumerated (no sampling), otherwise `n_permutations` Monte-Carlo shuffles
+    are used with the (1+hits)/(1+n) convention so p is never 0.
+
+    Returns one-sided (positive) and two-sided p-values. For our directional
+    "effective rank predicts accuracy" hypothesis the one-sided p is the natural
+    read; the two-sided p is the honest analogue of a 95% CI excluding zero.
+    """
+    if statistic not in _STATS:
+        raise ValueError(f"statistic must be one of {sorted(_STATS)}")
+    fn = _STATS[statistic]
+    x = np.asarray(x, dtype=float)
+    y = np.asarray(y, dtype=float)
+    n = x.shape[0]
+    obs = fn(x, y)
+
+    if math.factorial(n) <= math.factorial(exact_max_n):
+        vals = np.array([fn(x, y[list(p)]) for p in permutations(range(n))])
+        n_perm = vals.size
+        method = "exact"
+        # The identity permutation is included, so counts are never empty.
+        p_greater = float(np.sum(vals >= obs - 1e-12) / n_perm)
+        p_two = float(np.sum(np.abs(vals) >= abs(obs) - 1e-12) / n_perm)
+    else:
+        rng = np.random.default_rng(seed)
+        vals = np.array([fn(x, y[rng.permutation(n)])
+                         for _ in range(n_permutations)])
+        n_perm = n_permutations
+        method = "monte_carlo"
+        p_greater = float((1 + np.sum(vals >= obs - 1e-12)) / (1 + n_perm))
+        p_two = float((1 + np.sum(np.abs(vals) >= abs(obs) - 1e-12)) / (1 + n_perm))
+
+    return {
+        "statistic": statistic,
+        "observed": float(obs),
+        "p_greater": p_greater,
+        "p_two_sided": p_two,
+        "n_permutations": int(n_perm),
+        "method": method,
+        "n": int(n),
     }
 
 
