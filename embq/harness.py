@@ -152,6 +152,35 @@ def permutation_test(x, y, statistic="spearman", n_permutations=10000, seed=0,
     }
 
 
+def holm_bonferroni(pvalues, alpha=0.05):
+    """Holm-Bonferroni step-down correction for a family of tests.
+
+    Given m raw p-values, controls the family-wise error rate at `alpha`.
+    Returns, in the SAME order as the input, the Holm-adjusted p-values and the
+    reject/keep decision, plus the plain-Bonferroni threshold (alpha/m) for
+    reference. Reject H_i iff its adjusted p-value <= alpha; the adjusted values
+    are made monotone non-decreasing across the sorted order so the step-down
+    stops at the first failure exactly as Holm prescribes.
+    """
+    p = np.asarray(pvalues, dtype=float)
+    m = p.size
+    order = np.argsort(p, kind="stable")
+    adj = np.empty(m)
+    running = 0.0
+    for rank, idx in enumerate(order):
+        running = max(running, (m - rank) * p[idx])
+        adj[idx] = min(running, 1.0)
+    reject = adj <= alpha
+    return {
+        "adjusted": [float(a) for a in adj],
+        "reject": [bool(r) for r in reject],
+        "alpha": float(alpha),
+        "m": int(m),
+        "bonferroni_threshold": float(alpha / m),
+        "any_reject": bool(reject.any()),
+    }
+
+
 def random_projection_embeddings(base, out_dim, n_encoders, seed=0):
     """Matched random-projection embeddings for the negative control.
 
