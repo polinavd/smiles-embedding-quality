@@ -8,3 +8,9 @@ data/
 *.egg-info/
 .pytest_cache/
 .mypy_cache/
+
+# OS
+.DS_Store
+
+# local-only report drafts / PDF build (keep out of git history)
+/reports/
