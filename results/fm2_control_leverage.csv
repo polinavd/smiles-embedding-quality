@@ -1,0 +1,5 @@
+metric,rho_with_controls,p_with_controls,n_with_controls,rho_real_only,p_real_only,n_real_only,attenuation
+anisotropy,0.591,0.013,17,0.336,0.24,14,0.254
+knn_consistency,0.453,0.068,17,0.02,0.946,14,0.434
+uniformity,0.498,0.042,17,0.209,0.474,14,0.289
+alignment,-0.495,0.043,17,-0.187,0.523,14,-0.308
