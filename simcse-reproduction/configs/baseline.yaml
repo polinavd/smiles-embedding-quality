@@ -1,0 +1,43 @@
+experiment:
+  name: "unsup-simcse-bert-base-pilot"
+  seed: 42
+
+model:
+  name_or_path: "google-bert/bert-base-uncased"
+  pooler_type: "cls"
+  mlp_only_train: true
+  max_seq_length: 32
+  dropout: 0.10
+
+data:
+  train_file: "data/pilot/wiki10k.txt"
+  max_samples: null
+
+training:
+  num_train_epochs: 1
+  batch_size: 16
+  learning_rate: 3.0e-5
+  temperature: 0.05
+  weight_decay: 0.0
+  warmup_ratio: 0.0
+  gradient_accumulation_steps: 1
+  max_grad_norm: 1.0
+  dataloader_num_workers: 0
+  logging_steps: 20
+  device: "mps"
+
+output:
+  model_dir: "models/baseline"
+  results_file: "results/training_baseline.json"
+  overwrite_output_dir: true
+
+evaluation:
+  eval_batch_size: 64
+  normalize_embeddings: true
+  split: "test"
+  positive_threshold: 0.8
+  uniformity_max_pairs: 2000000
+  metrics:
+    - "alignment"
+    - "uniformity"
+    - "stsb_spearman"
