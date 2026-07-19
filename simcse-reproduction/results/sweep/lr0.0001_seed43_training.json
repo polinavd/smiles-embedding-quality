@@ -1,0 +1,23 @@
+{
+  "method": "unsupervised_simcse",
+  "paper": "Gao et al. (2021)",
+  "experiment_name": "unsup-simcse-lr-sweep-lr0.0001_seed43",
+  "base_model": "google-bert/bert-base-uncased",
+  "pooler_type": "cls",
+  "mlp_only_train": true,
+  "evaluation_pooling": "cls_before_pooler",
+  "temperature": 0.05,
+  "dropout": 0.1,
+  "max_seq_length": 32,
+  "physical_batch_size": 16,
+  "gradient_accumulation_steps": 1,
+  "seed": 43,
+  "device": "mps",
+  "num_sentences": 10000,
+  "epochs": 1,
+  "optimizer_updates": 625,
+  "mean_training_loss": 0.0023667272738253815,
+  "last_training_loss": 2.0555718947434798e-05,
+  "elapsed_seconds": 200.83354162499745,
+  "output_dir": "models/sweep/lr0.0001_seed43"
+}

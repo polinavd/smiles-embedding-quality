@@ -20,6 +20,89 @@ from generate_embeddings import encode_sentences
 from geometric_metrics import alignment, uniformity
 
 
+def evaluate_checkpoint(
+    model: str,
+    split: str = "test",
+    batch_size: int = 64,
+    max_seq_length: int = 32,
+    pooler_type: str = "cls_before_pooler",
+    device: str = "auto",
+    positive_threshold: float = 0.8,
+    uniformity_max_pairs: int = 2_000_000,
+    seed: int = 42,
+) -> dict:
+    """Encode STS-B once and compute Spearman, alignment, and uniformity.
+
+    Shared by the single-checkpoint CLI below and the learning-rate sweep
+    runner, so every run in the sweep is scored with an identical recipe.
+    """
+    dataset = load_dataset("sentence-transformers/stsb", split=split)
+    sentence_1 = list(dataset["sentence1"])
+    sentence_2 = list(dataset["sentence2"])
+    scores = np.asarray(dataset["score"], dtype=np.float64)
+
+    # Encode each unique sentence once, then map back to pairs.
+    unique_sentences = list(dict.fromkeys(sentence_1 + sentence_2))
+    unique_embeddings = encode_sentences(
+        sentences=unique_sentences,
+        model_name_or_path=model,
+        batch_size=batch_size,
+        max_seq_length=max_seq_length,
+        pooler_type=pooler_type,
+        normalize=True,
+        device_name=device,
+    )
+    sentence_to_index = {sentence: index for index, sentence in enumerate(unique_sentences)}
+    indices_1 = np.asarray([sentence_to_index[sentence] for sentence in sentence_1])
+    indices_2 = np.asarray([sentence_to_index[sentence] for sentence in sentence_2])
+    embeddings_1 = unique_embeddings[indices_1]
+    embeddings_2 = unique_embeddings[indices_2]
+
+    cosine_similarities = np.sum(embeddings_1 * embeddings_2, axis=1)
+    spearman_result = spearmanr(cosine_similarities, scores)
+    spearman = float(spearman_result.statistic)
+    p_value = float(spearman_result.pvalue)
+
+    positive_mask = scores > positive_threshold
+    if not np.any(positive_mask):
+        raise RuntimeError("No STS-B positive pairs remain after applying the threshold.")
+
+    alignment_score = alignment(
+        embeddings_1[positive_mask],
+        embeddings_2[positive_mask],
+        alpha=2.0,
+    )
+    uniformity_score = uniformity(
+        unique_embeddings,
+        t=2.0,
+        max_pairs=uniformity_max_pairs,
+        seed=seed,
+    )
+
+    return {
+        "model": model,
+        "dataset": "sentence-transformers/stsb",
+        "split": split,
+        "num_pairs": len(scores),
+        "num_unique_sentences": len(unique_sentences),
+        "num_alignment_positive_pairs": int(np.sum(positive_mask)),
+        "positive_threshold_normalized": positive_threshold,
+        "pooler_type": pooler_type,
+        "max_seq_length": max_seq_length,
+        "stsb_spearman": spearman,
+        "stsb_spearman_percent": 100.0 * spearman,
+        "stsb_spearman_p_value": p_value,
+        "alignment": alignment_score,
+        "uniformity": uniformity_score,
+        "lower_alignment_is_better": True,
+        "lower_uniformity_is_better": True,
+        "alignment_note": (
+            "Paper-style alignment uses human STS-B scores to select positive pairs; "
+            "it is therefore not fully label-free in this evaluation."
+        ),
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", required=True, help="Local checkpoint folder or Hugging Face model id.")
@@ -43,71 +126,17 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=Path("results/stsb_baseline.json"))
     args = parser.parse_args()
 
-    dataset = load_dataset("sentence-transformers/stsb", split=args.split)
-    sentence_1 = list(dataset["sentence1"])
-    sentence_2 = list(dataset["sentence2"])
-    scores = np.asarray(dataset["score"], dtype=np.float64)
-
-    # Encode each unique sentence once, then map back to pairs.
-    unique_sentences = list(dict.fromkeys(sentence_1 + sentence_2))
-    unique_embeddings = encode_sentences(
-        sentences=unique_sentences,
-        model_name_or_path=args.model,
+    results = evaluate_checkpoint(
+        model=args.model,
+        split=args.split,
         batch_size=args.batch_size,
         max_seq_length=args.max_seq_length,
         pooler_type=args.pooler_type,
-        normalize=True,
-        device_name=args.device,
-    )
-    sentence_to_index = {sentence: index for index, sentence in enumerate(unique_sentences)}
-    indices_1 = np.asarray([sentence_to_index[sentence] for sentence in sentence_1])
-    indices_2 = np.asarray([sentence_to_index[sentence] for sentence in sentence_2])
-    embeddings_1 = unique_embeddings[indices_1]
-    embeddings_2 = unique_embeddings[indices_2]
-
-    cosine_similarities = np.sum(embeddings_1 * embeddings_2, axis=1)
-    spearman_result = spearmanr(cosine_similarities, scores)
-    spearman = float(spearman_result.statistic)
-    p_value = float(spearman_result.pvalue)
-
-    positive_mask = scores > args.positive_threshold
-    if not np.any(positive_mask):
-        raise RuntimeError("No STS-B positive pairs remain after applying the threshold.")
-
-    alignment_score = alignment(
-        embeddings_1[positive_mask],
-        embeddings_2[positive_mask],
-        alpha=2.0,
-    )
-    uniformity_score = uniformity(
-        unique_embeddings,
-        t=2.0,
-        max_pairs=args.uniformity_max_pairs,
+        device=args.device,
+        positive_threshold=args.positive_threshold,
+        uniformity_max_pairs=args.uniformity_max_pairs,
         seed=args.seed,
     )
-
-    results = {
-        "model": args.model,
-        "dataset": "sentence-transformers/stsb",
-        "split": args.split,
-        "num_pairs": len(scores),
-        "num_unique_sentences": len(unique_sentences),
-        "num_alignment_positive_pairs": int(np.sum(positive_mask)),
-        "positive_threshold_normalized": args.positive_threshold,
-        "pooler_type": args.pooler_type,
-        "max_seq_length": args.max_seq_length,
-        "stsb_spearman": spearman,
-        "stsb_spearman_percent": 100.0 * spearman,
-        "stsb_spearman_p_value": p_value,
-        "alignment": alignment_score,
-        "uniformity": uniformity_score,
-        "lower_alignment_is_better": True,
-        "lower_uniformity_is_better": True,
-        "alignment_note": (
-            "Paper-style alignment uses human STS-B scores to select positive pairs; "
-            "it is therefore not fully label-free in this evaluation."
-        ),
-    }
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8") as handle:

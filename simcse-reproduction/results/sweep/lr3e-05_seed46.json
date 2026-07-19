@@ -1,0 +1,10 @@
+{
+  "learning_rate": 3e-05,
+  "seed": 46,
+  "mean_training_loss": 0.00204393348316662,
+  "last_training_loss": 5.770343341282569e-05,
+  "train_elapsed_seconds": 199.5974317500004,
+  "stsb_spearman": 0.6078987653332703,
+  "alignment": 0.273464619981761,
+  "uniformity": -2.478763297576882
+}

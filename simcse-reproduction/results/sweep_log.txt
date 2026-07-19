@@ -1,0 +1,2865 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+--- 1/50 ---
+[run] lr1e-05_seed42: learning_rate=1e-05 seed=42
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8305.22it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr1e-05_seed42
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.059793 lr=9.680e-06
+epoch=1/1 batch=40/625 loss=0.011991 lr=9.360e-06
+epoch=1/1 batch=60/625 loss=0.002360 lr=9.040e-06
+epoch=1/1 batch=80/625 loss=0.001346 lr=8.720e-06
+epoch=1/1 batch=100/625 loss=0.000898 lr=8.400e-06
+epoch=1/1 batch=120/625 loss=0.004347 lr=8.080e-06
+epoch=1/1 batch=140/625 loss=0.001843 lr=7.760e-06
+epoch=1/1 batch=160/625 loss=0.004140 lr=7.440e-06
+epoch=1/1 batch=180/625 loss=0.000622 lr=7.120e-06
+epoch=1/1 batch=200/625 loss=0.000467 lr=6.800e-06
+epoch=1/1 batch=220/625 loss=0.001723 lr=6.480e-06
+epoch=1/1 batch=240/625 loss=0.000563 lr=6.160e-06
+epoch=1/1 batch=260/625 loss=0.000616 lr=5.840e-06
+epoch=1/1 batch=280/625 loss=0.000338 lr=5.520e-06
+epoch=1/1 batch=300/625 loss=0.000947 lr=5.200e-06
+epoch=1/1 batch=320/625 loss=0.002640 lr=4.880e-06
+epoch=1/1 batch=340/625 loss=0.003335 lr=4.560e-06
+epoch=1/1 batch=360/625 loss=0.000315 lr=4.240e-06
+epoch=1/1 batch=380/625 loss=0.000307 lr=3.920e-06
+epoch=1/1 batch=400/625 loss=0.000247 lr=3.600e-06
+epoch=1/1 batch=420/625 loss=0.003614 lr=3.280e-06
+epoch=1/1 batch=440/625 loss=0.001500 lr=2.960e-06
+epoch=1/1 batch=460/625 loss=0.001751 lr=2.640e-06
+epoch=1/1 batch=480/625 loss=0.008065 lr=2.320e-06
+epoch=1/1 batch=500/625 loss=0.000377 lr=2.000e-06
+epoch=1/1 batch=520/625 loss=0.000431 lr=1.680e-06
+epoch=1/1 batch=540/625 loss=0.000415 lr=1.360e-06
+epoch=1/1 batch=560/625 loss=0.000252 lr=1.040e-06
+epoch=1/1 batch=580/625 loss=0.000629 lr=7.200e-07
+epoch=1/1 batch=600/625 loss=0.000279 lr=4.000e-07
+epoch=1/1 batch=620/625 loss=0.000395 lr=8.000e-08
+epoch=1 mean_loss=0.003753
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.88it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.87it/s]
+Saved fine-tuned encoder to: models/sweep/lr1e-05_seed42
+Saved training summary to: results/sweep/lr1e-05_seed42_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8139.75it/s]
+--- 2/50 ---
+[run] lr1e-05_seed43: learning_rate=1e-05 seed=43
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8167.79it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr1e-05_seed43
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.106493 lr=9.680e-06
+epoch=1/1 batch=40/625 loss=0.008322 lr=9.360e-06
+epoch=1/1 batch=60/625 loss=0.005696 lr=9.040e-06
+epoch=1/1 batch=80/625 loss=0.000939 lr=8.720e-06
+epoch=1/1 batch=100/625 loss=0.001794 lr=8.400e-06
+epoch=1/1 batch=120/625 loss=0.007935 lr=8.080e-06
+epoch=1/1 batch=140/625 loss=0.001198 lr=7.760e-06
+epoch=1/1 batch=160/625 loss=0.008031 lr=7.440e-06
+epoch=1/1 batch=180/625 loss=0.001118 lr=7.120e-06
+epoch=1/1 batch=200/625 loss=0.002920 lr=6.800e-06
+epoch=1/1 batch=220/625 loss=0.002727 lr=6.480e-06
+epoch=1/1 batch=240/625 loss=0.000492 lr=6.160e-06
+epoch=1/1 batch=260/625 loss=0.000900 lr=5.840e-06
+epoch=1/1 batch=280/625 loss=0.000689 lr=5.520e-06
+epoch=1/1 batch=300/625 loss=0.000465 lr=5.200e-06
+epoch=1/1 batch=320/625 loss=0.002142 lr=4.880e-06
+epoch=1/1 batch=340/625 loss=0.000321 lr=4.560e-06
+epoch=1/1 batch=360/625 loss=0.000458 lr=4.240e-06
+epoch=1/1 batch=380/625 loss=0.000406 lr=3.920e-06
+epoch=1/1 batch=400/625 loss=0.000531 lr=3.600e-06
+epoch=1/1 batch=420/625 loss=0.005097 lr=3.280e-06
+epoch=1/1 batch=440/625 loss=0.000481 lr=2.960e-06
+epoch=1/1 batch=460/625 loss=0.000293 lr=2.640e-06
+epoch=1/1 batch=480/625 loss=0.001887 lr=2.320e-06
+epoch=1/1 batch=500/625 loss=0.003267 lr=2.000e-06
+epoch=1/1 batch=520/625 loss=0.000733 lr=1.680e-06
+epoch=1/1 batch=540/625 loss=0.000629 lr=1.360e-06
+epoch=1/1 batch=560/625 loss=0.006115 lr=1.040e-06
+epoch=1/1 batch=580/625 loss=0.004534 lr=7.200e-07
+epoch=1/1 batch=600/625 loss=0.000485 lr=4.000e-07
+epoch=1/1 batch=620/625 loss=0.000349 lr=8.000e-08
+epoch=1 mean_loss=0.005680
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.87it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.86it/s]
+Saved fine-tuned encoder to: models/sweep/lr1e-05_seed43
+Saved training summary to: results/sweep/lr1e-05_seed43_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8951.04it/s]
+--- 3/50 ---
+[run] lr1e-05_seed44: learning_rate=1e-05 seed=44
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8739.96it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr1e-05_seed44
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.105098 lr=9.680e-06
+epoch=1/1 batch=40/625 loss=0.004661 lr=9.360e-06
+epoch=1/1 batch=60/625 loss=0.004282 lr=9.040e-06
+epoch=1/1 batch=80/625 loss=0.001199 lr=8.720e-06
+epoch=1/1 batch=100/625 loss=0.001774 lr=8.400e-06
+epoch=1/1 batch=120/625 loss=0.007921 lr=8.080e-06
+epoch=1/1 batch=140/625 loss=0.000521 lr=7.760e-06
+epoch=1/1 batch=160/625 loss=0.000400 lr=7.440e-06
+epoch=1/1 batch=180/625 loss=0.000471 lr=7.120e-06
+epoch=1/1 batch=200/625 loss=0.000380 lr=6.800e-06
+epoch=1/1 batch=220/625 loss=0.001534 lr=6.480e-06
+epoch=1/1 batch=240/625 loss=0.005274 lr=6.160e-06
+epoch=1/1 batch=260/625 loss=0.000453 lr=5.840e-06
+epoch=1/1 batch=280/625 loss=0.000778 lr=5.520e-06
+epoch=1/1 batch=300/625 loss=0.000509 lr=5.200e-06
+epoch=1/1 batch=320/625 loss=0.003241 lr=4.880e-06
+epoch=1/1 batch=340/625 loss=0.000687 lr=4.560e-06
+epoch=1/1 batch=360/625 loss=0.001486 lr=4.240e-06
+epoch=1/1 batch=380/625 loss=0.000267 lr=3.920e-06
+epoch=1/1 batch=400/625 loss=0.004998 lr=3.600e-06
+epoch=1/1 batch=420/625 loss=0.000760 lr=3.280e-06
+epoch=1/1 batch=440/625 loss=0.006178 lr=2.960e-06
+epoch=1/1 batch=460/625 loss=0.001245 lr=2.640e-06
+epoch=1/1 batch=480/625 loss=0.000431 lr=2.320e-06
+epoch=1/1 batch=500/625 loss=0.006525 lr=2.000e-06
+epoch=1/1 batch=520/625 loss=0.009231 lr=1.680e-06
+epoch=1/1 batch=540/625 loss=0.000272 lr=1.360e-06
+epoch=1/1 batch=560/625 loss=0.002073 lr=1.040e-06
+epoch=1/1 batch=580/625 loss=0.001862 lr=7.200e-07
+epoch=1/1 batch=600/625 loss=0.007189 lr=4.000e-07
+epoch=1/1 batch=620/625 loss=0.000619 lr=8.000e-08
+epoch=1 mean_loss=0.005854
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.78it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.77it/s]
+Saved fine-tuned encoder to: models/sweep/lr1e-05_seed44
+Saved training summary to: results/sweep/lr1e-05_seed44_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9460.87it/s]
+--- 4/50 ---
+[run] lr1e-05_seed45: learning_rate=1e-05 seed=45
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6453.72it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr1e-05_seed45
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.104955 lr=9.680e-06
+epoch=1/1 batch=40/625 loss=0.009102 lr=9.360e-06
+epoch=1/1 batch=60/625 loss=0.001041 lr=9.040e-06
+epoch=1/1 batch=80/625 loss=0.001319 lr=8.720e-06
+epoch=1/1 batch=100/625 loss=0.005688 lr=8.400e-06
+epoch=1/1 batch=120/625 loss=0.001985 lr=8.080e-06
+epoch=1/1 batch=140/625 loss=0.000980 lr=7.760e-06
+epoch=1/1 batch=160/625 loss=0.005864 lr=7.440e-06
+epoch=1/1 batch=180/625 loss=0.000603 lr=7.120e-06
+epoch=1/1 batch=200/625 loss=0.005019 lr=6.800e-06
+epoch=1/1 batch=220/625 loss=0.001456 lr=6.480e-06
+epoch=1/1 batch=240/625 loss=0.005403 lr=6.160e-06
+epoch=1/1 batch=260/625 loss=0.003145 lr=5.840e-06
+epoch=1/1 batch=280/625 loss=0.000484 lr=5.520e-06
+epoch=1/1 batch=300/625 loss=0.028717 lr=5.200e-06
+epoch=1/1 batch=320/625 loss=0.001007 lr=4.880e-06
+epoch=1/1 batch=340/625 loss=0.000350 lr=4.560e-06
+epoch=1/1 batch=360/625 loss=0.002937 lr=4.240e-06
+epoch=1/1 batch=380/625 loss=0.000346 lr=3.920e-06
+epoch=1/1 batch=400/625 loss=0.004550 lr=3.600e-06
+epoch=1/1 batch=420/625 loss=0.000837 lr=3.280e-06
+epoch=1/1 batch=440/625 loss=0.000528 lr=2.960e-06
+epoch=1/1 batch=460/625 loss=0.000210 lr=2.640e-06
+epoch=1/1 batch=480/625 loss=0.000372 lr=2.320e-06
+epoch=1/1 batch=500/625 loss=0.000696 lr=2.000e-06
+epoch=1/1 batch=520/625 loss=0.003625 lr=1.680e-06
+epoch=1/1 batch=540/625 loss=0.001229 lr=1.360e-06
+epoch=1/1 batch=560/625 loss=0.001098 lr=1.040e-06
+epoch=1/1 batch=580/625 loss=0.001250 lr=7.200e-07
+epoch=1/1 batch=600/625 loss=0.000483 lr=4.000e-07
+epoch=1/1 batch=620/625 loss=0.000878 lr=8.000e-08
+epoch=1 mean_loss=0.006279
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.20it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.20it/s]
+Saved fine-tuned encoder to: models/sweep/lr1e-05_seed45
+Saved training summary to: results/sweep/lr1e-05_seed45_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7584.91it/s]
+--- 5/50 ---
+[run] lr1e-05_seed46: learning_rate=1e-05 seed=46
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6175.12it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr1e-05_seed46
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.085102 lr=9.680e-06
+epoch=1/1 batch=40/625 loss=0.006400 lr=9.360e-06
+epoch=1/1 batch=60/625 loss=0.003264 lr=9.040e-06
+epoch=1/1 batch=80/625 loss=0.001188 lr=8.720e-06
+epoch=1/1 batch=100/625 loss=0.003183 lr=8.400e-06
+epoch=1/1 batch=120/625 loss=0.003293 lr=8.080e-06
+epoch=1/1 batch=140/625 loss=0.001731 lr=7.760e-06
+epoch=1/1 batch=160/625 loss=0.004639 lr=7.440e-06
+epoch=1/1 batch=180/625 loss=0.009868 lr=7.120e-06
+epoch=1/1 batch=200/625 loss=0.001355 lr=6.800e-06
+epoch=1/1 batch=220/625 loss=0.001341 lr=6.480e-06
+epoch=1/1 batch=240/625 loss=0.002145 lr=6.160e-06
+epoch=1/1 batch=260/625 loss=0.001353 lr=5.840e-06
+epoch=1/1 batch=280/625 loss=0.000996 lr=5.520e-06
+epoch=1/1 batch=300/625 loss=0.000296 lr=5.200e-06
+epoch=1/1 batch=320/625 loss=0.000510 lr=4.880e-06
+epoch=1/1 batch=340/625 loss=0.000737 lr=4.560e-06
+epoch=1/1 batch=360/625 loss=0.000367 lr=4.240e-06
+epoch=1/1 batch=380/625 loss=0.000724 lr=3.920e-06
+epoch=1/1 batch=400/625 loss=0.001899 lr=3.600e-06
+epoch=1/1 batch=420/625 loss=0.002569 lr=3.280e-06
+epoch=1/1 batch=440/625 loss=0.003486 lr=2.960e-06
+epoch=1/1 batch=460/625 loss=0.000378 lr=2.640e-06
+epoch=1/1 batch=480/625 loss=0.000899 lr=2.320e-06
+epoch=1/1 batch=500/625 loss=0.001810 lr=2.000e-06
+epoch=1/1 batch=520/625 loss=0.000208 lr=1.680e-06
+epoch=1/1 batch=540/625 loss=0.000296 lr=1.360e-06
+epoch=1/1 batch=560/625 loss=0.000929 lr=1.040e-06
+epoch=1/1 batch=580/625 loss=0.003062 lr=7.200e-07
+epoch=1/1 batch=600/625 loss=0.000586 lr=4.000e-07
+epoch=1/1 batch=620/625 loss=0.000313 lr=8.000e-08
+epoch=1 mean_loss=0.004639
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.32it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.32it/s]
+Saved fine-tuned encoder to: models/sweep/lr1e-05_seed46
+Saved training summary to: results/sweep/lr1e-05_seed46_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9618.19it/s]
+--- 6/50 ---
+[run] lr1e-05_seed47: learning_rate=1e-05 seed=47
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5636.90it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr1e-05_seed47
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.070049 lr=9.680e-06
+epoch=1/1 batch=40/625 loss=0.004044 lr=9.360e-06
+epoch=1/1 batch=60/625 loss=0.002081 lr=9.040e-06
+epoch=1/1 batch=80/625 loss=0.007800 lr=8.720e-06
+epoch=1/1 batch=100/625 loss=0.003544 lr=8.400e-06
+epoch=1/1 batch=120/625 loss=0.000787 lr=8.080e-06
+epoch=1/1 batch=140/625 loss=0.004726 lr=7.760e-06
+epoch=1/1 batch=160/625 loss=0.002611 lr=7.440e-06
+epoch=1/1 batch=180/625 loss=0.000831 lr=7.120e-06
+epoch=1/1 batch=200/625 loss=0.000501 lr=6.800e-06
+epoch=1/1 batch=220/625 loss=0.001099 lr=6.480e-06
+epoch=1/1 batch=240/625 loss=0.000593 lr=6.160e-06
+epoch=1/1 batch=260/625 loss=0.000637 lr=5.840e-06
+epoch=1/1 batch=280/625 loss=0.000375 lr=5.520e-06
+epoch=1/1 batch=300/625 loss=0.002782 lr=5.200e-06
+epoch=1/1 batch=320/625 loss=0.002538 lr=4.880e-06
+epoch=1/1 batch=340/625 loss=0.001892 lr=4.560e-06
+epoch=1/1 batch=360/625 loss=0.000304 lr=4.240e-06
+epoch=1/1 batch=380/625 loss=0.000330 lr=3.920e-06
+epoch=1/1 batch=400/625 loss=0.001548 lr=3.600e-06
+epoch=1/1 batch=420/625 loss=0.000334 lr=3.280e-06
+epoch=1/1 batch=440/625 loss=0.000181 lr=2.960e-06
+epoch=1/1 batch=460/625 loss=0.005875 lr=2.640e-06
+epoch=1/1 batch=480/625 loss=0.001023 lr=2.320e-06
+epoch=1/1 batch=500/625 loss=0.007152 lr=2.000e-06
+epoch=1/1 batch=520/625 loss=0.000963 lr=1.680e-06
+epoch=1/1 batch=540/625 loss=0.000310 lr=1.360e-06
+epoch=1/1 batch=560/625 loss=0.003208 lr=1.040e-06
+epoch=1/1 batch=580/625 loss=0.001800 lr=7.200e-07
+epoch=1/1 batch=600/625 loss=0.000600 lr=4.000e-07
+epoch=1/1 batch=620/625 loss=0.002089 lr=8.000e-08
+epoch=1 mean_loss=0.004253
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.43it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.43it/s]
+Saved fine-tuned encoder to: models/sweep/lr1e-05_seed47
+Saved training summary to: results/sweep/lr1e-05_seed47_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9222.83it/s]
+--- 7/50 ---
+[run] lr1e-05_seed48: learning_rate=1e-05 seed=48
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6715.75it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr1e-05_seed48
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.115465 lr=9.680e-06
+epoch=1/1 batch=40/625 loss=0.006639 lr=9.360e-06
+epoch=1/1 batch=60/625 loss=0.012050 lr=9.040e-06
+epoch=1/1 batch=80/625 loss=0.005177 lr=8.720e-06
+epoch=1/1 batch=100/625 loss=0.006496 lr=8.400e-06
+epoch=1/1 batch=120/625 loss=0.004671 lr=8.080e-06
+epoch=1/1 batch=140/625 loss=0.000973 lr=7.760e-06
+epoch=1/1 batch=160/625 loss=0.000509 lr=7.440e-06
+epoch=1/1 batch=180/625 loss=0.000552 lr=7.120e-06
+epoch=1/1 batch=200/625 loss=0.001345 lr=6.800e-06
+epoch=1/1 batch=220/625 loss=0.001809 lr=6.480e-06
+epoch=1/1 batch=240/625 loss=0.003978 lr=6.160e-06
+epoch=1/1 batch=260/625 loss=0.000414 lr=5.840e-06
+epoch=1/1 batch=280/625 loss=0.000416 lr=5.520e-06
+epoch=1/1 batch=300/625 loss=0.000311 lr=5.200e-06
+epoch=1/1 batch=320/625 loss=0.002120 lr=4.880e-06
+epoch=1/1 batch=340/625 loss=0.001051 lr=4.560e-06
+epoch=1/1 batch=360/625 loss=0.004680 lr=4.240e-06
+epoch=1/1 batch=380/625 loss=0.001994 lr=3.920e-06
+epoch=1/1 batch=400/625 loss=0.004646 lr=3.600e-06
+epoch=1/1 batch=420/625 loss=0.000283 lr=3.280e-06
+epoch=1/1 batch=440/625 loss=0.000292 lr=2.960e-06
+epoch=1/1 batch=460/625 loss=0.000404 lr=2.640e-06
+epoch=1/1 batch=480/625 loss=0.000721 lr=2.320e-06
+epoch=1/1 batch=500/625 loss=0.002619 lr=2.000e-06
+epoch=1/1 batch=520/625 loss=0.001294 lr=1.680e-06
+epoch=1/1 batch=540/625 loss=0.005075 lr=1.360e-06
+epoch=1/1 batch=560/625 loss=0.003322 lr=1.040e-06
+epoch=1/1 batch=580/625 loss=0.004016 lr=7.200e-07
+epoch=1/1 batch=600/625 loss=0.000696 lr=4.000e-07
+epoch=1/1 batch=620/625 loss=0.000279 lr=8.000e-08
+epoch=1 mean_loss=0.006222
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.64it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.63it/s]
+Saved fine-tuned encoder to: models/sweep/lr1e-05_seed48
+Saved training summary to: results/sweep/lr1e-05_seed48_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 10300.71it/s]
+--- 8/50 ---
+[run] lr1e-05_seed49: learning_rate=1e-05 seed=49
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8588.34it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr1e-05_seed49
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.089067 lr=9.680e-06
+epoch=1/1 batch=40/625 loss=0.009412 lr=9.360e-06
+epoch=1/1 batch=60/625 loss=0.003003 lr=9.040e-06
+epoch=1/1 batch=80/625 loss=0.005895 lr=8.720e-06
+epoch=1/1 batch=100/625 loss=0.001106 lr=8.400e-06
+epoch=1/1 batch=120/625 loss=0.003270 lr=8.080e-06
+epoch=1/1 batch=140/625 loss=0.003304 lr=7.760e-06
+epoch=1/1 batch=160/625 loss=0.001168 lr=7.440e-06
+epoch=1/1 batch=180/625 loss=0.000398 lr=7.120e-06
+epoch=1/1 batch=200/625 loss=0.004947 lr=6.800e-06
+epoch=1/1 batch=220/625 loss=0.000826 lr=6.480e-06
+epoch=1/1 batch=240/625 loss=0.000277 lr=6.160e-06
+epoch=1/1 batch=260/625 loss=0.003662 lr=5.840e-06
+epoch=1/1 batch=280/625 loss=0.002368 lr=5.520e-06
+epoch=1/1 batch=300/625 loss=0.006838 lr=5.200e-06
+epoch=1/1 batch=320/625 loss=0.000377 lr=4.880e-06
+epoch=1/1 batch=340/625 loss=0.000336 lr=4.560e-06
+epoch=1/1 batch=360/625 loss=0.000237 lr=4.240e-06
+epoch=1/1 batch=380/625 loss=0.000402 lr=3.920e-06
+epoch=1/1 batch=400/625 loss=0.000352 lr=3.600e-06
+epoch=1/1 batch=420/625 loss=0.000509 lr=3.280e-06
+epoch=1/1 batch=440/625 loss=0.005138 lr=2.960e-06
+epoch=1/1 batch=460/625 loss=0.000378 lr=2.640e-06
+epoch=1/1 batch=480/625 loss=0.000311 lr=2.320e-06
+epoch=1/1 batch=500/625 loss=0.000527 lr=2.000e-06
+epoch=1/1 batch=520/625 loss=0.001085 lr=1.680e-06
+epoch=1/1 batch=540/625 loss=0.000450 lr=1.360e-06
+epoch=1/1 batch=560/625 loss=0.000516 lr=1.040e-06
+epoch=1/1 batch=580/625 loss=0.004019 lr=7.200e-07
+epoch=1/1 batch=600/625 loss=0.000831 lr=4.000e-07
+epoch=1/1 batch=620/625 loss=0.000285 lr=8.000e-08
+epoch=1 mean_loss=0.004850
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.58it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.58it/s]
+Saved fine-tuned encoder to: models/sweep/lr1e-05_seed49
+Saved training summary to: results/sweep/lr1e-05_seed49_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9009.10it/s]
+--- 9/50 ---
+[run] lr1e-05_seed50: learning_rate=1e-05 seed=50
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7331.86it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr1e-05_seed50
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.047448 lr=9.680e-06
+epoch=1/1 batch=40/625 loss=0.008154 lr=9.360e-06
+epoch=1/1 batch=60/625 loss=0.005645 lr=9.040e-06
+epoch=1/1 batch=80/625 loss=0.002997 lr=8.720e-06
+epoch=1/1 batch=100/625 loss=0.002084 lr=8.400e-06
+epoch=1/1 batch=120/625 loss=0.001748 lr=8.080e-06
+epoch=1/1 batch=140/625 loss=0.000577 lr=7.760e-06
+epoch=1/1 batch=160/625 loss=0.001074 lr=7.440e-06
+epoch=1/1 batch=180/625 loss=0.000646 lr=7.120e-06
+epoch=1/1 batch=200/625 loss=0.000797 lr=6.800e-06
+epoch=1/1 batch=220/625 loss=0.000522 lr=6.480e-06
+epoch=1/1 batch=240/625 loss=0.000308 lr=6.160e-06
+epoch=1/1 batch=260/625 loss=0.000871 lr=5.840e-06
+epoch=1/1 batch=280/625 loss=0.000301 lr=5.520e-06
+epoch=1/1 batch=300/625 loss=0.005259 lr=5.200e-06
+epoch=1/1 batch=320/625 loss=0.000723 lr=4.880e-06
+epoch=1/1 batch=340/625 loss=0.000281 lr=4.560e-06
+epoch=1/1 batch=360/625 loss=0.000374 lr=4.240e-06
+epoch=1/1 batch=380/625 loss=0.000754 lr=3.920e-06
+epoch=1/1 batch=400/625 loss=0.001928 lr=3.600e-06
+epoch=1/1 batch=420/625 loss=0.002876 lr=3.280e-06
+epoch=1/1 batch=440/625 loss=0.000243 lr=2.960e-06
+epoch=1/1 batch=460/625 loss=0.009227 lr=2.640e-06
+epoch=1/1 batch=480/625 loss=0.004874 lr=2.320e-06
+epoch=1/1 batch=500/625 loss=0.001754 lr=2.000e-06
+epoch=1/1 batch=520/625 loss=0.004101 lr=1.680e-06
+epoch=1/1 batch=540/625 loss=0.000291 lr=1.360e-06
+epoch=1/1 batch=560/625 loss=0.001189 lr=1.040e-06
+epoch=1/1 batch=580/625 loss=0.004746 lr=7.200e-07
+epoch=1/1 batch=600/625 loss=0.003600 lr=4.000e-07
+epoch=1/1 batch=620/625 loss=0.000246 lr=8.000e-08
+epoch=1 mean_loss=0.003702
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.90it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.90it/s]
+Saved fine-tuned encoder to: models/sweep/lr1e-05_seed50
+Saved training summary to: results/sweep/lr1e-05_seed50_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6912.87it/s]
+--- 10/50 ---
+[run] lr1e-05_seed51: learning_rate=1e-05 seed=51
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7450.72it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr1e-05_seed51
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.071783 lr=9.680e-06
+epoch=1/1 batch=40/625 loss=0.011588 lr=9.360e-06
+epoch=1/1 batch=60/625 loss=0.001930 lr=9.040e-06
+epoch=1/1 batch=80/625 loss=0.014216 lr=8.720e-06
+epoch=1/1 batch=100/625 loss=0.003006 lr=8.400e-06
+epoch=1/1 batch=120/625 loss=0.002967 lr=8.080e-06
+epoch=1/1 batch=140/625 loss=0.001092 lr=7.760e-06
+epoch=1/1 batch=160/625 loss=0.002691 lr=7.440e-06
+epoch=1/1 batch=180/625 loss=0.003373 lr=7.120e-06
+epoch=1/1 batch=200/625 loss=0.004254 lr=6.800e-06
+epoch=1/1 batch=220/625 loss=0.000429 lr=6.480e-06
+epoch=1/1 batch=240/625 loss=0.001331 lr=6.160e-06
+epoch=1/1 batch=260/625 loss=0.000415 lr=5.840e-06
+epoch=1/1 batch=280/625 loss=0.007549 lr=5.520e-06
+epoch=1/1 batch=300/625 loss=0.008615 lr=5.200e-06
+epoch=1/1 batch=320/625 loss=0.001125 lr=4.880e-06
+epoch=1/1 batch=340/625 loss=0.000670 lr=4.560e-06
+epoch=1/1 batch=360/625 loss=0.003623 lr=4.240e-06
+epoch=1/1 batch=380/625 loss=0.000476 lr=3.920e-06
+epoch=1/1 batch=400/625 loss=0.003706 lr=3.600e-06
+epoch=1/1 batch=420/625 loss=0.002268 lr=3.280e-06
+epoch=1/1 batch=440/625 loss=0.001686 lr=2.960e-06
+epoch=1/1 batch=460/625 loss=0.002771 lr=2.640e-06
+epoch=1/1 batch=480/625 loss=0.004035 lr=2.320e-06
+epoch=1/1 batch=500/625 loss=0.002685 lr=2.000e-06
+epoch=1/1 batch=520/625 loss=0.000451 lr=1.680e-06
+epoch=1/1 batch=540/625 loss=0.000611 lr=1.360e-06
+epoch=1/1 batch=560/625 loss=0.000296 lr=1.040e-06
+epoch=1/1 batch=580/625 loss=0.002250 lr=7.200e-07
+epoch=1/1 batch=600/625 loss=0.000764 lr=4.000e-07
+epoch=1/1 batch=620/625 loss=0.000863 lr=8.000e-08
+epoch=1 mean_loss=0.005271
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.07it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.07it/s]
+Saved fine-tuned encoder to: models/sweep/lr1e-05_seed51
+Saved training summary to: results/sweep/lr1e-05_seed51_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9624.62it/s]
+--- 11/50 ---
+[run] lr3e-05_seed42: learning_rate=3e-05 seed=42
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7834.96it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr3e-05_seed42
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.032974 lr=2.904e-05
+epoch=1/1 batch=40/625 loss=0.006415 lr=2.808e-05
+epoch=1/1 batch=60/625 loss=0.001308 lr=2.712e-05
+epoch=1/1 batch=80/625 loss=0.001097 lr=2.616e-05
+epoch=1/1 batch=100/625 loss=0.000892 lr=2.520e-05
+epoch=1/1 batch=120/625 loss=0.002540 lr=2.424e-05
+epoch=1/1 batch=140/625 loss=0.003629 lr=2.328e-05
+epoch=1/1 batch=160/625 loss=0.002606 lr=2.232e-05
+epoch=1/1 batch=180/625 loss=0.000257 lr=2.136e-05
+epoch=1/1 batch=200/625 loss=0.000366 lr=2.040e-05
+epoch=1/1 batch=220/625 loss=0.000655 lr=1.944e-05
+epoch=1/1 batch=240/625 loss=0.000258 lr=1.848e-05
+epoch=1/1 batch=260/625 loss=0.000193 lr=1.752e-05
+epoch=1/1 batch=280/625 loss=0.000096 lr=1.656e-05
+epoch=1/1 batch=300/625 loss=0.000301 lr=1.560e-05
+epoch=1/1 batch=320/625 loss=0.001777 lr=1.464e-05
+epoch=1/1 batch=340/625 loss=0.000476 lr=1.368e-05
+epoch=1/1 batch=360/625 loss=0.000139 lr=1.272e-05
+epoch=1/1 batch=380/625 loss=0.000083 lr=1.176e-05
+epoch=1/1 batch=400/625 loss=0.000069 lr=1.080e-05
+epoch=1/1 batch=420/625 loss=0.003511 lr=9.840e-06
+epoch=1/1 batch=440/625 loss=0.000967 lr=8.880e-06
+epoch=1/1 batch=460/625 loss=0.000190 lr=7.920e-06
+epoch=1/1 batch=480/625 loss=0.006891 lr=6.960e-06
+epoch=1/1 batch=500/625 loss=0.000130 lr=6.000e-06
+epoch=1/1 batch=520/625 loss=0.000131 lr=5.040e-06
+epoch=1/1 batch=540/625 loss=0.000159 lr=4.080e-06
+epoch=1/1 batch=560/625 loss=0.000130 lr=3.120e-06
+epoch=1/1 batch=580/625 loss=0.000094 lr=2.160e-06
+epoch=1/1 batch=600/625 loss=0.000304 lr=1.200e-06
+epoch=1/1 batch=620/625 loss=0.000105 lr=2.400e-07
+epoch=1 mean_loss=0.002256
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.81it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.80it/s]
+Saved fine-tuned encoder to: models/sweep/lr3e-05_seed42
+Saved training summary to: results/sweep/lr3e-05_seed42_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5362.42it/s]
+--- 12/50 ---
+[run] lr3e-05_seed43: learning_rate=3e-05 seed=43
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7566.00it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr3e-05_seed43
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.058886 lr=2.904e-05
+epoch=1/1 batch=40/625 loss=0.006219 lr=2.808e-05
+epoch=1/1 batch=60/625 loss=0.006838 lr=2.712e-05
+epoch=1/1 batch=80/625 loss=0.000471 lr=2.616e-05
+epoch=1/1 batch=100/625 loss=0.000528 lr=2.520e-05
+epoch=1/1 batch=120/625 loss=0.002114 lr=2.424e-05
+epoch=1/1 batch=140/625 loss=0.000310 lr=2.328e-05
+epoch=1/1 batch=160/625 loss=0.006224 lr=2.232e-05
+epoch=1/1 batch=180/625 loss=0.000438 lr=2.136e-05
+epoch=1/1 batch=200/625 loss=0.000687 lr=2.040e-05
+epoch=1/1 batch=220/625 loss=0.001503 lr=1.944e-05
+epoch=1/1 batch=240/625 loss=0.000187 lr=1.848e-05
+epoch=1/1 batch=260/625 loss=0.000197 lr=1.752e-05
+epoch=1/1 batch=280/625 loss=0.004954 lr=1.656e-05
+epoch=1/1 batch=300/625 loss=0.000138 lr=1.560e-05
+epoch=1/1 batch=320/625 loss=0.000214 lr=1.464e-05
+epoch=1/1 batch=340/625 loss=0.000156 lr=1.368e-05
+epoch=1/1 batch=360/625 loss=0.000333 lr=1.272e-05
+epoch=1/1 batch=380/625 loss=0.000180 lr=1.176e-05
+epoch=1/1 batch=400/625 loss=0.000093 lr=1.080e-05
+epoch=1/1 batch=420/625 loss=0.000185 lr=9.840e-06
+epoch=1/1 batch=440/625 loss=0.000285 lr=8.880e-06
+epoch=1/1 batch=460/625 loss=0.000104 lr=7.920e-06
+epoch=1/1 batch=480/625 loss=0.000843 lr=6.960e-06
+epoch=1/1 batch=500/625 loss=0.000407 lr=6.000e-06
+epoch=1/1 batch=520/625 loss=0.000095 lr=5.040e-06
+epoch=1/1 batch=540/625 loss=0.000284 lr=4.080e-06
+epoch=1/1 batch=560/625 loss=0.000556 lr=3.120e-06
+epoch=1/1 batch=580/625 loss=0.002446 lr=2.160e-06
+epoch=1/1 batch=600/625 loss=0.000111 lr=1.200e-06
+epoch=1/1 batch=620/625 loss=0.000083 lr=2.400e-07
+epoch=1 mean_loss=0.003075
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.09it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.08it/s]
+Saved fine-tuned encoder to: models/sweep/lr3e-05_seed43
+Saved training summary to: results/sweep/lr3e-05_seed43_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9060.25it/s]
+--- 13/50 ---
+[run] lr3e-05_seed44: learning_rate=3e-05 seed=44
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8242.89it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr3e-05_seed44
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.054482 lr=2.904e-05
+epoch=1/1 batch=40/625 loss=0.000771 lr=2.808e-05
+epoch=1/1 batch=60/625 loss=0.003410 lr=2.712e-05
+epoch=1/1 batch=80/625 loss=0.000712 lr=2.616e-05
+epoch=1/1 batch=100/625 loss=0.000914 lr=2.520e-05
+epoch=1/1 batch=120/625 loss=0.006423 lr=2.424e-05
+epoch=1/1 batch=140/625 loss=0.000280 lr=2.328e-05
+epoch=1/1 batch=160/625 loss=0.000148 lr=2.232e-05
+epoch=1/1 batch=180/625 loss=0.000115 lr=2.136e-05
+epoch=1/1 batch=200/625 loss=0.000114 lr=2.040e-05
+epoch=1/1 batch=220/625 loss=0.000613 lr=1.944e-05
+epoch=1/1 batch=240/625 loss=0.003306 lr=1.848e-05
+epoch=1/1 batch=260/625 loss=0.000273 lr=1.752e-05
+epoch=1/1 batch=280/625 loss=0.000154 lr=1.656e-05
+epoch=1/1 batch=300/625 loss=0.000245 lr=1.560e-05
+epoch=1/1 batch=320/625 loss=0.001608 lr=1.464e-05
+epoch=1/1 batch=340/625 loss=0.000448 lr=1.368e-05
+epoch=1/1 batch=360/625 loss=0.001956 lr=1.272e-05
+epoch=1/1 batch=380/625 loss=0.000114 lr=1.176e-05
+epoch=1/1 batch=400/625 loss=0.011254 lr=1.080e-05
+epoch=1/1 batch=420/625 loss=0.000089 lr=9.840e-06
+epoch=1/1 batch=440/625 loss=0.000946 lr=8.880e-06
+epoch=1/1 batch=460/625 loss=0.000212 lr=7.920e-06
+epoch=1/1 batch=480/625 loss=0.000141 lr=6.960e-06
+epoch=1/1 batch=500/625 loss=0.004685 lr=6.000e-06
+epoch=1/1 batch=520/625 loss=0.001041 lr=5.040e-06
+epoch=1/1 batch=540/625 loss=0.000133 lr=4.080e-06
+epoch=1/1 batch=560/625 loss=0.000807 lr=3.120e-06
+epoch=1/1 batch=580/625 loss=0.001175 lr=2.160e-06
+epoch=1/1 batch=600/625 loss=0.001687 lr=1.200e-06
+epoch=1/1 batch=620/625 loss=0.000247 lr=2.400e-07
+epoch=1 mean_loss=0.003157
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.63it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.63it/s]
+Saved fine-tuned encoder to: models/sweep/lr3e-05_seed44
+Saved training summary to: results/sweep/lr3e-05_seed44_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8445.39it/s]
+--- 14/50 ---
+[run] lr3e-05_seed45: learning_rate=3e-05 seed=45
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6110.70it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr3e-05_seed45
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.041785 lr=2.904e-05
+epoch=1/1 batch=40/625 loss=0.004121 lr=2.808e-05
+epoch=1/1 batch=60/625 loss=0.000568 lr=2.712e-05
+epoch=1/1 batch=80/625 loss=0.000289 lr=2.616e-05
+epoch=1/1 batch=100/625 loss=0.003404 lr=2.520e-05
+epoch=1/1 batch=120/625 loss=0.000305 lr=2.424e-05
+epoch=1/1 batch=140/625 loss=0.000350 lr=2.328e-05
+epoch=1/1 batch=160/625 loss=0.007999 lr=2.232e-05
+epoch=1/1 batch=180/625 loss=0.000536 lr=2.136e-05
+epoch=1/1 batch=200/625 loss=0.001368 lr=2.040e-05
+epoch=1/1 batch=220/625 loss=0.000844 lr=1.944e-05
+epoch=1/1 batch=240/625 loss=0.002575 lr=1.848e-05
+epoch=1/1 batch=260/625 loss=0.003540 lr=1.752e-05
+epoch=1/1 batch=280/625 loss=0.000156 lr=1.656e-05
+epoch=1/1 batch=300/625 loss=0.002499 lr=1.560e-05
+epoch=1/1 batch=320/625 loss=0.000375 lr=1.464e-05
+epoch=1/1 batch=340/625 loss=0.000107 lr=1.368e-05
+epoch=1/1 batch=360/625 loss=0.002841 lr=1.272e-05
+epoch=1/1 batch=380/625 loss=0.000167 lr=1.176e-05
+epoch=1/1 batch=400/625 loss=0.001157 lr=1.080e-05
+epoch=1/1 batch=420/625 loss=0.000714 lr=9.840e-06
+epoch=1/1 batch=440/625 loss=0.000220 lr=8.880e-06
+epoch=1/1 batch=460/625 loss=0.000121 lr=7.920e-06
+epoch=1/1 batch=480/625 loss=0.000095 lr=6.960e-06
+epoch=1/1 batch=500/625 loss=0.000081 lr=6.000e-06
+epoch=1/1 batch=520/625 loss=0.000357 lr=5.040e-06
+epoch=1/1 batch=540/625 loss=0.000220 lr=4.080e-06
+epoch=1/1 batch=560/625 loss=0.000081 lr=3.120e-06
+epoch=1/1 batch=580/625 loss=0.000554 lr=2.160e-06
+epoch=1/1 batch=600/625 loss=0.000063 lr=1.200e-06
+epoch=1/1 batch=620/625 loss=0.000160 lr=2.400e-07
+epoch=1 mean_loss=0.002485
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.94it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.93it/s]
+Saved fine-tuned encoder to: models/sweep/lr3e-05_seed45
+Saved training summary to: results/sweep/lr3e-05_seed45_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7761.38it/s]
+--- 15/50 ---
+[run] lr3e-05_seed46: learning_rate=3e-05 seed=46
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8265.17it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr3e-05_seed46
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.033644 lr=2.904e-05
+epoch=1/1 batch=40/625 loss=0.001644 lr=2.808e-05
+epoch=1/1 batch=60/625 loss=0.001162 lr=2.712e-05
+epoch=1/1 batch=80/625 loss=0.000362 lr=2.616e-05
+epoch=1/1 batch=100/625 loss=0.001913 lr=2.520e-05
+epoch=1/1 batch=120/625 loss=0.000825 lr=2.424e-05
+epoch=1/1 batch=140/625 loss=0.000290 lr=2.328e-05
+epoch=1/1 batch=160/625 loss=0.005452 lr=2.232e-05
+epoch=1/1 batch=180/625 loss=0.006439 lr=2.136e-05
+epoch=1/1 batch=200/625 loss=0.000320 lr=2.040e-05
+epoch=1/1 batch=220/625 loss=0.000477 lr=1.944e-05
+epoch=1/1 batch=240/625 loss=0.000420 lr=1.848e-05
+epoch=1/1 batch=260/625 loss=0.000616 lr=1.752e-05
+epoch=1/1 batch=280/625 loss=0.001416 lr=1.656e-05
+epoch=1/1 batch=300/625 loss=0.000194 lr=1.560e-05
+epoch=1/1 batch=320/625 loss=0.000158 lr=1.464e-05
+epoch=1/1 batch=340/625 loss=0.000172 lr=1.368e-05
+epoch=1/1 batch=360/625 loss=0.000141 lr=1.272e-05
+epoch=1/1 batch=380/625 loss=0.000201 lr=1.176e-05
+epoch=1/1 batch=400/625 loss=0.002356 lr=1.080e-05
+epoch=1/1 batch=420/625 loss=0.001946 lr=9.840e-06
+epoch=1/1 batch=440/625 loss=0.002215 lr=8.880e-06
+epoch=1/1 batch=460/625 loss=0.000068 lr=7.920e-06
+epoch=1/1 batch=480/625 loss=0.000107 lr=6.960e-06
+epoch=1/1 batch=500/625 loss=0.000247 lr=6.000e-06
+epoch=1/1 batch=520/625 loss=0.000081 lr=5.040e-06
+epoch=1/1 batch=540/625 loss=0.000078 lr=4.080e-06
+epoch=1/1 batch=560/625 loss=0.000213 lr=3.120e-06
+epoch=1/1 batch=580/625 loss=0.000373 lr=2.160e-06
+epoch=1/1 batch=600/625 loss=0.000242 lr=1.200e-06
+epoch=1/1 batch=620/625 loss=0.000082 lr=2.400e-07
+epoch=1 mean_loss=0.002044
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.12it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.12it/s]
+Saved fine-tuned encoder to: models/sweep/lr3e-05_seed46
+Saved training summary to: results/sweep/lr3e-05_seed46_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9076.01it/s]
+--- 16/50 ---
+[run] lr3e-05_seed47: learning_rate=3e-05 seed=47
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2357.52it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr3e-05_seed47
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.028042 lr=2.904e-05
+epoch=1/1 batch=40/625 loss=0.002090 lr=2.808e-05
+epoch=1/1 batch=60/625 loss=0.001712 lr=2.712e-05
+epoch=1/1 batch=80/625 loss=0.006061 lr=2.616e-05
+epoch=1/1 batch=100/625 loss=0.002154 lr=2.520e-05
+epoch=1/1 batch=120/625 loss=0.000292 lr=2.424e-05
+epoch=1/1 batch=140/625 loss=0.004381 lr=2.328e-05
+epoch=1/1 batch=160/625 loss=0.001399 lr=2.232e-05
+epoch=1/1 batch=180/625 loss=0.000401 lr=2.136e-05
+epoch=1/1 batch=200/625 loss=0.000167 lr=2.040e-05
+epoch=1/1 batch=220/625 loss=0.000198 lr=1.944e-05
+epoch=1/1 batch=240/625 loss=0.000246 lr=1.848e-05
+epoch=1/1 batch=260/625 loss=0.000254 lr=1.752e-05
+epoch=1/1 batch=280/625 loss=0.000088 lr=1.656e-05
+epoch=1/1 batch=300/625 loss=0.001730 lr=1.560e-05
+epoch=1/1 batch=320/625 loss=0.001408 lr=1.464e-05
+epoch=1/1 batch=340/625 loss=0.000771 lr=1.368e-05
+epoch=1/1 batch=360/625 loss=0.000142 lr=1.272e-05
+epoch=1/1 batch=380/625 loss=0.000217 lr=1.176e-05
+epoch=1/1 batch=400/625 loss=0.000333 lr=1.080e-05
+epoch=1/1 batch=420/625 loss=0.000129 lr=9.840e-06
+epoch=1/1 batch=440/625 loss=0.000087 lr=8.880e-06
+epoch=1/1 batch=460/625 loss=0.003457 lr=7.920e-06
+epoch=1/1 batch=480/625 loss=0.000136 lr=6.960e-06
+epoch=1/1 batch=500/625 loss=0.004858 lr=6.000e-06
+epoch=1/1 batch=520/625 loss=0.001413 lr=5.040e-06
+epoch=1/1 batch=540/625 loss=0.000118 lr=4.080e-06
+epoch=1/1 batch=560/625 loss=0.001208 lr=3.120e-06
+epoch=1/1 batch=580/625 loss=0.000177 lr=2.160e-06
+epoch=1/1 batch=600/625 loss=0.000063 lr=1.200e-06
+epoch=1/1 batch=620/625 loss=0.001156 lr=2.400e-07
+epoch=1 mean_loss=0.002078
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.82it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.82it/s]
+Saved fine-tuned encoder to: models/sweep/lr3e-05_seed47
+Saved training summary to: results/sweep/lr3e-05_seed47_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8844.15it/s]
+--- 17/50 ---
+[run] lr3e-05_seed48: learning_rate=3e-05 seed=48
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7543.24it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr3e-05_seed48
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.041392 lr=2.904e-05
+epoch=1/1 batch=40/625 loss=0.006549 lr=2.808e-05
+epoch=1/1 batch=60/625 loss=0.006831 lr=2.712e-05
+epoch=1/1 batch=80/625 loss=0.001290 lr=2.616e-05
+epoch=1/1 batch=100/625 loss=0.004280 lr=2.520e-05
+epoch=1/1 batch=120/625 loss=0.001661 lr=2.424e-05
+epoch=1/1 batch=140/625 loss=0.000699 lr=2.328e-05
+epoch=1/1 batch=160/625 loss=0.000272 lr=2.232e-05
+epoch=1/1 batch=180/625 loss=0.000126 lr=2.136e-05
+epoch=1/1 batch=200/625 loss=0.000258 lr=2.040e-05
+epoch=1/1 batch=220/625 loss=0.000351 lr=1.944e-05
+epoch=1/1 batch=240/625 loss=0.000821 lr=1.848e-05
+epoch=1/1 batch=260/625 loss=0.000125 lr=1.752e-05
+epoch=1/1 batch=280/625 loss=0.000144 lr=1.656e-05
+epoch=1/1 batch=300/625 loss=0.000156 lr=1.560e-05
+epoch=1/1 batch=320/625 loss=0.000514 lr=1.464e-05
+epoch=1/1 batch=340/625 loss=0.000115 lr=1.368e-05
+epoch=1/1 batch=360/625 loss=0.004500 lr=1.272e-05
+epoch=1/1 batch=380/625 loss=0.000432 lr=1.176e-05
+epoch=1/1 batch=400/625 loss=0.005678 lr=1.080e-05
+epoch=1/1 batch=420/625 loss=0.000062 lr=9.840e-06
+epoch=1/1 batch=440/625 loss=0.000150 lr=8.880e-06
+epoch=1/1 batch=460/625 loss=0.000116 lr=7.920e-06
+epoch=1/1 batch=480/625 loss=0.000168 lr=6.960e-06
+epoch=1/1 batch=500/625 loss=0.000621 lr=6.000e-06
+epoch=1/1 batch=520/625 loss=0.000815 lr=5.040e-06
+epoch=1/1 batch=540/625 loss=0.001717 lr=4.080e-06
+epoch=1/1 batch=560/625 loss=0.001518 lr=3.120e-06
+epoch=1/1 batch=580/625 loss=0.001220 lr=2.160e-06
+epoch=1/1 batch=600/625 loss=0.000252 lr=1.200e-06
+epoch=1/1 batch=620/625 loss=0.000112 lr=2.400e-07
+epoch=1 mean_loss=0.002656
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.25it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.25it/s]
+Saved fine-tuned encoder to: models/sweep/lr3e-05_seed48
+Saved training summary to: results/sweep/lr3e-05_seed48_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 10094.29it/s]
+--- 18/50 ---
+[run] lr3e-05_seed49: learning_rate=3e-05 seed=49
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8557.00it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr3e-05_seed49
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.038328 lr=2.904e-05
+epoch=1/1 batch=40/625 loss=0.006934 lr=2.808e-05
+epoch=1/1 batch=60/625 loss=0.002256 lr=2.712e-05
+epoch=1/1 batch=80/625 loss=0.006645 lr=2.616e-05
+epoch=1/1 batch=100/625 loss=0.000273 lr=2.520e-05
+epoch=1/1 batch=120/625 loss=0.001367 lr=2.424e-05
+epoch=1/1 batch=140/625 loss=0.001388 lr=2.328e-05
+epoch=1/1 batch=160/625 loss=0.004891 lr=2.232e-05
+epoch=1/1 batch=180/625 loss=0.000217 lr=2.136e-05
+epoch=1/1 batch=200/625 loss=0.008590 lr=2.040e-05
+epoch=1/1 batch=220/625 loss=0.000355 lr=1.944e-05
+epoch=1/1 batch=240/625 loss=0.000112 lr=1.848e-05
+epoch=1/1 batch=260/625 loss=0.001856 lr=1.752e-05
+epoch=1/1 batch=280/625 loss=0.003075 lr=1.656e-05
+epoch=1/1 batch=300/625 loss=0.005309 lr=1.560e-05
+epoch=1/1 batch=320/625 loss=0.000248 lr=1.464e-05
+epoch=1/1 batch=340/625 loss=0.000124 lr=1.368e-05
+epoch=1/1 batch=360/625 loss=0.000128 lr=1.272e-05
+epoch=1/1 batch=380/625 loss=0.000199 lr=1.176e-05
+epoch=1/1 batch=400/625 loss=0.000455 lr=1.080e-05
+epoch=1/1 batch=420/625 loss=0.000308 lr=9.840e-06
+epoch=1/1 batch=440/625 loss=0.004345 lr=8.880e-06
+epoch=1/1 batch=460/625 loss=0.000253 lr=7.920e-06
+epoch=1/1 batch=480/625 loss=0.000127 lr=6.960e-06
+epoch=1/1 batch=500/625 loss=0.000121 lr=6.000e-06
+epoch=1/1 batch=520/625 loss=0.000271 lr=5.040e-06
+epoch=1/1 batch=540/625 loss=0.000145 lr=4.080e-06
+epoch=1/1 batch=560/625 loss=0.000130 lr=3.120e-06
+epoch=1/1 batch=580/625 loss=0.004425 lr=2.160e-06
+epoch=1/1 batch=600/625 loss=0.000232 lr=1.200e-06
+epoch=1/1 batch=620/625 loss=0.000084 lr=2.400e-07
+epoch=1 mean_loss=0.002988
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.25it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.24it/s]
+Saved fine-tuned encoder to: models/sweep/lr3e-05_seed49
+Saved training summary to: results/sweep/lr3e-05_seed49_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9108.30it/s]
+--- 19/50 ---
+[run] lr3e-05_seed50: learning_rate=3e-05 seed=50
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7153.10it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr3e-05_seed50
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.021689 lr=2.904e-05
+epoch=1/1 batch=40/625 loss=0.010271 lr=2.808e-05
+epoch=1/1 batch=60/625 loss=0.005273 lr=2.712e-05
+epoch=1/1 batch=80/625 loss=0.000910 lr=2.616e-05
+epoch=1/1 batch=100/625 loss=0.000626 lr=2.520e-05
+epoch=1/1 batch=120/625 loss=0.000414 lr=2.424e-05
+epoch=1/1 batch=140/625 loss=0.000440 lr=2.328e-05
+epoch=1/1 batch=160/625 loss=0.000544 lr=2.232e-05
+epoch=1/1 batch=180/625 loss=0.000345 lr=2.136e-05
+epoch=1/1 batch=200/625 loss=0.000420 lr=2.040e-05
+epoch=1/1 batch=220/625 loss=0.000200 lr=1.944e-05
+epoch=1/1 batch=240/625 loss=0.000222 lr=1.848e-05
+epoch=1/1 batch=260/625 loss=0.000512 lr=1.752e-05
+epoch=1/1 batch=280/625 loss=0.000203 lr=1.656e-05
+epoch=1/1 batch=300/625 loss=0.004651 lr=1.560e-05
+epoch=1/1 batch=320/625 loss=0.000182 lr=1.464e-05
+epoch=1/1 batch=340/625 loss=0.000112 lr=1.368e-05
+epoch=1/1 batch=360/625 loss=0.000148 lr=1.272e-05
+epoch=1/1 batch=380/625 loss=0.000457 lr=1.176e-05
+epoch=1/1 batch=400/625 loss=0.000449 lr=1.080e-05
+epoch=1/1 batch=420/625 loss=0.000257 lr=9.840e-06
+epoch=1/1 batch=440/625 loss=0.000157 lr=8.880e-06
+epoch=1/1 batch=460/625 loss=0.007588 lr=7.920e-06
+epoch=1/1 batch=480/625 loss=0.003819 lr=6.960e-06
+epoch=1/1 batch=500/625 loss=0.001095 lr=6.000e-06
+epoch=1/1 batch=520/625 loss=0.003587 lr=5.040e-06
+epoch=1/1 batch=540/625 loss=0.000191 lr=4.080e-06
+epoch=1/1 batch=560/625 loss=0.000279 lr=3.120e-06
+epoch=1/1 batch=580/625 loss=0.000902 lr=2.160e-06
+epoch=1/1 batch=600/625 loss=0.002334 lr=1.200e-06
+epoch=1/1 batch=620/625 loss=0.000208 lr=2.400e-07
+epoch=1 mean_loss=0.002192
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.74it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.74it/s]
+Saved fine-tuned encoder to: models/sweep/lr3e-05_seed50
+Saved training summary to: results/sweep/lr3e-05_seed50_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 10036.15it/s]
+--- 20/50 ---
+[run] lr3e-05_seed51: learning_rate=3e-05 seed=51
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7744.96it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr3e-05_seed51
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.025165 lr=2.904e-05
+epoch=1/1 batch=40/625 loss=0.001875 lr=2.808e-05
+epoch=1/1 batch=60/625 loss=0.001652 lr=2.712e-05
+epoch=1/1 batch=80/625 loss=0.011920 lr=2.616e-05
+epoch=1/1 batch=100/625 loss=0.001405 lr=2.520e-05
+epoch=1/1 batch=120/625 loss=0.001404 lr=2.424e-05
+epoch=1/1 batch=140/625 loss=0.000271 lr=2.328e-05
+epoch=1/1 batch=160/625 loss=0.001292 lr=2.232e-05
+epoch=1/1 batch=180/625 loss=0.002131 lr=2.136e-05
+epoch=1/1 batch=200/625 loss=0.003410 lr=2.040e-05
+epoch=1/1 batch=220/625 loss=0.000173 lr=1.944e-05
+epoch=1/1 batch=240/625 loss=0.000350 lr=1.848e-05
+epoch=1/1 batch=260/625 loss=0.000126 lr=1.752e-05
+epoch=1/1 batch=280/625 loss=0.005447 lr=1.656e-05
+epoch=1/1 batch=300/625 loss=0.007378 lr=1.560e-05
+epoch=1/1 batch=320/625 loss=0.000330 lr=1.464e-05
+epoch=1/1 batch=340/625 loss=0.000121 lr=1.368e-05
+epoch=1/1 batch=360/625 loss=0.000125 lr=1.272e-05
+epoch=1/1 batch=380/625 loss=0.000079 lr=1.176e-05
+epoch=1/1 batch=400/625 loss=0.003732 lr=1.080e-05
+epoch=1/1 batch=420/625 loss=0.000143 lr=9.840e-06
+epoch=1/1 batch=440/625 loss=0.000229 lr=8.880e-06
+epoch=1/1 batch=460/625 loss=0.000216 lr=7.920e-06
+epoch=1/1 batch=480/625 loss=0.000241 lr=6.960e-06
+epoch=1/1 batch=500/625 loss=0.001313 lr=6.000e-06
+epoch=1/1 batch=520/625 loss=0.000132 lr=5.040e-06
+epoch=1/1 batch=540/625 loss=0.000174 lr=4.080e-06
+epoch=1/1 batch=560/625 loss=0.000072 lr=3.120e-06
+epoch=1/1 batch=580/625 loss=0.000264 lr=2.160e-06
+epoch=1/1 batch=600/625 loss=0.000246 lr=1.200e-06
+epoch=1/1 batch=620/625 loss=0.000620 lr=2.400e-07
+epoch=1 mean_loss=0.002325
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.47it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.47it/s]
+Saved fine-tuned encoder to: models/sweep/lr3e-05_seed51
+Saved training summary to: results/sweep/lr3e-05_seed51_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8968.06it/s]
+--- 21/50 ---
+[run] lr5e-05_seed42: learning_rate=5e-05 seed=42
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7553.06it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr5e-05_seed42
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.029505 lr=4.840e-05
+epoch=1/1 batch=40/625 loss=0.008349 lr=4.680e-05
+epoch=1/1 batch=60/625 loss=0.000679 lr=4.520e-05
+epoch=1/1 batch=80/625 loss=0.000603 lr=4.360e-05
+epoch=1/1 batch=100/625 loss=0.000456 lr=4.200e-05
+epoch=1/1 batch=120/625 loss=0.001963 lr=4.040e-05
+epoch=1/1 batch=140/625 loss=0.000141 lr=3.880e-05
+epoch=1/1 batch=160/625 loss=0.000850 lr=3.720e-05
+epoch=1/1 batch=180/625 loss=0.000265 lr=3.560e-05
+epoch=1/1 batch=200/625 loss=0.000275 lr=3.400e-05
+epoch=1/1 batch=220/625 loss=0.000289 lr=3.240e-05
+epoch=1/1 batch=240/625 loss=0.000223 lr=3.080e-05
+epoch=1/1 batch=260/625 loss=0.000155 lr=2.920e-05
+epoch=1/1 batch=280/625 loss=0.000072 lr=2.760e-05
+epoch=1/1 batch=300/625 loss=0.000085 lr=2.600e-05
+epoch=1/1 batch=320/625 loss=0.001780 lr=2.440e-05
+epoch=1/1 batch=340/625 loss=0.000096 lr=2.280e-05
+epoch=1/1 batch=360/625 loss=0.000079 lr=2.120e-05
+epoch=1/1 batch=380/625 loss=0.000057 lr=1.960e-05
+epoch=1/1 batch=400/625 loss=0.000086 lr=1.800e-05
+epoch=1/1 batch=420/625 loss=0.000964 lr=1.640e-05
+epoch=1/1 batch=440/625 loss=0.000167 lr=1.480e-05
+epoch=1/1 batch=460/625 loss=0.000113 lr=1.320e-05
+epoch=1/1 batch=480/625 loss=0.006316 lr=1.160e-05
+epoch=1/1 batch=500/625 loss=0.000129 lr=1.000e-05
+epoch=1/1 batch=520/625 loss=0.000099 lr=8.400e-06
+epoch=1/1 batch=540/625 loss=0.000127 lr=6.800e-06
+epoch=1/1 batch=560/625 loss=0.000061 lr=5.200e-06
+epoch=1/1 batch=580/625 loss=0.000053 lr=3.600e-06
+epoch=1/1 batch=600/625 loss=0.000236 lr=2.000e-06
+epoch=1/1 batch=620/625 loss=0.000068 lr=4.000e-07
+epoch=1 mean_loss=0.001740
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.67it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.67it/s]
+Saved fine-tuned encoder to: models/sweep/lr5e-05_seed42
+Saved training summary to: results/sweep/lr5e-05_seed42_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6570.06it/s]
+--- 22/50 ---
+[run] lr5e-05_seed43: learning_rate=5e-05 seed=43
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3410.87it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr5e-05_seed43
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.053288 lr=4.840e-05
+epoch=1/1 batch=40/625 loss=0.006998 lr=4.680e-05
+epoch=1/1 batch=60/625 loss=0.005317 lr=4.520e-05
+epoch=1/1 batch=80/625 loss=0.000536 lr=4.360e-05
+epoch=1/1 batch=100/625 loss=0.000347 lr=4.200e-05
+epoch=1/1 batch=120/625 loss=0.002941 lr=4.040e-05
+epoch=1/1 batch=140/625 loss=0.000281 lr=3.880e-05
+epoch=1/1 batch=160/625 loss=0.003645 lr=3.720e-05
+epoch=1/1 batch=180/625 loss=0.000405 lr=3.560e-05
+epoch=1/1 batch=200/625 loss=0.001019 lr=3.400e-05
+epoch=1/1 batch=220/625 loss=0.000248 lr=3.240e-05
+epoch=1/1 batch=240/625 loss=0.000124 lr=3.080e-05
+epoch=1/1 batch=260/625 loss=0.000230 lr=2.920e-05
+epoch=1/1 batch=280/625 loss=0.000077 lr=2.760e-05
+epoch=1/1 batch=300/625 loss=0.000095 lr=2.600e-05
+epoch=1/1 batch=320/625 loss=0.000095 lr=2.440e-05
+epoch=1/1 batch=340/625 loss=0.000138 lr=2.280e-05
+epoch=1/1 batch=360/625 loss=0.000157 lr=2.120e-05
+epoch=1/1 batch=380/625 loss=0.000079 lr=1.960e-05
+epoch=1/1 batch=400/625 loss=0.000086 lr=1.800e-05
+epoch=1/1 batch=420/625 loss=0.000144 lr=1.640e-05
+epoch=1/1 batch=440/625 loss=0.000232 lr=1.480e-05
+epoch=1/1 batch=460/625 loss=0.000060 lr=1.320e-05
+epoch=1/1 batch=480/625 loss=0.000173 lr=1.160e-05
+epoch=1/1 batch=500/625 loss=0.000617 lr=1.000e-05
+epoch=1/1 batch=520/625 loss=0.000111 lr=8.400e-06
+epoch=1/1 batch=540/625 loss=0.000108 lr=6.800e-06
+epoch=1/1 batch=560/625 loss=0.000278 lr=5.200e-06
+epoch=1/1 batch=580/625 loss=0.004880 lr=3.600e-06
+epoch=1/1 batch=600/625 loss=0.000065 lr=2.000e-06
+epoch=1/1 batch=620/625 loss=0.000046 lr=4.000e-07
+epoch=1 mean_loss=0.002650
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.47it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.47it/s]
+Saved fine-tuned encoder to: models/sweep/lr5e-05_seed43
+Saved training summary to: results/sweep/lr5e-05_seed43_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9163.00it/s]
+--- 23/50 ---
+[run] lr5e-05_seed44: learning_rate=5e-05 seed=44
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7909.13it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr5e-05_seed44
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.041116 lr=4.840e-05
+epoch=1/1 batch=40/625 loss=0.000541 lr=4.680e-05
+epoch=1/1 batch=60/625 loss=0.002070 lr=4.520e-05
+epoch=1/1 batch=80/625 loss=0.001511 lr=4.360e-05
+epoch=1/1 batch=100/625 loss=0.001020 lr=4.200e-05
+epoch=1/1 batch=120/625 loss=0.007844 lr=4.040e-05
+epoch=1/1 batch=140/625 loss=0.000336 lr=3.880e-05
+epoch=1/1 batch=160/625 loss=0.000348 lr=3.720e-05
+epoch=1/1 batch=180/625 loss=0.000143 lr=3.560e-05
+epoch=1/1 batch=200/625 loss=0.000137 lr=3.400e-05
+epoch=1/1 batch=220/625 loss=0.000299 lr=3.240e-05
+epoch=1/1 batch=240/625 loss=0.005855 lr=3.080e-05
+epoch=1/1 batch=260/625 loss=0.000205 lr=2.920e-05
+epoch=1/1 batch=280/625 loss=0.000248 lr=2.760e-05
+epoch=1/1 batch=300/625 loss=0.000223 lr=2.600e-05
+epoch=1/1 batch=320/625 loss=0.001808 lr=2.440e-05
+epoch=1/1 batch=340/625 loss=0.001110 lr=2.280e-05
+epoch=1/1 batch=360/625 loss=0.001221 lr=2.120e-05
+epoch=1/1 batch=380/625 loss=0.000131 lr=1.960e-05
+epoch=1/1 batch=400/625 loss=0.003232 lr=1.800e-05
+epoch=1/1 batch=420/625 loss=0.000146 lr=1.640e-05
+epoch=1/1 batch=440/625 loss=0.000429 lr=1.480e-05
+epoch=1/1 batch=460/625 loss=0.000130 lr=1.320e-05
+epoch=1/1 batch=480/625 loss=0.000164 lr=1.160e-05
+epoch=1/1 batch=500/625 loss=0.003564 lr=1.000e-05
+epoch=1/1 batch=520/625 loss=0.000367 lr=8.400e-06
+epoch=1/1 batch=540/625 loss=0.000181 lr=6.800e-06
+epoch=1/1 batch=560/625 loss=0.000620 lr=5.200e-06
+epoch=1/1 batch=580/625 loss=0.000989 lr=3.600e-06
+epoch=1/1 batch=600/625 loss=0.000168 lr=2.000e-06
+epoch=1/1 batch=620/625 loss=0.000142 lr=4.000e-07
+epoch=1 mean_loss=0.002443
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.57it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.57it/s]
+Saved fine-tuned encoder to: models/sweep/lr5e-05_seed44
+Saved training summary to: results/sweep/lr5e-05_seed44_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8688.83it/s]
+--- 24/50 ---
+[run] lr5e-05_seed45: learning_rate=5e-05 seed=45
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4071.31it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr5e-05_seed45
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.035808 lr=4.840e-05
+epoch=1/1 batch=40/625 loss=0.006948 lr=4.680e-05
+epoch=1/1 batch=60/625 loss=0.000252 lr=4.520e-05
+epoch=1/1 batch=80/625 loss=0.000428 lr=4.360e-05
+epoch=1/1 batch=100/625 loss=0.004733 lr=4.200e-05
+epoch=1/1 batch=120/625 loss=0.000416 lr=4.040e-05
+epoch=1/1 batch=140/625 loss=0.001216 lr=3.880e-05
+epoch=1/1 batch=160/625 loss=0.000310 lr=3.720e-05
+epoch=1/1 batch=180/625 loss=0.000435 lr=3.560e-05
+epoch=1/1 batch=200/625 loss=0.000332 lr=3.400e-05
+epoch=1/1 batch=220/625 loss=0.000292 lr=3.240e-05
+epoch=1/1 batch=240/625 loss=0.001837 lr=3.080e-05
+epoch=1/1 batch=260/625 loss=0.006196 lr=2.920e-05
+epoch=1/1 batch=280/625 loss=0.000167 lr=2.760e-05
+epoch=1/1 batch=300/625 loss=0.000261 lr=2.600e-05
+epoch=1/1 batch=320/625 loss=0.000208 lr=2.440e-05
+epoch=1/1 batch=340/625 loss=0.000214 lr=2.280e-05
+epoch=1/1 batch=360/625 loss=0.001377 lr=2.120e-05
+epoch=1/1 batch=380/625 loss=0.000165 lr=1.960e-05
+epoch=1/1 batch=400/625 loss=0.000282 lr=1.800e-05
+epoch=1/1 batch=420/625 loss=0.000136 lr=1.640e-05
+epoch=1/1 batch=440/625 loss=0.000092 lr=1.480e-05
+epoch=1/1 batch=460/625 loss=0.000063 lr=1.320e-05
+epoch=1/1 batch=480/625 loss=0.000079 lr=1.160e-05
+epoch=1/1 batch=500/625 loss=0.000109 lr=1.000e-05
+epoch=1/1 batch=520/625 loss=0.000081 lr=8.400e-06
+epoch=1/1 batch=540/625 loss=0.000107 lr=6.800e-06
+epoch=1/1 batch=560/625 loss=0.000075 lr=5.200e-06
+epoch=1/1 batch=580/625 loss=0.000484 lr=3.600e-06
+epoch=1/1 batch=600/625 loss=0.000063 lr=2.000e-06
+epoch=1/1 batch=620/625 loss=0.000077 lr=4.000e-07
+epoch=1 mean_loss=0.002024
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.14it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.14it/s]
+Saved fine-tuned encoder to: models/sweep/lr5e-05_seed45
+Saved training summary to: results/sweep/lr5e-05_seed45_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7695.54it/s]
+--- 25/50 ---
+[run] lr5e-05_seed46: learning_rate=5e-05 seed=46
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7348.06it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr5e-05_seed46
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.026592 lr=4.840e-05
+epoch=1/1 batch=40/625 loss=0.001045 lr=4.680e-05
+epoch=1/1 batch=60/625 loss=0.001194 lr=4.520e-05
+epoch=1/1 batch=80/625 loss=0.000381 lr=4.360e-05
+epoch=1/1 batch=100/625 loss=0.001796 lr=4.200e-05
+epoch=1/1 batch=120/625 loss=0.001690 lr=4.040e-05
+epoch=1/1 batch=140/625 loss=0.000514 lr=3.880e-05
+epoch=1/1 batch=160/625 loss=0.004034 lr=3.720e-05
+epoch=1/1 batch=180/625 loss=0.007761 lr=3.560e-05
+epoch=1/1 batch=200/625 loss=0.000292 lr=3.400e-05
+epoch=1/1 batch=220/625 loss=0.000217 lr=3.240e-05
+epoch=1/1 batch=240/625 loss=0.000839 lr=3.080e-05
+epoch=1/1 batch=260/625 loss=0.000402 lr=2.920e-05
+epoch=1/1 batch=280/625 loss=0.000169 lr=2.760e-05
+epoch=1/1 batch=300/625 loss=0.000190 lr=2.600e-05
+epoch=1/1 batch=320/625 loss=0.000074 lr=2.440e-05
+epoch=1/1 batch=340/625 loss=0.000138 lr=2.280e-05
+epoch=1/1 batch=360/625 loss=0.000153 lr=2.120e-05
+epoch=1/1 batch=380/625 loss=0.000112 lr=1.960e-05
+epoch=1/1 batch=400/625 loss=0.000144 lr=1.800e-05
+epoch=1/1 batch=420/625 loss=0.001124 lr=1.640e-05
+epoch=1/1 batch=440/625 loss=0.001119 lr=1.480e-05
+epoch=1/1 batch=460/625 loss=0.000073 lr=1.320e-05
+epoch=1/1 batch=480/625 loss=0.000077 lr=1.160e-05
+epoch=1/1 batch=500/625 loss=0.000317 lr=1.000e-05
+epoch=1/1 batch=520/625 loss=0.000062 lr=8.400e-06
+epoch=1/1 batch=540/625 loss=0.000154 lr=6.800e-06
+epoch=1/1 batch=560/625 loss=0.000057 lr=5.200e-06
+epoch=1/1 batch=580/625 loss=0.000254 lr=3.600e-06
+epoch=1/1 batch=600/625 loss=0.000171 lr=2.000e-06
+epoch=1/1 batch=620/625 loss=0.000064 lr=4.000e-07
+epoch=1 mean_loss=0.001639
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.49it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.49it/s]
+Saved fine-tuned encoder to: models/sweep/lr5e-05_seed46
+Saved training summary to: results/sweep/lr5e-05_seed46_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9804.50it/s]
+--- 26/50 ---
+[run] lr5e-05_seed47: learning_rate=5e-05 seed=47
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8574.31it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr5e-05_seed47
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.022657 lr=4.840e-05
+epoch=1/1 batch=40/625 loss=0.001818 lr=4.680e-05
+epoch=1/1 batch=60/625 loss=0.002450 lr=4.520e-05
+epoch=1/1 batch=80/625 loss=0.004700 lr=4.360e-05
+epoch=1/1 batch=100/625 loss=0.002430 lr=4.200e-05
+epoch=1/1 batch=120/625 loss=0.000368 lr=4.040e-05
+epoch=1/1 batch=140/625 loss=0.006988 lr=3.880e-05
+epoch=1/1 batch=160/625 loss=0.001828 lr=3.720e-05
+epoch=1/1 batch=180/625 loss=0.000238 lr=3.560e-05
+epoch=1/1 batch=200/625 loss=0.000194 lr=3.400e-05
+epoch=1/1 batch=220/625 loss=0.000273 lr=3.240e-05
+epoch=1/1 batch=240/625 loss=0.000143 lr=3.080e-05
+epoch=1/1 batch=260/625 loss=0.000214 lr=2.920e-05
+epoch=1/1 batch=280/625 loss=0.000073 lr=2.760e-05
+epoch=1/1 batch=300/625 loss=0.001191 lr=2.600e-05
+epoch=1/1 batch=320/625 loss=0.001527 lr=2.440e-05
+epoch=1/1 batch=340/625 loss=0.000550 lr=2.280e-05
+epoch=1/1 batch=360/625 loss=0.000255 lr=2.120e-05
+epoch=1/1 batch=380/625 loss=0.000188 lr=1.960e-05
+epoch=1/1 batch=400/625 loss=0.000130 lr=1.800e-05
+epoch=1/1 batch=420/625 loss=0.000106 lr=1.640e-05
+epoch=1/1 batch=440/625 loss=0.000056 lr=1.480e-05
+epoch=1/1 batch=460/625 loss=0.001968 lr=1.320e-05
+epoch=1/1 batch=480/625 loss=0.000052 lr=1.160e-05
+epoch=1/1 batch=500/625 loss=0.004149 lr=1.000e-05
+epoch=1/1 batch=520/625 loss=0.001485 lr=8.400e-06
+epoch=1/1 batch=540/625 loss=0.000081 lr=6.800e-06
+epoch=1/1 batch=560/625 loss=0.001069 lr=5.200e-06
+epoch=1/1 batch=580/625 loss=0.000120 lr=3.600e-06
+epoch=1/1 batch=600/625 loss=0.000095 lr=2.000e-06
+epoch=1/1 batch=620/625 loss=0.001486 lr=4.000e-07
+epoch=1 mean_loss=0.001885
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.92it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.91it/s]
+Saved fine-tuned encoder to: models/sweep/lr5e-05_seed47
+Saved training summary to: results/sweep/lr5e-05_seed47_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8370.10it/s]
+--- 27/50 ---
+[run] lr5e-05_seed48: learning_rate=5e-05 seed=48
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7060.58it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr5e-05_seed48
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.030485 lr=4.840e-05
+epoch=1/1 batch=40/625 loss=0.005544 lr=4.680e-05
+epoch=1/1 batch=60/625 loss=0.007904 lr=4.520e-05
+epoch=1/1 batch=80/625 loss=0.000383 lr=4.360e-05
+epoch=1/1 batch=100/625 loss=0.003592 lr=4.200e-05
+epoch=1/1 batch=120/625 loss=0.000773 lr=4.040e-05
+epoch=1/1 batch=140/625 loss=0.000518 lr=3.880e-05
+epoch=1/1 batch=160/625 loss=0.000348 lr=3.720e-05
+epoch=1/1 batch=180/625 loss=0.000126 lr=3.560e-05
+epoch=1/1 batch=200/625 loss=0.000212 lr=3.400e-05
+epoch=1/1 batch=220/625 loss=0.000280 lr=3.240e-05
+epoch=1/1 batch=240/625 loss=0.000333 lr=3.080e-05
+epoch=1/1 batch=260/625 loss=0.000088 lr=2.920e-05
+epoch=1/1 batch=280/625 loss=0.000115 lr=2.760e-05
+epoch=1/1 batch=300/625 loss=0.000094 lr=2.600e-05
+epoch=1/1 batch=320/625 loss=0.000205 lr=2.440e-05
+epoch=1/1 batch=340/625 loss=0.000093 lr=2.280e-05
+epoch=1/1 batch=360/625 loss=0.004720 lr=2.120e-05
+epoch=1/1 batch=380/625 loss=0.000350 lr=1.960e-05
+epoch=1/1 batch=400/625 loss=0.004457 lr=1.800e-05
+epoch=1/1 batch=420/625 loss=0.000083 lr=1.640e-05
+epoch=1/1 batch=440/625 loss=0.000136 lr=1.480e-05
+epoch=1/1 batch=460/625 loss=0.000090 lr=1.320e-05
+epoch=1/1 batch=480/625 loss=0.000079 lr=1.160e-05
+epoch=1/1 batch=500/625 loss=0.000115 lr=1.000e-05
+epoch=1/1 batch=520/625 loss=0.000845 lr=8.400e-06
+epoch=1/1 batch=540/625 loss=0.001264 lr=6.800e-06
+epoch=1/1 batch=560/625 loss=0.000617 lr=5.200e-06
+epoch=1/1 batch=580/625 loss=0.000070 lr=3.600e-06
+epoch=1/1 batch=600/625 loss=0.000102 lr=2.000e-06
+epoch=1/1 batch=620/625 loss=0.000075 lr=4.000e-07
+epoch=1 mean_loss=0.002052
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.11it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.10it/s]
+Saved fine-tuned encoder to: models/sweep/lr5e-05_seed48
+Saved training summary to: results/sweep/lr5e-05_seed48_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7488.22it/s]
+--- 28/50 ---
+[run] lr5e-05_seed49: learning_rate=5e-05 seed=49
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8783.47it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr5e-05_seed49
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.030596 lr=4.840e-05
+epoch=1/1 batch=40/625 loss=0.007191 lr=4.680e-05
+epoch=1/1 batch=60/625 loss=0.002396 lr=4.520e-05
+epoch=1/1 batch=80/625 loss=0.003240 lr=4.360e-05
+epoch=1/1 batch=100/625 loss=0.004383 lr=4.200e-05
+epoch=1/1 batch=120/625 loss=0.001034 lr=4.040e-05
+epoch=1/1 batch=140/625 loss=0.002452 lr=3.880e-05
+epoch=1/1 batch=160/625 loss=0.000968 lr=3.720e-05
+epoch=1/1 batch=180/625 loss=0.000372 lr=3.560e-05
+epoch=1/1 batch=200/625 loss=0.004395 lr=3.400e-05
+epoch=1/1 batch=220/625 loss=0.000328 lr=3.240e-05
+epoch=1/1 batch=240/625 loss=0.000156 lr=3.080e-05
+epoch=1/1 batch=260/625 loss=0.000843 lr=2.920e-05
+epoch=1/1 batch=280/625 loss=0.001014 lr=2.760e-05
+epoch=1/1 batch=300/625 loss=0.007929 lr=2.600e-05
+epoch=1/1 batch=320/625 loss=0.000104 lr=2.440e-05
+epoch=1/1 batch=340/625 loss=0.000112 lr=2.280e-05
+epoch=1/1 batch=360/625 loss=0.000451 lr=2.120e-05
+epoch=1/1 batch=380/625 loss=0.000109 lr=1.960e-05
+epoch=1/1 batch=400/625 loss=0.000093 lr=1.800e-05
+epoch=1/1 batch=420/625 loss=0.000117 lr=1.640e-05
+epoch=1/1 batch=440/625 loss=0.000558 lr=1.480e-05
+epoch=1/1 batch=460/625 loss=0.000164 lr=1.320e-05
+epoch=1/1 batch=480/625 loss=0.000076 lr=1.160e-05
+epoch=1/1 batch=500/625 loss=0.000072 lr=1.000e-05
+epoch=1/1 batch=520/625 loss=0.000112 lr=8.400e-06
+epoch=1/1 batch=540/625 loss=0.000084 lr=6.800e-06
+epoch=1/1 batch=560/625 loss=0.000074 lr=5.200e-06
+epoch=1/1 batch=580/625 loss=0.003623 lr=3.600e-06
+epoch=1/1 batch=600/625 loss=0.001951 lr=2.000e-06
+epoch=1/1 batch=620/625 loss=0.000054 lr=4.000e-07
+epoch=1 mean_loss=0.002403
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.26it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.26it/s]
+Saved fine-tuned encoder to: models/sweep/lr5e-05_seed49
+Saved training summary to: results/sweep/lr5e-05_seed49_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9079.27it/s]
+--- 29/50 ---
+[run] lr5e-05_seed50: learning_rate=5e-05 seed=50
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7436.44it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr5e-05_seed50
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.021362 lr=4.840e-05
+epoch=1/1 batch=40/625 loss=0.005329 lr=4.680e-05
+epoch=1/1 batch=60/625 loss=0.007274 lr=4.520e-05
+epoch=1/1 batch=80/625 loss=0.003488 lr=4.360e-05
+epoch=1/1 batch=100/625 loss=0.000395 lr=4.200e-05
+epoch=1/1 batch=120/625 loss=0.000218 lr=4.040e-05
+epoch=1/1 batch=140/625 loss=0.000600 lr=3.880e-05
+epoch=1/1 batch=160/625 loss=0.000498 lr=3.720e-05
+epoch=1/1 batch=180/625 loss=0.001323 lr=3.560e-05
+epoch=1/1 batch=200/625 loss=0.000297 lr=3.400e-05
+epoch=1/1 batch=220/625 loss=0.000388 lr=3.240e-05
+epoch=1/1 batch=240/625 loss=0.000180 lr=3.080e-05
+epoch=1/1 batch=260/625 loss=0.000170 lr=2.920e-05
+epoch=1/1 batch=280/625 loss=0.000095 lr=2.760e-05
+epoch=1/1 batch=300/625 loss=0.005588 lr=2.600e-05
+epoch=1/1 batch=320/625 loss=0.000146 lr=2.440e-05
+epoch=1/1 batch=340/625 loss=0.000108 lr=2.280e-05
+epoch=1/1 batch=360/625 loss=0.000111 lr=2.120e-05
+epoch=1/1 batch=380/625 loss=0.000417 lr=1.960e-05
+epoch=1/1 batch=400/625 loss=0.000384 lr=1.800e-05
+epoch=1/1 batch=420/625 loss=0.000126 lr=1.640e-05
+epoch=1/1 batch=440/625 loss=0.000127 lr=1.480e-05
+epoch=1/1 batch=460/625 loss=0.002264 lr=1.320e-05
+epoch=1/1 batch=480/625 loss=0.001611 lr=1.160e-05
+epoch=1/1 batch=500/625 loss=0.000476 lr=1.000e-05
+epoch=1/1 batch=520/625 loss=0.002702 lr=8.400e-06
+epoch=1/1 batch=540/625 loss=0.005189 lr=6.800e-06
+epoch=1/1 batch=560/625 loss=0.000177 lr=5.200e-06
+epoch=1/1 batch=580/625 loss=0.000209 lr=3.600e-06
+epoch=1/1 batch=600/625 loss=0.003789 lr=2.000e-06
+epoch=1/1 batch=620/625 loss=0.000092 lr=4.000e-07
+epoch=1 mean_loss=0.002085
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.14it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.13it/s]
+Saved fine-tuned encoder to: models/sweep/lr5e-05_seed50
+Saved training summary to: results/sweep/lr5e-05_seed50_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9359.35it/s]
+--- 30/50 ---
+[run] lr5e-05_seed51: learning_rate=5e-05 seed=51
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3086.66it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr5e-05_seed51
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.018175 lr=4.840e-05
+epoch=1/1 batch=40/625 loss=0.001233 lr=4.680e-05
+epoch=1/1 batch=60/625 loss=0.001445 lr=4.520e-05
+epoch=1/1 batch=80/625 loss=0.011403 lr=4.360e-05
+epoch=1/1 batch=100/625 loss=0.003560 lr=4.200e-05
+epoch=1/1 batch=120/625 loss=0.000833 lr=4.040e-05
+epoch=1/1 batch=140/625 loss=0.000220 lr=3.880e-05
+epoch=1/1 batch=160/625 loss=0.000883 lr=3.720e-05
+epoch=1/1 batch=180/625 loss=0.000602 lr=3.560e-05
+epoch=1/1 batch=200/625 loss=0.002884 lr=3.400e-05
+epoch=1/1 batch=220/625 loss=0.000310 lr=3.240e-05
+epoch=1/1 batch=240/625 loss=0.000253 lr=3.080e-05
+epoch=1/1 batch=260/625 loss=0.000087 lr=2.920e-05
+epoch=1/1 batch=280/625 loss=0.004629 lr=2.760e-05
+epoch=1/1 batch=300/625 loss=0.000190 lr=2.600e-05
+epoch=1/1 batch=320/625 loss=0.000271 lr=2.440e-05
+epoch=1/1 batch=340/625 loss=0.000086 lr=2.280e-05
+epoch=1/1 batch=360/625 loss=0.000082 lr=2.120e-05
+epoch=1/1 batch=380/625 loss=0.000047 lr=1.960e-05
+epoch=1/1 batch=400/625 loss=0.004413 lr=1.800e-05
+epoch=1/1 batch=420/625 loss=0.000122 lr=1.640e-05
+epoch=1/1 batch=440/625 loss=0.000136 lr=1.480e-05
+epoch=1/1 batch=460/625 loss=0.000168 lr=1.320e-05
+epoch=1/1 batch=480/625 loss=0.000066 lr=1.160e-05
+epoch=1/1 batch=500/625 loss=0.001298 lr=1.000e-05
+epoch=1/1 batch=520/625 loss=0.000103 lr=8.400e-06
+epoch=1/1 batch=540/625 loss=0.000132 lr=6.800e-06
+epoch=1/1 batch=560/625 loss=0.000044 lr=5.200e-06
+epoch=1/1 batch=580/625 loss=0.000079 lr=3.600e-06
+epoch=1/1 batch=600/625 loss=0.000086 lr=2.000e-06
+epoch=1/1 batch=620/625 loss=0.000634 lr=4.000e-07
+epoch=1 mean_loss=0.001764
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.12it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.12it/s]
+Saved fine-tuned encoder to: models/sweep/lr5e-05_seed51
+Saved training summary to: results/sweep/lr5e-05_seed51_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8778.11it/s]
+--- 31/50 ---
+[run] lr7e-05_seed42: learning_rate=7e-05 seed=42
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7551.63it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr7e-05_seed42
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.026795 lr=6.776e-05
+epoch=1/1 batch=40/625 loss=0.008624 lr=6.552e-05
+epoch=1/1 batch=60/625 loss=0.000914 lr=6.328e-05
+epoch=1/1 batch=80/625 loss=0.000500 lr=6.104e-05
+epoch=1/1 batch=100/625 loss=0.000275 lr=5.880e-05
+epoch=1/1 batch=120/625 loss=0.001960 lr=5.656e-05
+epoch=1/1 batch=140/625 loss=0.000174 lr=5.432e-05
+epoch=1/1 batch=160/625 loss=0.000661 lr=5.208e-05
+epoch=1/1 batch=180/625 loss=0.000167 lr=4.984e-05
+epoch=1/1 batch=200/625 loss=0.000125 lr=4.760e-05
+epoch=1/1 batch=220/625 loss=0.000529 lr=4.536e-05
+epoch=1/1 batch=240/625 loss=0.000183 lr=4.312e-05
+epoch=1/1 batch=260/625 loss=0.000132 lr=4.088e-05
+epoch=1/1 batch=280/625 loss=0.000065 lr=3.864e-05
+epoch=1/1 batch=300/625 loss=0.000070 lr=3.640e-05
+epoch=1/1 batch=320/625 loss=0.001693 lr=3.416e-05
+epoch=1/1 batch=340/625 loss=0.000133 lr=3.192e-05
+epoch=1/1 batch=360/625 loss=0.000097 lr=2.968e-05
+epoch=1/1 batch=380/625 loss=0.000058 lr=2.744e-05
+epoch=1/1 batch=400/625 loss=0.000044 lr=2.520e-05
+epoch=1/1 batch=420/625 loss=0.000803 lr=2.296e-05
+epoch=1/1 batch=440/625 loss=0.000165 lr=2.072e-05
+epoch=1/1 batch=460/625 loss=0.000089 lr=1.848e-05
+epoch=1/1 batch=480/625 loss=0.006171 lr=1.624e-05
+epoch=1/1 batch=500/625 loss=0.000086 lr=1.400e-05
+epoch=1/1 batch=520/625 loss=0.000125 lr=1.176e-05
+epoch=1/1 batch=540/625 loss=0.000150 lr=9.520e-06
+epoch=1/1 batch=560/625 loss=0.000062 lr=7.280e-06
+epoch=1/1 batch=580/625 loss=0.000045 lr=5.040e-06
+epoch=1/1 batch=600/625 loss=0.000178 lr=2.800e-06
+epoch=1/1 batch=620/625 loss=0.000062 lr=5.600e-07
+epoch=1 mean_loss=0.001637
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.19it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.19it/s]
+Saved fine-tuned encoder to: models/sweep/lr7e-05_seed42
+Saved training summary to: results/sweep/lr7e-05_seed42_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8138.72it/s]
+--- 32/50 ---
+[run] lr7e-05_seed43: learning_rate=7e-05 seed=43
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7755.54it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr7e-05_seed43
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.058232 lr=6.776e-05
+epoch=1/1 batch=40/625 loss=0.009610 lr=6.552e-05
+epoch=1/1 batch=60/625 loss=0.003279 lr=6.328e-05
+epoch=1/1 batch=80/625 loss=0.000366 lr=6.104e-05
+epoch=1/1 batch=100/625 loss=0.000884 lr=5.880e-05
+epoch=1/1 batch=120/625 loss=0.001636 lr=5.656e-05
+epoch=1/1 batch=140/625 loss=0.002198 lr=5.432e-05
+epoch=1/1 batch=160/625 loss=0.005058 lr=5.208e-05
+epoch=1/1 batch=180/625 loss=0.000770 lr=4.984e-05
+epoch=1/1 batch=200/625 loss=0.000445 lr=4.760e-05
+epoch=1/1 batch=220/625 loss=0.000408 lr=4.536e-05
+epoch=1/1 batch=240/625 loss=0.000423 lr=4.312e-05
+epoch=1/1 batch=260/625 loss=0.000174 lr=4.088e-05
+epoch=1/1 batch=280/625 loss=0.000106 lr=3.864e-05
+epoch=1/1 batch=300/625 loss=0.000065 lr=3.640e-05
+epoch=1/1 batch=320/625 loss=0.000197 lr=3.416e-05
+epoch=1/1 batch=340/625 loss=0.000131 lr=3.192e-05
+epoch=1/1 batch=360/625 loss=0.000263 lr=2.968e-05
+epoch=1/1 batch=380/625 loss=0.000318 lr=2.744e-05
+epoch=1/1 batch=400/625 loss=0.000313 lr=2.520e-05
+epoch=1/1 batch=420/625 loss=0.000525 lr=2.296e-05
+epoch=1/1 batch=440/625 loss=0.000611 lr=2.072e-05
+epoch=1/1 batch=460/625 loss=0.000110 lr=1.848e-05
+epoch=1/1 batch=480/625 loss=0.000154 lr=1.624e-05
+epoch=1/1 batch=500/625 loss=0.000641 lr=1.400e-05
+epoch=1/1 batch=520/625 loss=0.000127 lr=1.176e-05
+epoch=1/1 batch=540/625 loss=0.000278 lr=9.520e-06
+epoch=1/1 batch=560/625 loss=0.000614 lr=7.280e-06
+epoch=1/1 batch=580/625 loss=0.002055 lr=5.040e-06
+epoch=1/1 batch=600/625 loss=0.000063 lr=2.800e-06
+epoch=1/1 batch=620/625 loss=0.000061 lr=5.600e-07
+epoch=1 mean_loss=0.002884
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.26it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.26it/s]
+Saved fine-tuned encoder to: models/sweep/lr7e-05_seed43
+Saved training summary to: results/sweep/lr7e-05_seed43_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9620.07it/s]
+--- 33/50 ---
+[run] lr7e-05_seed44: learning_rate=7e-05 seed=44
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9615.42it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr7e-05_seed44
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.040089 lr=6.776e-05
+epoch=1/1 batch=40/625 loss=0.000944 lr=6.552e-05
+epoch=1/1 batch=60/625 loss=0.001887 lr=6.328e-05
+epoch=1/1 batch=80/625 loss=0.001381 lr=6.104e-05
+epoch=1/1 batch=100/625 loss=0.000909 lr=5.880e-05
+epoch=1/1 batch=120/625 loss=0.008873 lr=5.656e-05
+epoch=1/1 batch=140/625 loss=0.000284 lr=5.432e-05
+epoch=1/1 batch=160/625 loss=0.000123 lr=5.208e-05
+epoch=1/1 batch=180/625 loss=0.000066 lr=4.984e-05
+epoch=1/1 batch=200/625 loss=0.000188 lr=4.760e-05
+epoch=1/1 batch=220/625 loss=0.000167 lr=4.536e-05
+epoch=1/1 batch=240/625 loss=0.004451 lr=4.312e-05
+epoch=1/1 batch=260/625 loss=0.000604 lr=4.088e-05
+epoch=1/1 batch=280/625 loss=0.000167 lr=3.864e-05
+epoch=1/1 batch=300/625 loss=0.000310 lr=3.640e-05
+epoch=1/1 batch=320/625 loss=0.002803 lr=3.416e-05
+epoch=1/1 batch=340/625 loss=0.000640 lr=3.192e-05
+epoch=1/1 batch=360/625 loss=0.000582 lr=2.968e-05
+epoch=1/1 batch=380/625 loss=0.000137 lr=2.744e-05
+epoch=1/1 batch=400/625 loss=0.004423 lr=2.520e-05
+epoch=1/1 batch=420/625 loss=0.000107 lr=2.296e-05
+epoch=1/1 batch=440/625 loss=0.001216 lr=2.072e-05
+epoch=1/1 batch=460/625 loss=0.000122 lr=1.848e-05
+epoch=1/1 batch=480/625 loss=0.000175 lr=1.624e-05
+epoch=1/1 batch=500/625 loss=0.003600 lr=1.400e-05
+epoch=1/1 batch=520/625 loss=0.000282 lr=1.176e-05
+epoch=1/1 batch=540/625 loss=0.000158 lr=9.520e-06
+epoch=1/1 batch=560/625 loss=0.000786 lr=7.280e-06
+epoch=1/1 batch=580/625 loss=0.000883 lr=5.040e-06
+epoch=1/1 batch=600/625 loss=0.002246 lr=2.800e-06
+epoch=1/1 batch=620/625 loss=0.000165 lr=5.600e-07
+epoch=1 mean_loss=0.002522
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.28it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.28it/s]
+Saved fine-tuned encoder to: models/sweep/lr7e-05_seed44
+Saved training summary to: results/sweep/lr7e-05_seed44_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9329.22it/s]
+--- 34/50 ---
+[run] lr7e-05_seed45: learning_rate=7e-05 seed=45
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4910.29it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr7e-05_seed45
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.035203 lr=6.776e-05
+epoch=1/1 batch=40/625 loss=0.007033 lr=6.552e-05
+epoch=1/1 batch=60/625 loss=0.005497 lr=6.328e-05
+epoch=1/1 batch=80/625 loss=0.000685 lr=6.104e-05
+epoch=1/1 batch=100/625 loss=0.004593 lr=5.880e-05
+epoch=1/1 batch=120/625 loss=0.000884 lr=5.656e-05
+epoch=1/1 batch=140/625 loss=0.002002 lr=5.432e-05
+epoch=1/1 batch=160/625 loss=0.000508 lr=5.208e-05
+epoch=1/1 batch=180/625 loss=0.001217 lr=4.984e-05
+epoch=1/1 batch=200/625 loss=0.000256 lr=4.760e-05
+epoch=1/1 batch=220/625 loss=0.001303 lr=4.536e-05
+epoch=1/1 batch=240/625 loss=0.001756 lr=4.312e-05
+epoch=1/1 batch=260/625 loss=0.002520 lr=4.088e-05
+epoch=1/1 batch=280/625 loss=0.000149 lr=3.864e-05
+epoch=1/1 batch=300/625 loss=0.000268 lr=3.640e-05
+epoch=1/1 batch=320/625 loss=0.000342 lr=3.416e-05
+epoch=1/1 batch=340/625 loss=0.000180 lr=3.192e-05
+epoch=1/1 batch=360/625 loss=0.002840 lr=2.968e-05
+epoch=1/1 batch=380/625 loss=0.000151 lr=2.744e-05
+epoch=1/1 batch=400/625 loss=0.000100 lr=2.520e-05
+epoch=1/1 batch=420/625 loss=0.000167 lr=2.296e-05
+epoch=1/1 batch=440/625 loss=0.000097 lr=2.072e-05
+epoch=1/1 batch=460/625 loss=0.000053 lr=1.848e-05
+epoch=1/1 batch=480/625 loss=0.000066 lr=1.624e-05
+epoch=1/1 batch=500/625 loss=0.000078 lr=1.400e-05
+epoch=1/1 batch=520/625 loss=0.000925 lr=1.176e-05
+epoch=1/1 batch=540/625 loss=0.000077 lr=9.520e-06
+epoch=1/1 batch=560/625 loss=0.000089 lr=7.280e-06
+epoch=1/1 batch=580/625 loss=0.000986 lr=5.040e-06
+epoch=1/1 batch=600/625 loss=0.000083 lr=2.800e-06
+epoch=1/1 batch=620/625 loss=0.000124 lr=5.600e-07
+epoch=1 mean_loss=0.002248
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.87it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.87it/s]
+Saved fine-tuned encoder to: models/sweep/lr7e-05_seed45
+Saved training summary to: results/sweep/lr7e-05_seed45_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8893.91it/s]
+--- 35/50 ---
+[run] lr7e-05_seed46: learning_rate=7e-05 seed=46
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8888.70it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr7e-05_seed46
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.027230 lr=6.776e-05
+epoch=1/1 batch=40/625 loss=0.000808 lr=6.552e-05
+epoch=1/1 batch=60/625 loss=0.000786 lr=6.328e-05
+epoch=1/1 batch=80/625 loss=0.000226 lr=6.104e-05
+epoch=1/1 batch=100/625 loss=0.002623 lr=5.880e-05
+epoch=1/1 batch=120/625 loss=0.000786 lr=5.656e-05
+epoch=1/1 batch=140/625 loss=0.000247 lr=5.432e-05
+epoch=1/1 batch=160/625 loss=0.005872 lr=5.208e-05
+epoch=1/1 batch=180/625 loss=0.007858 lr=4.984e-05
+epoch=1/1 batch=200/625 loss=0.000426 lr=4.760e-05
+epoch=1/1 batch=220/625 loss=0.000323 lr=4.536e-05
+epoch=1/1 batch=240/625 loss=0.000184 lr=4.312e-05
+epoch=1/1 batch=260/625 loss=0.000314 lr=4.088e-05
+epoch=1/1 batch=280/625 loss=0.000175 lr=3.864e-05
+epoch=1/1 batch=300/625 loss=0.000115 lr=3.640e-05
+epoch=1/1 batch=320/625 loss=0.000061 lr=3.416e-05
+epoch=1/1 batch=340/625 loss=0.000121 lr=3.192e-05
+epoch=1/1 batch=360/625 loss=0.000076 lr=2.968e-05
+epoch=1/1 batch=380/625 loss=0.000053 lr=2.744e-05
+epoch=1/1 batch=400/625 loss=0.000048 lr=2.520e-05
+epoch=1/1 batch=420/625 loss=0.000138 lr=2.296e-05
+epoch=1/1 batch=440/625 loss=0.001789 lr=2.072e-05
+epoch=1/1 batch=460/625 loss=0.000120 lr=1.848e-05
+epoch=1/1 batch=480/625 loss=0.000076 lr=1.624e-05
+epoch=1/1 batch=500/625 loss=0.000220 lr=1.400e-05
+epoch=1/1 batch=520/625 loss=0.000088 lr=1.176e-05
+epoch=1/1 batch=540/625 loss=0.000045 lr=9.520e-06
+epoch=1/1 batch=560/625 loss=0.000088 lr=7.280e-06
+epoch=1/1 batch=580/625 loss=0.000445 lr=5.040e-06
+epoch=1/1 batch=600/625 loss=0.000108 lr=2.800e-06
+epoch=1/1 batch=620/625 loss=0.000048 lr=5.600e-07
+epoch=1 mean_loss=0.001648
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.74it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.73it/s]
+Saved fine-tuned encoder to: models/sweep/lr7e-05_seed46
+Saved training summary to: results/sweep/lr7e-05_seed46_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9067.24it/s]
+--- 36/50 ---
+[run] lr7e-05_seed47: learning_rate=7e-05 seed=47
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8560.68it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr7e-05_seed47
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.021872 lr=6.776e-05
+epoch=1/1 batch=40/625 loss=0.001753 lr=6.552e-05
+epoch=1/1 batch=60/625 loss=0.001943 lr=6.328e-05
+epoch=1/1 batch=80/625 loss=0.005916 lr=6.104e-05
+epoch=1/1 batch=100/625 loss=0.001819 lr=5.880e-05
+epoch=1/1 batch=120/625 loss=0.002494 lr=5.656e-05
+epoch=1/1 batch=140/625 loss=0.005535 lr=5.432e-05
+epoch=1/1 batch=160/625 loss=0.001621 lr=5.208e-05
+epoch=1/1 batch=180/625 loss=0.000218 lr=4.984e-05
+epoch=1/1 batch=200/625 loss=0.000139 lr=4.760e-05
+epoch=1/1 batch=220/625 loss=0.000368 lr=4.536e-05
+epoch=1/1 batch=240/625 loss=0.000151 lr=4.312e-05
+epoch=1/1 batch=260/625 loss=0.000142 lr=4.088e-05
+epoch=1/1 batch=280/625 loss=0.000053 lr=3.864e-05
+epoch=1/1 batch=300/625 loss=0.000898 lr=3.640e-05
+epoch=1/1 batch=320/625 loss=0.001028 lr=3.416e-05
+epoch=1/1 batch=340/625 loss=0.000638 lr=3.192e-05
+epoch=1/1 batch=360/625 loss=0.000193 lr=2.968e-05
+epoch=1/1 batch=380/625 loss=0.000173 lr=2.744e-05
+epoch=1/1 batch=400/625 loss=0.000110 lr=2.520e-05
+epoch=1/1 batch=420/625 loss=0.000295 lr=2.296e-05
+epoch=1/1 batch=440/625 loss=0.000112 lr=2.072e-05
+epoch=1/1 batch=460/625 loss=0.001227 lr=1.848e-05
+epoch=1/1 batch=480/625 loss=0.000044 lr=1.624e-05
+epoch=1/1 batch=500/625 loss=0.005057 lr=1.400e-05
+epoch=1/1 batch=520/625 loss=0.000303 lr=1.176e-05
+epoch=1/1 batch=540/625 loss=0.000051 lr=9.520e-06
+epoch=1/1 batch=560/625 loss=0.000169 lr=7.280e-06
+epoch=1/1 batch=580/625 loss=0.000063 lr=5.040e-06
+epoch=1/1 batch=600/625 loss=0.000063 lr=2.800e-06
+epoch=1/1 batch=620/625 loss=0.000267 lr=5.600e-07
+epoch=1 mean_loss=0.001751
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.43it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.43it/s]
+Saved fine-tuned encoder to: models/sweep/lr7e-05_seed47
+Saved training summary to: results/sweep/lr7e-05_seed47_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8877.92it/s]
+--- 37/50 ---
+[run] lr7e-05_seed48: learning_rate=7e-05 seed=48
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2644.48it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr7e-05_seed48
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.032710 lr=6.776e-05
+epoch=1/1 batch=40/625 loss=0.010129 lr=6.552e-05
+epoch=1/1 batch=60/625 loss=0.005451 lr=6.328e-05
+epoch=1/1 batch=80/625 loss=0.000256 lr=6.104e-05
+epoch=1/1 batch=100/625 loss=0.001847 lr=5.880e-05
+epoch=1/1 batch=120/625 loss=0.000547 lr=5.656e-05
+epoch=1/1 batch=140/625 loss=0.000567 lr=5.432e-05
+epoch=1/1 batch=160/625 loss=0.000359 lr=5.208e-05
+epoch=1/1 batch=180/625 loss=0.000150 lr=4.984e-05
+epoch=1/1 batch=200/625 loss=0.000177 lr=4.760e-05
+epoch=1/1 batch=220/625 loss=0.000164 lr=4.536e-05
+epoch=1/1 batch=240/625 loss=0.000651 lr=4.312e-05
+epoch=1/1 batch=260/625 loss=0.000088 lr=4.088e-05
+epoch=1/1 batch=280/625 loss=0.000110 lr=3.864e-05
+epoch=1/1 batch=300/625 loss=0.000068 lr=3.640e-05
+epoch=1/1 batch=320/625 loss=0.000133 lr=3.416e-05
+epoch=1/1 batch=340/625 loss=0.000050 lr=3.192e-05
+epoch=1/1 batch=360/625 loss=0.005163 lr=2.968e-05
+epoch=1/1 batch=380/625 loss=0.000179 lr=2.744e-05
+epoch=1/1 batch=400/625 loss=0.004336 lr=2.520e-05
+epoch=1/1 batch=420/625 loss=0.000078 lr=2.296e-05
+epoch=1/1 batch=440/625 loss=0.000090 lr=2.072e-05
+epoch=1/1 batch=460/625 loss=0.000081 lr=1.848e-05
+epoch=1/1 batch=480/625 loss=0.000068 lr=1.624e-05
+epoch=1/1 batch=500/625 loss=0.000250 lr=1.400e-05
+epoch=1/1 batch=520/625 loss=0.000585 lr=1.176e-05
+epoch=1/1 batch=540/625 loss=0.000368 lr=9.520e-06
+epoch=1/1 batch=560/625 loss=0.000306 lr=7.280e-06
+epoch=1/1 batch=580/625 loss=0.000079 lr=5.040e-06
+epoch=1/1 batch=600/625 loss=0.000211 lr=2.800e-06
+epoch=1/1 batch=620/625 loss=0.000074 lr=5.600e-07
+epoch=1 mean_loss=0.002091
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.89it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.89it/s]
+Saved fine-tuned encoder to: models/sweep/lr7e-05_seed48
+Saved training summary to: results/sweep/lr7e-05_seed48_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9774.53it/s]
+--- 38/50 ---
+[run] lr7e-05_seed49: learning_rate=7e-05 seed=49
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8311.76it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr7e-05_seed49
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.042350 lr=6.776e-05
+epoch=1/1 batch=40/625 loss=0.006725 lr=6.552e-05
+epoch=1/1 batch=60/625 loss=0.003742 lr=6.328e-05
+epoch=1/1 batch=80/625 loss=0.001464 lr=6.104e-05
+epoch=1/1 batch=100/625 loss=0.004829 lr=5.880e-05
+epoch=1/1 batch=120/625 loss=0.002284 lr=5.656e-05
+epoch=1/1 batch=140/625 loss=0.003585 lr=5.432e-05
+epoch=1/1 batch=160/625 loss=0.000635 lr=5.208e-05
+epoch=1/1 batch=180/625 loss=0.000170 lr=4.984e-05
+epoch=1/1 batch=200/625 loss=0.003816 lr=4.760e-05
+epoch=1/1 batch=220/625 loss=0.000221 lr=4.536e-05
+epoch=1/1 batch=240/625 loss=0.000151 lr=4.312e-05
+epoch=1/1 batch=260/625 loss=0.000251 lr=4.088e-05
+epoch=1/1 batch=280/625 loss=0.002437 lr=3.864e-05
+epoch=1/1 batch=300/625 loss=0.006212 lr=3.640e-05
+epoch=1/1 batch=320/625 loss=0.000177 lr=3.416e-05
+epoch=1/1 batch=340/625 loss=0.000112 lr=3.192e-05
+epoch=1/1 batch=360/625 loss=0.000337 lr=2.968e-05
+epoch=1/1 batch=380/625 loss=0.000148 lr=2.744e-05
+epoch=1/1 batch=400/625 loss=0.000154 lr=2.520e-05
+epoch=1/1 batch=420/625 loss=0.000118 lr=2.296e-05
+epoch=1/1 batch=440/625 loss=0.000714 lr=2.072e-05
+epoch=1/1 batch=460/625 loss=0.000069 lr=1.848e-05
+epoch=1/1 batch=480/625 loss=0.000062 lr=1.624e-05
+epoch=1/1 batch=500/625 loss=0.000054 lr=1.400e-05
+epoch=1/1 batch=520/625 loss=0.000202 lr=1.176e-05
+epoch=1/1 batch=540/625 loss=0.000061 lr=9.520e-06
+epoch=1/1 batch=560/625 loss=0.000061 lr=7.280e-06
+epoch=1/1 batch=580/625 loss=0.004919 lr=5.040e-06
+epoch=1/1 batch=600/625 loss=0.000844 lr=2.800e-06
+epoch=1/1 batch=620/625 loss=0.000066 lr=5.600e-07
+epoch=1 mean_loss=0.002784
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.91it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.91it/s]
+Saved fine-tuned encoder to: models/sweep/lr7e-05_seed49
+Saved training summary to: results/sweep/lr7e-05_seed49_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9597.29it/s]
+--- 39/50 ---
+[run] lr7e-05_seed50: learning_rate=7e-05 seed=50
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8743.81it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr7e-05_seed50
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.023884 lr=6.776e-05
+epoch=1/1 batch=40/625 loss=0.005754 lr=6.552e-05
+epoch=1/1 batch=60/625 loss=0.002452 lr=6.328e-05
+epoch=1/1 batch=80/625 loss=0.001309 lr=6.104e-05
+epoch=1/1 batch=100/625 loss=0.000397 lr=5.880e-05
+epoch=1/1 batch=120/625 loss=0.000311 lr=5.656e-05
+epoch=1/1 batch=140/625 loss=0.000277 lr=5.432e-05
+epoch=1/1 batch=160/625 loss=0.000264 lr=5.208e-05
+epoch=1/1 batch=180/625 loss=0.001135 lr=4.984e-05
+epoch=1/1 batch=200/625 loss=0.000410 lr=4.760e-05
+epoch=1/1 batch=220/625 loss=0.000220 lr=4.536e-05
+epoch=1/1 batch=240/625 loss=0.000201 lr=4.312e-05
+epoch=1/1 batch=260/625 loss=0.000116 lr=4.088e-05
+epoch=1/1 batch=280/625 loss=0.000066 lr=3.864e-05
+epoch=1/1 batch=300/625 loss=0.004334 lr=3.640e-05
+epoch=1/1 batch=320/625 loss=0.000129 lr=3.416e-05
+epoch=1/1 batch=340/625 loss=0.000141 lr=3.192e-05
+epoch=1/1 batch=360/625 loss=0.000173 lr=2.968e-05
+epoch=1/1 batch=380/625 loss=0.000123 lr=2.744e-05
+epoch=1/1 batch=400/625 loss=0.000211 lr=2.520e-05
+epoch=1/1 batch=420/625 loss=0.000068 lr=2.296e-05
+epoch=1/1 batch=440/625 loss=0.000059 lr=2.072e-05
+epoch=1/1 batch=460/625 loss=0.000978 lr=1.848e-05
+epoch=1/1 batch=480/625 loss=0.000460 lr=1.624e-05
+epoch=1/1 batch=500/625 loss=0.000472 lr=1.400e-05
+epoch=1/1 batch=520/625 loss=0.001429 lr=1.176e-05
+epoch=1/1 batch=540/625 loss=0.000119 lr=9.520e-06
+epoch=1/1 batch=560/625 loss=0.000302 lr=7.280e-06
+epoch=1/1 batch=580/625 loss=0.000139 lr=5.040e-06
+epoch=1/1 batch=600/625 loss=0.003683 lr=2.800e-06
+epoch=1/1 batch=620/625 loss=0.000072 lr=5.600e-07
+epoch=1 mean_loss=0.001590
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.44it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.44it/s]
+Saved fine-tuned encoder to: models/sweep/lr7e-05_seed50
+Saved training summary to: results/sweep/lr7e-05_seed50_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7185.43it/s]
+--- 40/50 ---
+[run] lr7e-05_seed51: learning_rate=7e-05 seed=51
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7315.09it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr7e-05_seed51
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.017600 lr=6.776e-05
+epoch=1/1 batch=40/625 loss=0.001089 lr=6.552e-05
+epoch=1/1 batch=60/625 loss=0.000779 lr=6.328e-05
+epoch=1/1 batch=80/625 loss=0.011221 lr=6.104e-05
+epoch=1/1 batch=100/625 loss=0.002324 lr=5.880e-05
+epoch=1/1 batch=120/625 loss=0.001561 lr=5.656e-05
+epoch=1/1 batch=140/625 loss=0.000335 lr=5.432e-05
+epoch=1/1 batch=160/625 loss=0.000656 lr=5.208e-05
+epoch=1/1 batch=180/625 loss=0.000524 lr=4.984e-05
+epoch=1/1 batch=200/625 loss=0.003108 lr=4.760e-05
+epoch=1/1 batch=220/625 loss=0.000387 lr=4.536e-05
+epoch=1/1 batch=240/625 loss=0.000207 lr=4.312e-05
+epoch=1/1 batch=260/625 loss=0.000066 lr=4.088e-05
+epoch=1/1 batch=280/625 loss=0.002825 lr=3.864e-05
+epoch=1/1 batch=300/625 loss=0.000600 lr=3.640e-05
+epoch=1/1 batch=320/625 loss=0.000210 lr=3.416e-05
+epoch=1/1 batch=340/625 loss=0.000083 lr=3.192e-05
+epoch=1/1 batch=360/625 loss=0.000106 lr=2.968e-05
+epoch=1/1 batch=380/625 loss=0.000054 lr=2.744e-05
+epoch=1/1 batch=400/625 loss=0.007034 lr=2.520e-05
+epoch=1/1 batch=420/625 loss=0.000057 lr=2.296e-05
+epoch=1/1 batch=440/625 loss=0.000171 lr=2.072e-05
+epoch=1/1 batch=460/625 loss=0.000104 lr=1.848e-05
+epoch=1/1 batch=480/625 loss=0.000068 lr=1.624e-05
+epoch=1/1 batch=500/625 loss=0.001283 lr=1.400e-05
+epoch=1/1 batch=520/625 loss=0.000071 lr=1.176e-05
+epoch=1/1 batch=540/625 loss=0.000139 lr=9.520e-06
+epoch=1/1 batch=560/625 loss=0.000050 lr=7.280e-06
+epoch=1/1 batch=580/625 loss=0.000053 lr=5.040e-06
+epoch=1/1 batch=600/625 loss=0.000094 lr=2.800e-06
+epoch=1/1 batch=620/625 loss=0.000638 lr=5.600e-07
+epoch=1 mean_loss=0.001749
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.32it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.32it/s]
+Saved fine-tuned encoder to: models/sweep/lr7e-05_seed51
+Saved training summary to: results/sweep/lr7e-05_seed51_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8391.73it/s]
+--- 41/50 ---
+[run] lr0.0001_seed42: learning_rate=0.0001 seed=42
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5655.69it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr0.0001_seed42
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.025922 lr=9.680e-05
+epoch=1/1 batch=40/625 loss=0.008808 lr=9.360e-05
+epoch=1/1 batch=60/625 loss=0.000589 lr=9.040e-05
+epoch=1/1 batch=80/625 loss=0.000721 lr=8.720e-05
+epoch=1/1 batch=100/625 loss=0.000727 lr=8.400e-05
+epoch=1/1 batch=120/625 loss=0.002534 lr=8.080e-05
+epoch=1/1 batch=140/625 loss=0.000122 lr=7.760e-05
+epoch=1/1 batch=160/625 loss=0.001631 lr=7.440e-05
+epoch=1/1 batch=180/625 loss=0.007207 lr=7.120e-05
+epoch=1/1 batch=200/625 loss=0.000335 lr=6.800e-05
+epoch=1/1 batch=220/625 loss=0.000153 lr=6.480e-05
+epoch=1/1 batch=240/625 loss=0.000064 lr=6.160e-05
+epoch=1/1 batch=260/625 loss=0.000069 lr=5.840e-05
+epoch=1/1 batch=280/625 loss=0.000035 lr=5.520e-05
+epoch=1/1 batch=300/625 loss=0.000074 lr=5.200e-05
+epoch=1/1 batch=320/625 loss=0.001217 lr=4.880e-05
+epoch=1/1 batch=340/625 loss=0.000132 lr=4.560e-05
+epoch=1/1 batch=360/625 loss=0.000144 lr=4.240e-05
+epoch=1/1 batch=380/625 loss=0.000056 lr=3.920e-05
+epoch=1/1 batch=400/625 loss=0.000085 lr=3.600e-05
+epoch=1/1 batch=420/625 loss=0.000904 lr=3.280e-05
+epoch=1/1 batch=440/625 loss=0.000176 lr=2.960e-05
+epoch=1/1 batch=460/625 loss=0.000245 lr=2.640e-05
+epoch=1/1 batch=480/625 loss=0.006299 lr=2.320e-05
+epoch=1/1 batch=500/625 loss=0.000086 lr=2.000e-05
+epoch=1/1 batch=520/625 loss=0.000100 lr=1.680e-05
+epoch=1/1 batch=540/625 loss=0.000263 lr=1.360e-05
+epoch=1/1 batch=560/625 loss=0.000054 lr=1.040e-05
+epoch=1/1 batch=580/625 loss=0.000090 lr=7.200e-06
+epoch=1/1 batch=600/625 loss=0.000384 lr=4.000e-06
+epoch=1/1 batch=620/625 loss=0.000045 lr=8.000e-07
+epoch=1 mean_loss=0.001897
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.54it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.53it/s]
+Saved fine-tuned encoder to: models/sweep/lr0.0001_seed42
+Saved training summary to: results/sweep/lr0.0001_seed42_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9159.48it/s]
+--- 42/50 ---
+[run] lr0.0001_seed43: learning_rate=0.0001 seed=43
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8087.46it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr0.0001_seed43
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.053243 lr=9.680e-05
+epoch=1/1 batch=40/625 loss=0.004280 lr=9.360e-05
+epoch=1/1 batch=60/625 loss=0.003172 lr=9.040e-05
+epoch=1/1 batch=80/625 loss=0.000602 lr=8.720e-05
+epoch=1/1 batch=100/625 loss=0.000519 lr=8.400e-05
+epoch=1/1 batch=120/625 loss=0.002988 lr=8.080e-05
+epoch=1/1 batch=140/625 loss=0.000288 lr=7.760e-05
+epoch=1/1 batch=160/625 loss=0.000625 lr=7.440e-05
+epoch=1/1 batch=180/625 loss=0.000205 lr=7.120e-05
+epoch=1/1 batch=200/625 loss=0.000152 lr=6.800e-05
+epoch=1/1 batch=220/625 loss=0.004624 lr=6.480e-05
+epoch=1/1 batch=240/625 loss=0.000464 lr=6.160e-05
+epoch=1/1 batch=260/625 loss=0.000136 lr=5.840e-05
+epoch=1/1 batch=280/625 loss=0.000086 lr=5.520e-05
+epoch=1/1 batch=300/625 loss=0.000027 lr=5.200e-05
+epoch=1/1 batch=320/625 loss=0.000052 lr=4.880e-05
+epoch=1/1 batch=340/625 loss=0.000084 lr=4.560e-05
+epoch=1/1 batch=360/625 loss=0.000031 lr=4.240e-05
+epoch=1/1 batch=380/625 loss=0.000099 lr=3.920e-05
+epoch=1/1 batch=400/625 loss=0.000066 lr=3.600e-05
+epoch=1/1 batch=420/625 loss=0.000076 lr=3.280e-05
+epoch=1/1 batch=440/625 loss=0.000470 lr=2.960e-05
+epoch=1/1 batch=460/625 loss=0.000049 lr=2.640e-05
+epoch=1/1 batch=480/625 loss=0.000085 lr=2.320e-05
+epoch=1/1 batch=500/625 loss=0.000207 lr=2.000e-05
+epoch=1/1 batch=520/625 loss=0.000053 lr=1.680e-05
+epoch=1/1 batch=540/625 loss=0.000092 lr=1.360e-05
+epoch=1/1 batch=560/625 loss=0.000066 lr=1.040e-05
+epoch=1/1 batch=580/625 loss=0.001034 lr=7.200e-06
+epoch=1/1 batch=600/625 loss=0.000051 lr=4.000e-06
+epoch=1/1 batch=620/625 loss=0.000029 lr=8.000e-07
+epoch=1 mean_loss=0.002367
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.10it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.10it/s]
+Saved fine-tuned encoder to: models/sweep/lr0.0001_seed43
+Saved training summary to: results/sweep/lr0.0001_seed43_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8004.86it/s]
+--- 43/50 ---
+[run] lr0.0001_seed44: learning_rate=0.0001 seed=44
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7288.84it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr0.0001_seed44
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.040333 lr=9.680e-05
+epoch=1/1 batch=40/625 loss=0.000803 lr=9.360e-05
+epoch=1/1 batch=60/625 loss=0.002769 lr=9.040e-05
+epoch=1/1 batch=80/625 loss=0.000735 lr=8.720e-05
+epoch=1/1 batch=100/625 loss=0.000731 lr=8.400e-05
+epoch=1/1 batch=120/625 loss=0.003915 lr=8.080e-05
+epoch=1/1 batch=140/625 loss=0.000262 lr=7.760e-05
+epoch=1/1 batch=160/625 loss=0.000249 lr=7.440e-05
+epoch=1/1 batch=180/625 loss=0.000075 lr=7.120e-05
+epoch=1/1 batch=200/625 loss=0.000085 lr=6.800e-05
+epoch=1/1 batch=220/625 loss=0.000116 lr=6.480e-05
+epoch=1/1 batch=240/625 loss=0.001388 lr=6.160e-05
+epoch=1/1 batch=260/625 loss=0.000328 lr=5.840e-05
+epoch=1/1 batch=280/625 loss=0.000139 lr=5.520e-05
+epoch=1/1 batch=300/625 loss=0.000231 lr=5.200e-05
+epoch=1/1 batch=320/625 loss=0.000567 lr=4.880e-05
+epoch=1/1 batch=340/625 loss=0.000710 lr=4.560e-05
+epoch=1/1 batch=360/625 loss=0.000645 lr=4.240e-05
+epoch=1/1 batch=380/625 loss=0.000105 lr=3.920e-05
+epoch=1/1 batch=400/625 loss=0.004610 lr=3.600e-05
+epoch=1/1 batch=420/625 loss=0.000105 lr=3.280e-05
+epoch=1/1 batch=440/625 loss=0.000208 lr=2.960e-05
+epoch=1/1 batch=460/625 loss=0.000213 lr=2.640e-05
+epoch=1/1 batch=480/625 loss=0.000253 lr=2.320e-05
+epoch=1/1 batch=500/625 loss=0.003122 lr=2.000e-05
+epoch=1/1 batch=520/625 loss=0.000245 lr=1.680e-05
+epoch=1/1 batch=540/625 loss=0.000136 lr=1.360e-05
+epoch=1/1 batch=560/625 loss=0.001743 lr=1.040e-05
+epoch=1/1 batch=580/625 loss=0.000617 lr=7.200e-06
+epoch=1/1 batch=600/625 loss=0.003705 lr=4.000e-06
+epoch=1/1 batch=620/625 loss=0.000151 lr=8.000e-07
+epoch=1 mean_loss=0.002220
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.56it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.56it/s]
+Saved fine-tuned encoder to: models/sweep/lr0.0001_seed44
+Saved training summary to: results/sweep/lr0.0001_seed44_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9435.74it/s]
+--- 44/50 ---
+[run] lr0.0001_seed45: learning_rate=0.0001 seed=45
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4708.85it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr0.0001_seed45
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.035069 lr=9.680e-05
+epoch=1/1 batch=40/625 loss=0.014491 lr=9.360e-05
+epoch=1/1 batch=60/625 loss=0.011178 lr=9.040e-05
+epoch=1/1 batch=80/625 loss=0.001795 lr=8.720e-05
+epoch=1/1 batch=100/625 loss=0.003639 lr=8.400e-05
+epoch=1/1 batch=120/625 loss=0.000578 lr=8.080e-05
+epoch=1/1 batch=140/625 loss=0.000193 lr=7.760e-05
+epoch=1/1 batch=160/625 loss=0.000333 lr=7.440e-05
+epoch=1/1 batch=180/625 loss=0.000591 lr=7.120e-05
+epoch=1/1 batch=200/625 loss=0.000183 lr=6.800e-05
+epoch=1/1 batch=220/625 loss=0.000198 lr=6.480e-05
+epoch=1/1 batch=240/625 loss=0.000212 lr=6.160e-05
+epoch=1/1 batch=260/625 loss=0.004395 lr=5.840e-05
+epoch=1/1 batch=280/625 loss=0.000141 lr=5.520e-05
+epoch=1/1 batch=300/625 loss=0.000163 lr=5.200e-05
+epoch=1/1 batch=320/625 loss=0.000098 lr=4.880e-05
+epoch=1/1 batch=340/625 loss=0.000093 lr=4.560e-05
+epoch=1/1 batch=360/625 loss=0.002843 lr=4.240e-05
+epoch=1/1 batch=380/625 loss=0.000125 lr=3.920e-05
+epoch=1/1 batch=400/625 loss=0.000217 lr=3.600e-05
+epoch=1/1 batch=420/625 loss=0.000784 lr=3.280e-05
+epoch=1/1 batch=440/625 loss=0.000282 lr=2.960e-05
+epoch=1/1 batch=460/625 loss=0.000138 lr=2.640e-05
+epoch=1/1 batch=480/625 loss=0.000095 lr=2.320e-05
+epoch=1/1 batch=500/625 loss=0.000127 lr=2.000e-05
+epoch=1/1 batch=520/625 loss=0.000206 lr=1.680e-05
+epoch=1/1 batch=540/625 loss=0.000064 lr=1.360e-05
+epoch=1/1 batch=560/625 loss=0.000118 lr=1.040e-05
+epoch=1/1 batch=580/625 loss=0.000111 lr=7.200e-06
+epoch=1/1 batch=600/625 loss=0.000042 lr=4.000e-06
+epoch=1/1 batch=620/625 loss=0.000042 lr=8.000e-07
+epoch=1 mean_loss=0.002514
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.69it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.69it/s]
+Saved fine-tuned encoder to: models/sweep/lr0.0001_seed45
+Saved training summary to: results/sweep/lr0.0001_seed45_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9135.12it/s]
+--- 45/50 ---
+[run] lr0.0001_seed46: learning_rate=0.0001 seed=46
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8440.87it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr0.0001_seed46
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.027106 lr=9.680e-05
+epoch=1/1 batch=40/625 loss=0.003617 lr=9.360e-05
+epoch=1/1 batch=60/625 loss=0.001847 lr=9.040e-05
+epoch=1/1 batch=80/625 loss=0.000325 lr=8.720e-05
+epoch=1/1 batch=100/625 loss=0.000916 lr=8.400e-05
+epoch=1/1 batch=120/625 loss=0.001623 lr=8.080e-05
+epoch=1/1 batch=140/625 loss=0.000319 lr=7.760e-05
+epoch=1/1 batch=160/625 loss=0.002873 lr=7.440e-05
+epoch=1/1 batch=180/625 loss=0.006727 lr=7.120e-05
+epoch=1/1 batch=200/625 loss=0.000446 lr=6.800e-05
+epoch=1/1 batch=220/625 loss=0.000291 lr=6.480e-05
+epoch=1/1 batch=240/625 loss=0.000157 lr=6.160e-05
+epoch=1/1 batch=260/625 loss=0.000278 lr=5.840e-05
+epoch=1/1 batch=280/625 loss=0.000164 lr=5.520e-05
+epoch=1/1 batch=300/625 loss=0.000112 lr=5.200e-05
+epoch=1/1 batch=320/625 loss=0.000075 lr=4.880e-05
+epoch=1/1 batch=340/625 loss=0.000247 lr=4.560e-05
+epoch=1/1 batch=360/625 loss=0.000075 lr=4.240e-05
+epoch=1/1 batch=380/625 loss=0.000104 lr=3.920e-05
+epoch=1/1 batch=400/625 loss=0.000083 lr=3.600e-05
+epoch=1/1 batch=420/625 loss=0.000729 lr=3.280e-05
+epoch=1/1 batch=440/625 loss=0.000735 lr=2.960e-05
+epoch=1/1 batch=460/625 loss=0.000083 lr=2.640e-05
+epoch=1/1 batch=480/625 loss=0.000094 lr=2.320e-05
+epoch=1/1 batch=500/625 loss=0.000317 lr=2.000e-05
+epoch=1/1 batch=520/625 loss=0.000049 lr=1.680e-05
+epoch=1/1 batch=540/625 loss=0.000055 lr=1.360e-05
+epoch=1/1 batch=560/625 loss=0.000137 lr=1.040e-05
+epoch=1/1 batch=580/625 loss=0.000413 lr=7.200e-06
+epoch=1/1 batch=600/625 loss=0.000160 lr=4.000e-06
+epoch=1/1 batch=620/625 loss=0.000047 lr=8.000e-07
+epoch=1 mean_loss=0.001607
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.05it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.04it/s]
+Saved fine-tuned encoder to: models/sweep/lr0.0001_seed46
+Saved training summary to: results/sweep/lr0.0001_seed46_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8275.41it/s]
+--- 46/50 ---
+[run] lr0.0001_seed47: learning_rate=0.0001 seed=47
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8659.35it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr0.0001_seed47
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.025487 lr=9.680e-05
+epoch=1/1 batch=40/625 loss=0.002817 lr=9.360e-05
+epoch=1/1 batch=60/625 loss=0.001011 lr=9.040e-05
+epoch=1/1 batch=80/625 loss=0.008371 lr=8.720e-05
+epoch=1/1 batch=100/625 loss=0.001209 lr=8.400e-05
+epoch=1/1 batch=120/625 loss=0.000326 lr=8.080e-05
+epoch=1/1 batch=140/625 loss=0.006523 lr=7.760e-05
+epoch=1/1 batch=160/625 loss=0.001770 lr=7.440e-05
+epoch=1/1 batch=180/625 loss=0.000271 lr=7.120e-05
+epoch=1/1 batch=200/625 loss=0.000084 lr=6.800e-05
+epoch=1/1 batch=220/625 loss=0.000458 lr=6.480e-05
+epoch=1/1 batch=240/625 loss=0.000193 lr=6.160e-05
+epoch=1/1 batch=260/625 loss=0.000154 lr=5.840e-05
+epoch=1/1 batch=280/625 loss=0.000041 lr=5.520e-05
+epoch=1/1 batch=300/625 loss=0.001455 lr=5.200e-05
+epoch=1/1 batch=320/625 loss=0.002095 lr=4.880e-05
+epoch=1/1 batch=340/625 loss=0.000940 lr=4.560e-05
+epoch=1/1 batch=360/625 loss=0.000303 lr=4.240e-05
+epoch=1/1 batch=380/625 loss=0.000545 lr=3.920e-05
+epoch=1/1 batch=400/625 loss=0.000110 lr=3.600e-05
+epoch=1/1 batch=420/625 loss=0.000090 lr=3.280e-05
+epoch=1/1 batch=440/625 loss=0.000136 lr=2.960e-05
+epoch=1/1 batch=460/625 loss=0.000237 lr=2.640e-05
+epoch=1/1 batch=480/625 loss=0.000205 lr=2.320e-05
+epoch=1/1 batch=500/625 loss=0.006355 lr=2.000e-05
+epoch=1/1 batch=520/625 loss=0.000538 lr=1.680e-05
+epoch=1/1 batch=540/625 loss=0.000162 lr=1.360e-05
+epoch=1/1 batch=560/625 loss=0.002041 lr=1.040e-05
+epoch=1/1 batch=580/625 loss=0.000117 lr=7.200e-06
+epoch=1/1 batch=600/625 loss=0.000061 lr=4.000e-06
+epoch=1/1 batch=620/625 loss=0.000456 lr=8.000e-07
+epoch=1 mean_loss=0.002066
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.50it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.50it/s]
+Saved fine-tuned encoder to: models/sweep/lr0.0001_seed47
+Saved training summary to: results/sweep/lr0.0001_seed47_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8732.74it/s]
+--- 47/50 ---
+[run] lr0.0001_seed48: learning_rate=0.0001 seed=48
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4074.03it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr0.0001_seed48
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.031057 lr=9.680e-05
+epoch=1/1 batch=40/625 loss=0.007138 lr=9.360e-05
+epoch=1/1 batch=60/625 loss=0.006612 lr=9.040e-05
+epoch=1/1 batch=80/625 loss=0.000927 lr=8.720e-05
+epoch=1/1 batch=100/625 loss=0.002554 lr=8.400e-05
+epoch=1/1 batch=120/625 loss=0.001741 lr=8.080e-05
+epoch=1/1 batch=140/625 loss=0.000285 lr=7.760e-05
+epoch=1/1 batch=160/625 loss=0.000688 lr=7.440e-05
+epoch=1/1 batch=180/625 loss=0.001910 lr=7.120e-05
+epoch=1/1 batch=200/625 loss=0.000134 lr=6.800e-05
+epoch=1/1 batch=220/625 loss=0.000961 lr=6.480e-05
+epoch=1/1 batch=240/625 loss=0.000178 lr=6.160e-05
+epoch=1/1 batch=260/625 loss=0.000132 lr=5.840e-05
+epoch=1/1 batch=280/625 loss=0.000185 lr=5.520e-05
+epoch=1/1 batch=300/625 loss=0.000093 lr=5.200e-05
+epoch=1/1 batch=320/625 loss=0.000120 lr=4.880e-05
+epoch=1/1 batch=340/625 loss=0.000037 lr=4.560e-05
+epoch=1/1 batch=360/625 loss=0.005083 lr=4.240e-05
+epoch=1/1 batch=380/625 loss=0.000321 lr=3.920e-05
+epoch=1/1 batch=400/625 loss=0.003829 lr=3.600e-05
+epoch=1/1 batch=420/625 loss=0.000114 lr=3.280e-05
+epoch=1/1 batch=440/625 loss=0.000141 lr=2.960e-05
+epoch=1/1 batch=460/625 loss=0.000083 lr=2.640e-05
+epoch=1/1 batch=480/625 loss=0.000064 lr=2.320e-05
+epoch=1/1 batch=500/625 loss=0.000115 lr=2.000e-05
+epoch=1/1 batch=520/625 loss=0.000423 lr=1.680e-05
+epoch=1/1 batch=540/625 loss=0.001490 lr=1.360e-05
+epoch=1/1 batch=560/625 loss=0.000190 lr=1.040e-05
+epoch=1/1 batch=580/625 loss=0.000064 lr=7.200e-06
+epoch=1/1 batch=600/625 loss=0.000092 lr=4.000e-06
+epoch=1/1 batch=620/625 loss=0.000051 lr=8.000e-07
+epoch=1 mean_loss=0.002141
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.00it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.99it/s]
+Saved fine-tuned encoder to: models/sweep/lr0.0001_seed48
+Saved training summary to: results/sweep/lr0.0001_seed48_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8832.64it/s]
+--- 48/50 ---
+[run] lr0.0001_seed49: learning_rate=0.0001 seed=49
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2524.32it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr0.0001_seed49
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.028003 lr=9.680e-05
+epoch=1/1 batch=40/625 loss=0.010572 lr=9.360e-05
+epoch=1/1 batch=60/625 loss=0.003583 lr=9.040e-05
+epoch=1/1 batch=80/625 loss=0.003184 lr=8.720e-05
+epoch=1/1 batch=100/625 loss=0.000835 lr=8.400e-05
+epoch=1/1 batch=120/625 loss=0.000678 lr=8.080e-05
+epoch=1/1 batch=140/625 loss=0.002845 lr=7.760e-05
+epoch=1/1 batch=160/625 loss=0.001214 lr=7.440e-05
+epoch=1/1 batch=180/625 loss=0.000334 lr=7.120e-05
+epoch=1/1 batch=200/625 loss=0.004636 lr=6.800e-05
+epoch=1/1 batch=220/625 loss=0.000325 lr=6.480e-05
+epoch=1/1 batch=240/625 loss=0.000076 lr=6.160e-05
+epoch=1/1 batch=260/625 loss=0.000503 lr=5.840e-05
+epoch=1/1 batch=280/625 loss=0.001169 lr=5.520e-05
+epoch=1/1 batch=300/625 loss=0.006512 lr=5.200e-05
+epoch=1/1 batch=320/625 loss=0.000275 lr=4.880e-05
+epoch=1/1 batch=340/625 loss=0.000134 lr=4.560e-05
+epoch=1/1 batch=360/625 loss=0.000227 lr=4.240e-05
+epoch=1/1 batch=380/625 loss=0.000070 lr=3.920e-05
+epoch=1/1 batch=400/625 loss=0.000172 lr=3.600e-05
+epoch=1/1 batch=420/625 loss=0.000082 lr=3.280e-05
+epoch=1/1 batch=440/625 loss=0.000259 lr=2.960e-05
+epoch=1/1 batch=460/625 loss=0.000063 lr=2.640e-05
+epoch=1/1 batch=480/625 loss=0.000094 lr=2.320e-05
+epoch=1/1 batch=500/625 loss=0.000103 lr=2.000e-05
+epoch=1/1 batch=520/625 loss=0.000285 lr=1.680e-05
+epoch=1/1 batch=540/625 loss=0.000053 lr=1.360e-05
+epoch=1/1 batch=560/625 loss=0.000048 lr=1.040e-05
+epoch=1/1 batch=580/625 loss=0.003781 lr=7.200e-06
+epoch=1/1 batch=600/625 loss=0.000166 lr=4.000e-06
+epoch=1/1 batch=620/625 loss=0.000055 lr=8.000e-07
+epoch=1 mean_loss=0.002251
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.14it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.14it/s]
+Saved fine-tuned encoder to: models/sweep/lr0.0001_seed49
+Saved training summary to: results/sweep/lr0.0001_seed49_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6528.18it/s]
+--- 49/50 ---
+[run] lr0.0001_seed50: learning_rate=0.0001 seed=50
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7535.34it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr0.0001_seed50
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.020906 lr=9.680e-05
+epoch=1/1 batch=40/625 loss=0.004222 lr=9.360e-05
+epoch=1/1 batch=60/625 loss=0.001045 lr=9.040e-05
+epoch=1/1 batch=80/625 loss=0.000525 lr=8.720e-05
+epoch=1/1 batch=100/625 loss=0.000818 lr=8.400e-05
+epoch=1/1 batch=120/625 loss=0.000282 lr=8.080e-05
+epoch=1/1 batch=140/625 loss=0.000104 lr=7.760e-05
+epoch=1/1 batch=160/625 loss=0.000310 lr=7.440e-05
+epoch=1/1 batch=180/625 loss=0.000120 lr=7.120e-05
+epoch=1/1 batch=200/625 loss=0.000903 lr=6.800e-05
+epoch=1/1 batch=220/625 loss=0.000992 lr=6.480e-05
+epoch=1/1 batch=240/625 loss=0.000554 lr=6.160e-05
+epoch=1/1 batch=260/625 loss=0.000198 lr=5.840e-05
+epoch=1/1 batch=280/625 loss=0.000116 lr=5.520e-05
+epoch=1/1 batch=300/625 loss=0.001919 lr=5.200e-05
+epoch=1/1 batch=320/625 loss=0.000187 lr=4.880e-05
+epoch=1/1 batch=340/625 loss=0.000111 lr=4.560e-05
+epoch=1/1 batch=360/625 loss=0.000071 lr=4.240e-05
+epoch=1/1 batch=380/625 loss=0.000079 lr=3.920e-05
+epoch=1/1 batch=400/625 loss=0.000557 lr=3.600e-05
+epoch=1/1 batch=420/625 loss=0.000172 lr=3.280e-05
+epoch=1/1 batch=440/625 loss=0.000127 lr=2.960e-05
+epoch=1/1 batch=460/625 loss=0.000431 lr=2.640e-05
+epoch=1/1 batch=480/625 loss=0.000331 lr=2.320e-05
+epoch=1/1 batch=500/625 loss=0.000158 lr=2.000e-05
+epoch=1/1 batch=520/625 loss=0.002037 lr=1.680e-05
+epoch=1/1 batch=540/625 loss=0.000228 lr=1.360e-05
+epoch=1/1 batch=560/625 loss=0.000720 lr=1.040e-05
+epoch=1/1 batch=580/625 loss=0.000071 lr=7.200e-06
+epoch=1/1 batch=600/625 loss=0.002702 lr=4.000e-06
+epoch=1/1 batch=620/625 loss=0.000106 lr=8.000e-07
+epoch=1 mean_loss=0.001316
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.77it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.76it/s]
+Saved fine-tuned encoder to: models/sweep/lr0.0001_seed50
+Saved training summary to: results/sweep/lr0.0001_seed50_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8491.96it/s]
+--- 50/50 ---
+[run] lr0.0001_seed51: learning_rate=0.0001 seed=51
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7079.86it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Experiment: unsup-simcse-lr-sweep-lr0.0001_seed51
+Device: mps
+Sentences: 10,000
+Physical batch size: 16
+In-batch negatives per anchor: 15
+epoch=1/1 batch=20/625 loss=0.016859 lr=9.680e-05
+epoch=1/1 batch=40/625 loss=0.002053 lr=9.360e-05
+epoch=1/1 batch=60/625 loss=0.002181 lr=9.040e-05
+epoch=1/1 batch=80/625 loss=0.013072 lr=8.720e-05
+epoch=1/1 batch=100/625 loss=0.003904 lr=8.400e-05
+epoch=1/1 batch=120/625 loss=0.000575 lr=8.080e-05
+epoch=1/1 batch=140/625 loss=0.000171 lr=7.760e-05
+epoch=1/1 batch=160/625 loss=0.000656 lr=7.440e-05
+epoch=1/1 batch=180/625 loss=0.001112 lr=7.120e-05
+epoch=1/1 batch=200/625 loss=0.003719 lr=6.800e-05
+epoch=1/1 batch=220/625 loss=0.000277 lr=6.480e-05
+epoch=1/1 batch=240/625 loss=0.000182 lr=6.160e-05
+epoch=1/1 batch=260/625 loss=0.000054 lr=5.840e-05
+epoch=1/1 batch=280/625 loss=0.001755 lr=5.520e-05
+epoch=1/1 batch=300/625 loss=0.000439 lr=5.200e-05
+epoch=1/1 batch=320/625 loss=0.000120 lr=4.880e-05
+epoch=1/1 batch=340/625 loss=0.000083 lr=4.560e-05
+epoch=1/1 batch=360/625 loss=0.000088 lr=4.240e-05
+epoch=1/1 batch=380/625 loss=0.000045 lr=3.920e-05
+epoch=1/1 batch=400/625 loss=0.004697 lr=3.600e-05
+epoch=1/1 batch=420/625 loss=0.000292 lr=3.280e-05
+epoch=1/1 batch=440/625 loss=0.000189 lr=2.960e-05
+epoch=1/1 batch=460/625 loss=0.001995 lr=2.640e-05
+epoch=1/1 batch=480/625 loss=0.000124 lr=2.320e-05
+epoch=1/1 batch=500/625 loss=0.000664 lr=2.000e-05
+epoch=1/1 batch=520/625 loss=0.000179 lr=1.680e-05
+epoch=1/1 batch=540/625 loss=0.000105 lr=1.360e-05
+epoch=1/1 batch=560/625 loss=0.000577 lr=1.040e-05
+epoch=1/1 batch=580/625 loss=0.000083 lr=7.200e-06
+epoch=1/1 batch=600/625 loss=0.000078 lr=4.000e-06
+epoch=1/1 batch=620/625 loss=0.001229 lr=8.000e-07
+epoch=1 mean_loss=0.001850
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.40it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.39it/s]
+Saved fine-tuned encoder to: models/sweep/lr0.0001_seed51
+Saved training summary to: results/sweep/lr0.0001_seed51_training.json
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7469.12it/s]
+
+┌────────────────┬─────┬──────────────────────┬────────────────────────────┬────────────────────────────┐
+│ Learning rate  │  n  │    STS-B Spearman    │  Alignment (lower better)  │ Uniformity (lower better)  │
+├────────────────┼─────┼──────────────────────┼────────────────────────────┼────────────────────────────┤
+│    1e-05       │ 10  │   0.3623 ± 0.0272    │      0.3092 ± 0.0079       │      -2.2497 ± 0.0535      │
+│    3e-05       │ 10  │   0.5409 ± 0.0806    │      0.2898 ± 0.0109       │      -2.4191 ± 0.0862      │
+│    5e-05       │ 10  │   0.6561 ± 0.0497    │      0.2673 ± 0.0156       │      -2.4862 ± 0.0566      │
+│    7e-05       │ 10  │   0.6761 ± 0.0412    │      0.2577 ± 0.0262       │      -2.4958 ± 0.1026      │
+│    0.0001 ★    │ 10  │   0.7005 ± 0.0361    │      0.2388 ± 0.0242       │      -2.5214 ± 0.1001      │
+└────────────────┴─────┴──────────────────────┴────────────────────────────┴────────────────────────────┘
+★ = highest mean STS-B Spearman across the sweep
+
+Saved 50 run results to: results/sweep/lr_sweep_raw.json
+Saved per-learning-rate summary to: results/sweep/lr_sweep_summary.json
