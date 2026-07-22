@@ -376,6 +376,8 @@ def train(settings: TrainSettings) -> dict[str, Any]:
         "max_seq_length": settings.max_seq_length,
         "physical_batch_size": settings.batch_size,
         "gradient_accumulation_steps": settings.gradient_accumulation_steps,
+        "learning_rate": settings.learning_rate,
+        "weight_decay": settings.weight_decay,
         "seed": settings.seed,
     }
     with (settings.output_dir / "simcse_metadata.json").open("w", encoding="utf-8") as handle:
