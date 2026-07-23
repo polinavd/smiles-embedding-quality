@@ -1,0 +1,14 @@
+{
+  "learning_rate": 0.0001,
+  "weight_decay": 0.05,
+  "seed": 46,
+  "checkpoint_dir": "models/wd_sweep_multiseed/lr0.0001_wd0.05_seed46",
+  "mean_training_loss": 0.0016612586680937965,
+  "last_training_loss": 3.334752909722738e-05,
+  "train_elapsed_seconds": 203.9559629999858,
+  "stsb_spearman": 0.7204775492213372,
+  "alignment": 0.24465296759741084,
+  "uniformity": -2.6410329452915713,
+  "rankme": 166.17872988515438,
+  "idest": 10.347511798206806
+}
