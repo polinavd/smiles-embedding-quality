@@ -1,0 +1,72 @@
+[
+  {
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0,
+    "seed": 42,
+    "checkpoint_dir": "models/wd_sweep/lr0.0001_wd0_seed42",
+    "mean_training_loss": 0.001872250640616403,
+    "last_training_loss": 7.498687773477286e-05,
+    "train_elapsed_seconds": 198.69398291700054,
+    "stsb_spearman": 0.723292490764416,
+    "alignment": 0.22862169844431263,
+    "uniformity": -2.668959015448669,
+    "rankme": 153.73704824741822,
+    "idest": 10.155397115178845
+  },
+  {
+    "learning_rate": 0.0001,
+    "weight_decay": 0.001,
+    "seed": 42,
+    "checkpoint_dir": "models/wd_sweep/lr0.0001_wd0.001_seed42",
+    "mean_training_loss": 0.0017124624077347107,
+    "last_training_loss": 5.8025383623316884e-05,
+    "train_elapsed_seconds": 203.02640429200255,
+    "stsb_spearman": 0.7282229959895938,
+    "alignment": 0.2155892625139544,
+    "uniformity": -2.6237529364057934,
+    "rankme": 146.79749203830187,
+    "idest": 9.89901183711103
+  },
+  {
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "seed": 42,
+    "checkpoint_dir": "models/wd_sweep/lr0.0001_wd0.01_seed42",
+    "mean_training_loss": 0.001664591045328416,
+    "last_training_loss": 9.32449838728644e-05,
+    "train_elapsed_seconds": 203.1576074170007,
+    "stsb_spearman": 0.7212673601818843,
+    "alignment": 0.2216147440327185,
+    "uniformity": -2.666802152874981,
+    "rankme": 153.0128197308758,
+    "idest": 9.848860351288577
+  },
+  {
+    "learning_rate": 0.0001,
+    "weight_decay": 0.05,
+    "seed": 42,
+    "checkpoint_dir": "models/wd_sweep/lr0.0001_wd0.05_seed42",
+    "mean_training_loss": 0.001729635214166774,
+    "last_training_loss": 2.568861782492604e-05,
+    "train_elapsed_seconds": 203.13973583301413,
+    "stsb_spearman": 0.7351597585436599,
+    "alignment": 0.2099777157396146,
+    "uniformity": -2.611388558822875,
+    "rankme": 156.65277513529946,
+    "idest": 9.812271642303102
+  },
+  {
+    "learning_rate": 0.0001,
+    "weight_decay": 0.1,
+    "seed": 42,
+    "checkpoint_dir": "models/wd_sweep/lr0.0001_wd0.1_seed42",
+    "mean_training_loss": 0.0017496005514913123,
+    "last_training_loss": 2.329741619178094e-05,
+    "train_elapsed_seconds": 203.4288156249968,
+    "stsb_spearman": 0.7251692235172245,
+    "alignment": 0.22457346786581,
+    "uniformity": -2.488594418101472,
+    "rankme": 152.8642283649932,
+    "idest": 10.579911461123856
+  }
+]
