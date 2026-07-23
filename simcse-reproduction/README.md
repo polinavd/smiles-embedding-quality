@@ -6,12 +6,30 @@ Embeddings** (Gao, Yao & Chen, 2021 — [arXiv:2104.08821](https://arxiv.org/abs
 
 This is **not** an attempt to reproduce the paper's headline numbers. It is a
 controlled **sensitivity study**: we hold the entire unsupervised-SimCSE recipe
-fixed and vary **only the learning rate**, then ask how the learning rate moves
-three quantities the paper cares about:
+fixed and vary hyperparameters one at a time (learning rate, then weight
+decay), asking how each moves:
 
 1. **Alignment** — how close known-positive pairs sit on the unit hypersphere.
 2. **Uniformity** — how evenly embeddings spread over the hypersphere.
-3. **Downstream STS quality** — Spearman correlation with human similarity judgements.
+3. **RankMe** and **IdEst** — label-free rank / intrinsic-dimension diagnostics.
+4. **Downstream STS quality** — Spearman correlation with human similarity judgements.
+5. **Downstream classification quality** — SST-2 and QNLI accuracy via a frozen-embedding + logistic-regression probe.
+
+The study ran in three stages, each with its own results writeup:
+
+| Stage | What varied | Results |
+|---|---|---|
+| 1. Learning-rate sweep | 5 LRs × 10 seeds = 50 runs | [`results/sweep/RESULTS.md`](results/sweep/RESULTS.md) |
+| 2. Learning-rate extension | +5 higher LRs, 1 seed each, checkpoints kept, + SST-2/QNLI + RankMe/IdEst | [`results/lr_extended/RESULTS.md`](results/lr_extended/RESULTS.md) |
+| 3. Weight-decay grid at the best LR | 5 weight decays × 5 seeds = 25 runs | [`results/wd_sweep_multiseed/RESULTS.md`](results/wd_sweep_multiseed/RESULTS.md) (supersedes the single-seed [`results/wd_sweep/RESULTS.md`](results/wd_sweep/RESULTS.md)) |
+
+**Headline findings so far:** the learning-rate curve is fully bracketed —
+STS-B Spearman peaks around **7e-5 to 1e-4** (both statistically tied) and
+training **collapses outright** at ≥5e-4 (loss pins at exactly `ln(16)`,
+confirmed independently by STS-B, SST-2, and QNLI all degrading to
+chance/majority-baseline simultaneously). Weight decay, by contrast, has
+**no statistically significant effect** on any metric across 0.0–0.1 (all
+ANOVA p-values > 0.3) — leave it at the default.
 
 ---
 
@@ -32,15 +50,18 @@ downstream STS evaluation  ──►  Spearman correlation
    (7 SentEval STS tasks, averaged)
 ```
 
-Each of the four stages already has an implementation in `src/`:
+Each stage already has an implementation in `src/`:
 
 | Stage | Script | Status |
 |-------|--------|--------|
 | Fine-tune | [`src/train_simcse.py`](src/train_simcse.py) | ✅ implemented |
 | Embed | [`src/generate_embeddings.py`](src/generate_embeddings.py) | ✅ implemented |
-| Alignment / uniformity | [`src/geometric_metrics.py`](src/geometric_metrics.py) | ✅ implemented |
+| Alignment / uniformity / RankMe / IdEst | [`src/geometric_metrics.py`](src/geometric_metrics.py) | ✅ implemented (ASMI deferred, formula pending) |
 | Downstream STS | [`src/evaluate_sts.py`](src/evaluate_sts.py) | ⚠️ **STS-B only** — full 7-task SentEval not yet wired up |
-| 50-run sweep driver | [`src/run_sweep.py`](src/run_sweep.py) | ✅ implemented — runs all 50 (LR × seed) experiments and prints a summary table |
+| Downstream classification (SST-2, QNLI) | [`src/evaluate_glue.py`](src/evaluate_glue.py) | ✅ implemented — frozen embeddings + logistic-regression probe |
+| Learning-rate × seed sweep driver | [`src/run_sweep.py`](src/run_sweep.py) | ✅ implemented — runs (LR × seed) experiments and prints a summary table |
+| Learning-rate × weight-decay × seed grid driver | [`src/run_hparam_sweep.py`](src/run_hparam_sweep.py) | ✅ implemented |
+| Batch GLUE eval over a sweep's saved checkpoints | [`src/run_glue_eval.py`](src/run_glue_eval.py) | ✅ implemented — post-hoc, does not retrain |
 
 ---
 
@@ -151,10 +172,13 @@ uv run python src/run_sweep.py --config configs/baseline.yaml
 
 1. Fine-tunes BERT-base from `configs/baseline.yaml` with that run's
    `learning_rate` and `seed` substituted in (everything else fixed).
-2. Scores the checkpoint on STS-B (Spearman, alignment, uniformity) via the
-   same `evaluate_checkpoint` function `evaluate_sts.py` uses for single runs.
-3. Deletes the fine-tuned checkpoint (50 BERT-base checkpoints is 20+ GB and
-   only the metrics are needed) — pass `--keep-checkpoints` to retain them.
+2. Scores the checkpoint on STS-B (Spearman, alignment, uniformity, RankMe,
+   IdEst) via the same `evaluate_checkpoint` function `evaluate_sts.py` uses
+   for single runs.
+3. **Keeps the checkpoint by default** — later work (GLUE probes, RankMe/IdEst
+   on other embedding sets) needs the actual weights. Pass
+   `--delete-checkpoints` to discard them after scoring (BERT-base checkpoints
+   are ~400MB each, so a large grid can add up fast).
 
 **Output artifacts** (under `results/sweep/` by default):
 
@@ -184,15 +208,47 @@ Expect roughly **3.5–4 hours** for all 50 runs on the 10k-sentence corpus on
 Apple-silicon MPS (the single-run pilot took ~230s/epoch; add STS-B encoding
 overhead per run).
 
+### 6. Extend the learning-rate grid (or run a weight-decay × seed grid)
+
+Same script, different axes:
+
+```bash
+export PYTORCH_ENABLE_MPS_FALLBACK=1
+# Learning-rate grid at a single seed (used to find the collapse point):
+uv run python src/run_sweep.py --config configs/baseline.yaml \
+  --learning-rates 1e-5 3e-5 5e-5 7e-5 1e-4 2e-4 3e-4 5e-4 7e-4 1e-3 \
+  --seeds 42 --work-dir models/lr_extended --results-dir results/lr_extended
+
+# Weight-decay x seed grid at a fixed (best) learning rate:
+uv run python src/run_hparam_sweep.py --config configs/baseline.yaml \
+  --learning-rates 1e-4 --weight-decays 0.0 0.001 0.01 0.05 0.1 \
+  --seeds 42 43 44 45 46 \
+  --work-dir models/wd_sweep_multiseed --results-dir results/wd_sweep_multiseed
+```
+
+### 7. Batch-evaluate SST-2 and QNLI over a sweep's saved checkpoints
+
+Post-hoc — does not retrain, just scores whatever checkpoints a sweep already
+kept on disk:
+
+```bash
+uv run python src/run_glue_eval.py \
+  --work-dir models/lr_extended --results-dir results/lr_extended_glue \
+  --tasks sst2 qnli
+```
+
 ---
 
 ## What still needs building
 
 - **Full 7-task SentEval evaluation.** `evaluate_sts.py` (and therefore
-  `run_sweep.py`) only scores STS-B. To report the paper-style downstream
-  number you must add STS12, STS13, STS14, STS15, STS16, and SICK-R and
-  average the seven Spearman scores. Keep alignment/uniformity on STS-B as
-  above.
+  `run_sweep.py` / `run_hparam_sweep.py`) only scores STS-B. To report the
+  paper-style downstream number you must add STS12, STS13, STS14, STS15,
+  STS16, and SICK-R and average the seven Spearman scores. Keep
+  alignment/uniformity on STS-B as above.
+- **ASMI metric.** Deferred by request — formula/paper not yet provided.
+  RankMe and IdEst are done and computed automatically by every
+  `evaluate_checkpoint()` call.
 
 ---
 
@@ -211,4 +267,12 @@ overhead per run).
   steps and keeps the best; here we train one epoch and evaluate the final state.
 - **Learning-rate effects are noisy on a small corpus** — this is exactly why the
   design uses 10 seeds per LR. Report mean ± spread, not single-seed points.
-```
+  The learning-rate extension and weight-decay grids that keep checkpoints use
+  fewer seeds per point (1 and 5 respectively) — treat single-seed comparisons
+  there as leads, not conclusions, unless the effect is as large and
+  unambiguous as the high-LR training collapse was.
+- **RankMe and IdEst are unreliable once training has collapsed** (see
+  `results/lr_extended/RESULTS.md`) — both metrics are computed from
+  covariance/distance structure that becomes pure floating-point noise once
+  all embeddings collapse to near-identical vectors. Trust them only in the
+  non-collapsed regime.

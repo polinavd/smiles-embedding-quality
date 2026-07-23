@@ -1,5 +1,13 @@
 # Weight-Decay Grid at the Best Learning Rate (1e-4)
 
+> **Superseded.** This was a single-seed grid (see caveat in Conclusion #1
+> below) and could not tell signal from noise. It was re-run with 5 seeds per
+> weight-decay value in
+> [`../wd_sweep_multiseed/RESULTS.md`](../wd_sweep_multiseed/RESULTS.md),
+> which found **no statistically significant effect of weight decay** on any
+> metric (all ANOVA p-values > 0.3). Read that file instead; this one is kept
+> only for provenance.
+
 Follow-up to [`../lr_extended/RESULTS.md`](../lr_extended/RESULTS.md). That
 study bracketed the learning-rate curve (winning region ~7e-5 to 1e-4,
 collapse at ≥5e-4) but held weight_decay fixed at 0.0 throughout. This run
