@@ -103,7 +103,7 @@ def evaluate_classification(
     if task not in TASK_FIELDS:
         raise ValueError(f"Unsupported task: {task}. Supported: {sorted(TASK_FIELDS)}")
 
-    raw = load_dataset("glue", task)
+    raw = load_dataset("nyu-mll/glue", task)
     train_split = _subsample(raw["train"], max_train, seed)
     val_split = _subsample(raw["validation"], max_val, seed)
 

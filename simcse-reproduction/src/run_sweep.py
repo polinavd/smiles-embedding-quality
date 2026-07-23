@@ -91,12 +91,15 @@ def run_one(
     row = {
         "learning_rate": learning_rate,
         "seed": seed,
+        "checkpoint_dir": str(model_dir) if keep_checkpoints else None,
         "mean_training_loss": train_summary["mean_training_loss"],
         "last_training_loss": train_summary["last_training_loss"],
         "train_elapsed_seconds": train_summary["elapsed_seconds"],
         "stsb_spearman": eval_result["stsb_spearman"],
         "alignment": eval_result["alignment"],
         "uniformity": eval_result["uniformity"],
+        "rankme": eval_result["rankme"],
+        "idest": eval_result["idest"],
     }
     results_dir.mkdir(parents=True, exist_ok=True)
     run_result_file.write_text(json.dumps(row, indent=2), encoding="utf-8")
@@ -108,7 +111,7 @@ def summarize(rows: list[dict]) -> list[dict]:
     for learning_rate in sorted({row["learning_rate"] for row in rows}):
         group = [row for row in rows if row["learning_rate"] == learning_rate]
         entry = {"learning_rate": learning_rate, "n_seeds": len(group)}
-        for metric in ("stsb_spearman", "alignment", "uniformity"):
+        for metric in ("stsb_spearman", "alignment", "uniformity", "rankme", "idest"):
             values = np.asarray([row[metric] for row in group], dtype=np.float64)
             entry[f"{metric}_mean"] = float(np.mean(values))
             entry[f"{metric}_std"] = float(np.std(values, ddof=1)) if len(values) > 1 else 0.0
@@ -123,6 +126,8 @@ def format_table(summary: list[dict]) -> str:
         ("STS-B Spearman", 20),
         ("Alignment (lower better)", 26),
         ("Uniformity (lower better)", 26),
+        ("RankMe (higher better)", 22),
+        ("IdEst", 18),
     ]
     top = "┌" + "┬".join("─" * (w + 2) for _, w in columns) + "┐"
     sep = "├" + "┼".join("─" * (w + 2) for _, w in columns) + "┤"
@@ -137,7 +142,9 @@ def format_table(summary: list[dict]) -> str:
         sts_cell = f"{entry['stsb_spearman_mean']:.4f} ± {entry['stsb_spearman_std']:.4f}"
         align_cell = f"{entry['alignment_mean']:.4f} ± {entry['alignment_std']:.4f}"
         unif_cell = f"{entry['uniformity_mean']:.4f} ± {entry['uniformity_std']:.4f}"
-        cells = [lr_cell, str(entry["n_seeds"]), sts_cell, align_cell, unif_cell]
+        rankme_cell = f"{entry['rankme_mean']:.2f} ± {entry['rankme_std']:.2f}"
+        idest_cell = f"{entry['idest_mean']:.2f} ± {entry['idest_std']:.2f}"
+        cells = [lr_cell, str(entry["n_seeds"]), sts_cell, align_cell, unif_cell, rankme_cell, idest_cell]
         lines.append("│" + "│".join(f" {c:^{w}} " for c, (_, w) in zip(cells, columns)) + "│")
     lines.append(bottom)
     lines.append("★ = highest mean STS-B Spearman across the sweep")

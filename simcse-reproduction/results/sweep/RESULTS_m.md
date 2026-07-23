@@ -10,16 +10,13 @@ in [`../../README.md`](../../README.md); raw data in
 
 | Learning rate | n seeds | STS-B Spearman (mean ± std) | Range (min–max) | Alignment ↓ (mean ± std) | Uniformity ↓ (mean ± std) |
 |---|---|---|---|---|---|
-| *pretrained BERT (no fine-tuning)* | 1 | *0.1903* | — | *0.1605* | *-1.0077* |
 | 1e-05 | 10 | 0.3623 ± 0.0272 | 0.311 – 0.406 | 0.3092 ± 0.0079 | -2.2497 ± 0.0535 |
 | 3e-05 | 10 | 0.5409 ± 0.0806 | 0.399 – 0.620 | 0.2898 ± 0.0109 | -2.4191 ± 0.0862 |
 | 5e-05 | 10 | 0.6561 ± 0.0497 | 0.539 – 0.703 | 0.2673 ± 0.0156 | -2.4862 ± 0.0566 |
 | 7e-05 | 10 | 0.6761 ± 0.0412 | 0.590 – 0.732 | 0.2577 ± 0.0262 | -2.4958 ± 0.1026 |
 | **1e-04** | 10 | **0.7005 ± 0.0361** | 0.651 – 0.756 | 0.2388 ± 0.0242 | -2.5214 ± 0.1001 |
 
-Best mean STS-B Spearman: **1e-04** (0.7005). Pretrained-BERT row from
-[`../bert_pretrained_stsb.json`](../bert_pretrained_stsb.json), single run
-(no fine-tuning, no seed variation).
+Best mean STS-B Spearman: **1e-04** (0.7005).
 
 ## Cross-run correlations (all 50 runs pooled)
 
@@ -70,53 +67,4 @@ Best mean STS-B Spearman: **1e-04** (0.7005). Pretrained-BERT row from
    3e-5"; it is an artifact of the reduced setup, not a finding about the
    paper. See the README's caveats section for the full list of deviations.
 
-## Alignment and uniformity, specifically
 
-The pretrained-BERT baseline is the key that makes these two metrics legible:
-
-| | Alignment ↓ | Uniformity ↓ | STS-B Spearman |
-|---|---|---|---|
-| Pretrained BERT (untouched) | **0.1605** (best of all rows) | **-1.0077** (worst of all rows) | 0.1903 (worst) |
-| Best fine-tuned (lr=1e-4) | 0.2388 (worse than pretrained) | -2.5214 (best) | 0.7005 (best) |
-
-This looks paradoxical until you know *why* raw BERT gets "good" alignment:
-**untouched BERT sentence embeddings collapse into a narrow cone** (this is
-the well-documented anisotropy problem in pretrained transformers). When
-every sentence's embedding sits close to every other sentence's embedding
-regardless of meaning, positive pairs are automatically close too — alignment
-looks great, but only because it's *cheating*: uniformity is terrible
-(-1.01, far from the -2.5 range fine-tuned models reach), and STS-B Spearman
-is barely above chance (0.19), because the space can't discriminate similar
-from dissimilar sentences at all.
-
-**This is the paper's central point, reproduced here:** alignment on its own
-is a gameable, misleading metric — a fully collapsed embedding space scores
-"perfectly" on it. Unsupervised SimCSE fine-tuning trades a *small* amount of
-alignment (0.16 → 0.24, worse) for a *large* gain in uniformity (-1.01 → -2.52,
-much better), and that trade is what actually produces usable embeddings —
-STS-B Spearman goes from 0.19 (near-random) to 0.70.
-
-Two things follow directly from the 50-run sweep:
-
-- **Uniformity is doing the real work here**, not alignment. As learning rate
-  increases from 1e-5 to 1e-4, alignment keeps *improving too* (0.309 → 0.239)
-  rather than trading off against uniformity — both metrics move the same
-  direction, away from the collapsed pretrained-BERT starting point. In this
-  regime we haven't yet reached the point where pushing further would trade
-  one for the other; both are still recovering from the same bad initial
-  condition.
-- **Read the r ≈ -0.85 correlations (above) in this light.** It's not that
-  "more alignment" and "more uniformity" independently cause better STS-B —
-  it's that *fine-tuning progress itself* (however learning rate produces it)
-  simultaneously fixes both metrics and downstream quality together, because
-  all three are symptoms of the same underlying collapse being undone.
-
-## Suggested next steps
-
-- Extend the learning-rate grid upward (e.g. 3e-4, 1e-3) to bracket the true
-  optimum, since 1e-4 is still climbing.
-- Re-run the winning learning rate(s) on the full 1M-sentence corpus at batch
-  size 64 to get paper-comparable absolute numbers.
-- Add the remaining 6 SentEval tasks (STS12–16, SICK-R) to `evaluate_sts.py`
-  so downstream quality is reported as the paper's 7-task average rather than
-  STS-B alone.

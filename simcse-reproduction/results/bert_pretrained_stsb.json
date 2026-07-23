@@ -1,0 +1,19 @@
+{
+  "model": "google-bert/bert-base-uncased",
+  "dataset": "sentence-transformers/stsb",
+  "split": "test",
+  "num_pairs": 1379,
+  "num_unique_sentences": 2552,
+  "num_alignment_positive_pairs": 231,
+  "positive_threshold_normalized": 0.8,
+  "pooler_type": "cls_before_pooler",
+  "max_seq_length": 32,
+  "stsb_spearman": 0.19026068606283833,
+  "stsb_spearman_percent": 19.026068606283832,
+  "stsb_spearman_p_value": 1.0478432971818419e-12,
+  "alignment": 0.16051779168457475,
+  "uniformity": -1.0076752142481795,
+  "lower_alignment_is_better": true,
+  "lower_uniformity_is_better": true,
+  "alignment_note": "Paper-style alignment uses human STS-B scores to select positive pairs; it is therefore not fully label-free in this evaluation."
+}

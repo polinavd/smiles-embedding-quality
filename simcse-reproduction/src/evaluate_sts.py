@@ -17,7 +17,7 @@ from datasets import load_dataset
 from scipy.stats import spearmanr
 
 from generate_embeddings import encode_sentences
-from geometric_metrics import alignment, uniformity
+from geometric_metrics import alignment, effective_rank, idest, uniformity
 
 
 def evaluate_checkpoint(
@@ -31,10 +31,14 @@ def evaluate_checkpoint(
     uniformity_max_pairs: int = 2_000_000,
     seed: int = 42,
 ) -> dict:
-    """Encode STS-B once and compute Spearman, alignment, and uniformity.
+    """Encode STS-B once and compute Spearman, alignment, uniformity, RankMe,
+    and IdEst.
 
     Shared by the single-checkpoint CLI below and the learning-rate sweep
     runner, so every run in the sweep is scored with an identical recipe.
+    RankMe and IdEst are computed on the same unique-sentence embedding
+    matrix used for uniformity -- they are unpaired, label-free diagnostics
+    of the embedding space's rank/dimensionality.
     """
     dataset = load_dataset("sentence-transformers/stsb", split=split)
     sentence_1 = list(dataset["sentence1"])
@@ -78,6 +82,8 @@ def evaluate_checkpoint(
         max_pairs=uniformity_max_pairs,
         seed=seed,
     )
+    rankme_score = effective_rank(unique_embeddings)
+    idest_score = idest(unique_embeddings, seed=seed)
 
     return {
         "model": model,
@@ -94,11 +100,19 @@ def evaluate_checkpoint(
         "stsb_spearman_p_value": p_value,
         "alignment": alignment_score,
         "uniformity": uniformity_score,
+        "rankme": rankme_score,
+        "idest": idest_score,
         "lower_alignment_is_better": True,
         "lower_uniformity_is_better": True,
+        "higher_rankme_is_better": True,
         "alignment_note": (
             "Paper-style alignment uses human STS-B scores to select positive pairs; "
             "it is therefore not fully label-free in this evaluation."
+        ),
+        "rankme_idest_note": (
+            "RankMe (effective rank) and IdEst (MST-scaling intrinsic dimension) are "
+            "unpaired, label-free diagnostics computed on the unique STS-B sentence "
+            "embeddings, same matrix used for uniformity."
         ),
     }
 

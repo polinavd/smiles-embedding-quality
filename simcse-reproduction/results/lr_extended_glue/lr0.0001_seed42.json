@@ -1,0 +1,41 @@
+{
+  "checkpoint": "lr0.0001_seed42",
+  "checkpoint_dir": "models/lr_extended/lr0.0001_seed42",
+  "learning_rate": 0.0001,
+  "weight_decay": null,
+  "seed": 42,
+  "sst2_accuracy": 0.8314220183486238,
+  "qnli_accuracy": 0.6785,
+  "tasks": {
+    "sst2": {
+      "model": "models/lr_extended/lr0.0001_seed42",
+      "task": "sst2",
+      "dataset": "glue",
+      "classifier": "sklearn.LogisticRegression",
+      "feature_recipe": "raw_embedding",
+      "pooler_type": "cls_before_pooler",
+      "max_seq_length": 32,
+      "n_train": 10000,
+      "n_val": 872,
+      "n_train_total_available": 67349,
+      "n_val_total_available": 872,
+      "accuracy": 0.8314220183486238,
+      "seed": 42
+    },
+    "qnli": {
+      "model": "models/lr_extended/lr0.0001_seed42",
+      "task": "qnli",
+      "dataset": "glue",
+      "classifier": "sklearn.LogisticRegression",
+      "feature_recipe": "concat[u,v,|u-v|,u*v]",
+      "pooler_type": "cls_before_pooler",
+      "max_seq_length": 32,
+      "n_train": 10000,
+      "n_val": 2000,
+      "n_train_total_available": 104743,
+      "n_val_total_available": 5463,
+      "accuracy": 0.6785,
+      "seed": 42
+    }
+  }
+}

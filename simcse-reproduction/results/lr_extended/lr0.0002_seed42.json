@@ -1,0 +1,13 @@
+{
+  "learning_rate": 0.0002,
+  "seed": 42,
+  "checkpoint_dir": "models/lr_extended/lr0.0002_seed42",
+  "mean_training_loss": 0.0037827498476646726,
+  "last_training_loss": 3.6312543670646846e-05,
+  "train_elapsed_seconds": 199.8840756249847,
+  "stsb_spearman": 0.6521050680356689,
+  "alignment": 0.3266575683288546,
+  "uniformity": -2.6842700136890123,
+  "rankme": 185.62230286155312,
+  "idest": 11.384009726231653
+}

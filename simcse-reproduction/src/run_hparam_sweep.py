@@ -109,6 +109,8 @@ def run_one(
         "stsb_spearman": eval_result["stsb_spearman"],
         "alignment": eval_result["alignment"],
         "uniformity": eval_result["uniformity"],
+        "rankme": eval_result["rankme"],
+        "idest": eval_result["idest"],
     }
     results_dir.mkdir(parents=True, exist_ok=True)
     run_result_file.write_text(json.dumps(row, indent=2), encoding="utf-8")
